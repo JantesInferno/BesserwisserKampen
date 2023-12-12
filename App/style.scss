@@ -19,8 +19,8 @@ body {
 }
 
 #start-container {
-    width: 600px;
-    height: 600px;
+    width: 40%;
+    height: 40%;
     margin-top: 80px;
     padding: 20px;
     background-color: aqua;
@@ -29,15 +29,16 @@ body {
 #game-screen {
     flex-direction: column;
     justify-content: space-between;
-    width: 600px;
-    height: 600px;
+    width: 40%;
+    height: 40%;
     margin-top: 80px;
     padding: 20px;
     background-color: rgb(140, 0, 255);
 }
 
 .question {
-    margin-bottom: auto;
+    margin-bottom: 70%;
+    
 }
 
 .answers-container {
@@ -57,5 +58,48 @@ body {
     
     &:hover {
         background-color: #ddd;
+    }
+}
+
+.cancel {
+    margin-top: 5%;
+}
+
+/* For normal screens */
+@media screen and (min-width: 768px) {
+    #game-container {
+        height: 40%;
+        width: 40%;
+    }
+
+    #game-screen {
+        height: 40%;
+        width: 40%;
+    }
+}
+
+/* For mobile screens */
+@media screen and (max-width: 767px) {
+    #game-container {
+        height: 60%;
+        width: 75%;
+    }
+
+    #game-screen {
+        height: 60%;
+        width: 75%;
+    }
+}
+
+/* For Ipad screens */
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    #game-container {
+        height: 55%;
+        width: 55%;
+    }
+
+    #game-screen {
+        height: 55%;
+        width: 55%;
     }
 }
