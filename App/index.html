@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="script.js"></script>
-    <script type="text/javascript" src="data.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.scss">
     <title>Document</title>
 </head>
 <body>
@@ -15,28 +13,32 @@
 
     <!-- Bakgrundsbild -->
 
-    <div class="start-container">
-        <h2></h2>
-        <button class="start-game"></button>
+    <div id="start-container">
+        <h2>BezzerQuizzer</h2>
+        <button id="start-game">Start Game:</button>
         <div class="game-info">
                 <ul>
-                    <li><p></p></li>
-                    <li><p></p></li>
-                    <li><p></p></li>
-                    <li><p></p></li>
+                    <li><p>Rules:</p></li>
+                    <li><p>The game has a timer</p></li>
+                    <li><p></p>Pick the right answer of the four options</li>
+                    <li><p>Earn high score</p></li>
                 </ul>
         </div>
     </div>
 
-    <div class="game-container" hidden>
-        <div class="question"></div>
+    <div id="game-screen" hidden>
+        <div class="question">Question</div>
         <div class="answers-container">
-            <button class="answer 0"></button>
-            <button class="answer 1"></button>
-            <button class="answer 2"></button>
-            <button class="answer 3"></button>
+            <button class="answer 0">answer 0</button>
+            <button class="answer 1">answer 1</button>
+            <button class="answer 2">answer 2</button>
+            <button class="answer 3">answer 3</button>
         </div>
-        <button class="cancel"></button>
+        <button class="cancel">Cancel Game:</button>
     </div>
+
+    
 </body>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="data.js"></script>
 </html>

@@ -2,3 +2,60 @@
     margin: 0;
     padding: 0;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner {
+    position: sticky;
+    top: 0;
+    height: 80px;
+    width: 100%;
+    background-color: black;
+}
+
+#start-container {
+    width: 600px;
+    height: 600px;
+    margin-top: 80px;
+    padding: 20px;
+    background-color: aqua;
+}
+
+#game-screen {
+    flex-direction: column;
+    justify-content: space-between;
+    width: 600px;
+    height: 600px;
+    margin-top: 80px;
+    padding: 20px;
+    background-color: rgb(140, 0, 255);
+}
+
+.question {
+    margin-bottom: auto;
+}
+
+.answers-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: auto;
+}
+
+.answer {
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+        background-color: #ddd;
+    }
+}
