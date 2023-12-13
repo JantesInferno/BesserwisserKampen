@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="app.js" defer></script>
+    <script type="text/javascript" src="data.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="angular-carousel.css" rel="stylesheet" type="text/css" />
+    <title>Document</title>
+</head>
+<body>
+    <header class="banner">
+        <!-- LOGGA/bakgrundsbild -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="help" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+            <path d="M12 16v.01" />
+            <path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
+        </svg>
+        <!-- <img class="logo" src="../Logo.png" alt=""> -->
+        <img class="name-logo" src="../NamnLogo.png" alt="">
+        <svg xmlns="http://www.w3.org/2000/svg" class="settings" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
+            <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+        </svg>
+    </header>
+    <div class="popup-right">
+        <button class="mode dark">Dark mode</button>
+        <button class="mode light">Light mode</button>
+        <button class="mode english">English</button>
+        <button class="mode swedish">Svenska</button>
+    </div>
+    <div class="popup-left">
+        <ul>
+            <li >Gör si gör så</li>
+            <li>gör så gör si</li>
+            <li>om !si gör så</li>
+            <li>gör så som si</li>
+            <li>simsalabim</li>
+        </ul>
+    </div>
+
+    <!-- Bakgrundsbild -->
+
+    <div class="start-container">
+        
+            <button class="play play-class-dark"><span>Starta nytt spel</span><svg xmlns="http://www.w3.org/2000/svg" class="icon-plus" width="33" height="33" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                <path d="M9 12h6" />
+                <path d="M12 9v6" />
+              </svg></button>
+        
+        <!--<div class="play">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-play" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M7 4v16l13 -8z" />
+              </svg>
+            <button class="button medium">(Medium) Starta nytt spel</button>
+        </div>
+        <div class="play">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-play" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M7 4v16l13 -8z" />
+              </svg>
+            <button class="button hard">(Svårt) Starta nytt spel</button>
+        </div>-->
+        <!--
+        <div class="game-info">
+            <button class="button info"">Så spelar du</button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-info" width="33" height="33" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                <path d="M12 9h.01" />
+                <path d="M11 12h1v4h1" />
+              </svg>
+        </div>-->
+        <h2 class="difficulty-header">Välj svårighetsgrad</h2>
+        <div class="difficulty-container">
+            <button class="button-difficulty easy">Lätt</button>
+            <button class="button-difficulty medium">Normal</button>
+            <button class="button-difficulty hard">Svår</button>
+        </div>     
+    </div>
+    
+
+<!--
+    <div class="game-container" hidden>
+        <div class="question"></div>
+        <div class="answers-container">
+            <button class="answer 0"></button>
+            <button class="answer 1"></button>
+            <button class="answer 2"></button>
+            <button class="answer 3"></button>
+        </div>
+        <button class="cancel"></button>
+    </div>-->
+</body>
+</html>

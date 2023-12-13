@@ -1,0 +1,349 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+* button:hover {
+  cursor: pointer;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../nebula.jpg");
+}
+
+header {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 15vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+header .name-logo {
+  height: 50%;
+}
+header .settings, header .help {
+  transition: all 0.3s;
+  transform-origin: 50% 50%;
+  margin-right: 0.6%;
+  margin-left: 0.6%;
+}
+header .settings:hover, header .help:hover {
+  cursor: pointer;
+}
+
+.start-container {
+  width: 35vw;
+  height: 60vh;
+  margin: 5% auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.start-container .play {
+  justify-content: space-between;
+  padding: 1.5em;
+  margin: 1em;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 50px;
+  border: none;
+  transition: all 0.3s;
+  transform-origin: 50% 50%;
+}
+.start-container .play span {
+  margin: 0 auto;
+  background-color: transparent;
+  font-size: 1.7rem;
+  color: white;
+}
+.start-container .play:active {
+  background-color: white;
+  color: black;
+}
+.start-container h2 {
+  margin-top: 3%;
+  color: white;
+  letter-spacing: 2px;
+}
+.start-container .difficulty-container {
+  margin-top: 5%;
+  width: 30vw;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+.start-container .difficulty-container .button-difficulty {
+  overflow: hidden;
+  overflow-x: auto;
+  background-color: transparent;
+  border: none;
+  font-size: 1.6rem;
+  color: white;
+  padding: 5%;
+  margin: 0 5px;
+  transition: all 0.3s;
+  transform-origin: 50% 50%;
+}
+.start-container .difficulty-container .button-difficulty:hover {
+  transform: scale(1.5);
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.popup-right {
+  position: absolute;
+  top: 15%;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-top: none;
+  border-right: none;
+  width: 12vw;
+  height: 40vh;
+  border-radius: 0 0 0 20px;
+  visibility: hidden;
+  transition: visibility 0.5s, max-height 0.5s;
+  max-height: 0;
+  color: white;
+  padding: 0px 12px;
+  overflow: hidden;
+}
+.popup-right.open {
+  visibility: visible;
+  max-height: 100vw;
+}
+.popup-right .mode {
+  align-self: flex-start;
+  display: block;
+  margin: 7% auto;
+  padding: 10px;
+  width: 80%;
+  height: 20%;
+  background: black;
+  border: none;
+  box-shadow: 0 0 10px -4px white;
+  border-radius: 50px;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: white;
+}
+.popup-right .mode:nth-of-type(1), .popup-right .mode:nth-of-type(4) {
+  background: linear-gradient(90deg, rgb(12, 2, 181) 0%, rgb(179, 3, 167) 100%);
+  color: white;
+}
+
+.popup-left {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-top: none;
+  border-left: none;
+  width: 12vw;
+  height: 40vh;
+  font-size: 1.2rem;
+  border-radius: 0 0 20px 0;
+  visibility: hidden;
+  transition: visibility 0.5s, max-height 0.5s;
+  max-height: 0;
+  color: white;
+  padding: 0px 12px;
+  overflow: hidden;
+}
+.popup-left.open {
+  visibility: visible;
+  max-height: 100vw;
+}
+.popup-left ul {
+  padding: 20px;
+  margin-top: 10%;
+  margin-left: 10%;
+}
+.popup-left ul li {
+  margin-top: 10%;
+}
+
+.play-class-dark {
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 10px -2px white;
+}
+.play-class-dark > .button-play {
+  color: white;
+}
+.play-class-dark > .icon-plus {
+  stroke: white;
+  margin-top: 5px;
+}
+.play-class-dark:hover {
+  border: 6px solid transparent;
+  background: linear-gradient(to right, black, black), linear-gradient(90deg, rgb(12, 2, 181) 0%, rgb(179, 3, 167) 100%);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  box-shadow: none;
+}
+
+.play-class-light {
+  background-color: white;
+  box-shadow: 0 0 10px 2px rgb(89, 0, 93);
+}
+.play-class-light > .button-play {
+  color: purple;
+  font-weight: bold;
+}
+.play-class-light > .icon-plus {
+  stroke: purple;
+  stroke-width: 2;
+  margin-top: 5px;
+}
+.play-class-light:hover {
+  border: 10px solid transparent;
+  background: linear-gradient(to right, white, white), linear-gradient(90deg, rgb(89, 0, 93) 0%, rgb(0, 4, 78) 100%);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  box-shadow: none;
+}
+
+@media only screen and (max-width: 390px) {
+  .name-logo {
+    width: 60%;
+  }
+  .popup-left, .popup-right {
+    width: 43vw;
+    height: 35vh;
+    font-size: 1.1rem;
+  }
+  .popup-right .mode {
+    width: 90%;
+    width: 80%;
+    margin: 6% auto;
+    font-size: 1.1rem;
+  }
+  .start-container {
+    margin-top: 25%;
+    width: 100%;
+    height: 80%;
+  }
+  .start-container .play {
+    width: 80%;
+  }
+  .start-container .play:hover {
+    cursor: pointer;
+  }
+  .start-container .difficulty-container {
+    width: 85%;
+  }
+  .start-container .difficulty-container:hover {
+    cursor: pointer;
+  }
+}
+@media only screen and (max-width: 280px) {
+  .popup-left, .popup-right {
+    width: 41vw;
+    height: 35vh;
+    font-size: 0.85rem;
+  }
+  .popup-left ul, .popup-right ul {
+    margin-left: 0;
+  }
+  .popup-left li, .popup-right li {
+    margin: 0;
+  }
+  .popup-right .mode {
+    width: 100%;
+    margin: 6% auto;
+    font-size: 1.1rem;
+  }
+  .start-container {
+    margin-top: 30%;
+    width: 90%;
+    height: 80%;
+  }
+  .start-container .play {
+    width: 80%;
+  }
+  .start-container .play:hover {
+    cursor: pointer;
+  }
+  .start-container h2 {
+    letter-spacing: 0;
+    font-size: 1.2rem;
+  }
+  .start-container .difficulty-container {
+    width: 100%;
+  }
+  .start-container .difficulty-container .button-difficulty {
+    font-size: 0.9rem;
+  }
+  .start-container .difficulty-container .button-difficulty:hover {
+    transform: scale(1.3);
+    font-weight: bold;
+  }
+  .start-container .difficulty-container:hover {
+    cursor: pointer;
+  }
+}
+@media only screen and (min-width: 391px) and (max-width: 480px) {
+  .name-logo {
+    width: 65%;
+  }
+  .popup-left, .popup-right {
+    width: 44vw;
+    height: 30vh;
+    font-size: 1.1rem;
+  }
+  .popup-right .mode {
+    width: 90%;
+    width: 80%;
+    margin: 6% auto;
+    font-size: 1.1rem;
+  }
+  .start-container {
+    margin-top: 10%;
+    width: 100%;
+    height: 80%;
+  }
+  .start-container .play {
+    width: 80%;
+  }
+  .start-container .play:hover {
+    cursor: pointer;
+  }
+  .start-container .difficulty-container {
+    width: 80%;
+  }
+  .start-container .difficulty-container:hover {
+    cursor: pointer;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .difficulty-container {
+    width: 50%;
+  }
+  .difficulty-container:hover {
+    cursor: pointer;
+  }
+  .start-container {
+    margin-top: 10%;
+    width: 100%;
+    height: 80%;
+  }
+}
+@media only screen and (min-width: 1080px) {
+  header .logo:hover {
+    cursor: pointer;
+  }
+  header .settings:hover, .help:hover {
+    transform: scale(1.6);
+  }
+  .start-container .play:hover {
+    width: 70%;
+    justify-content: space-evenly;
+    cursor: pointer;
+  }
+}/*# sourceMappingURL=style.css.map */
