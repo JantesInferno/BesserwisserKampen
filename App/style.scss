@@ -1,4 +1,4 @@
-* {
+*, *::before, *::after  {
     margin: 0;
     padding: 0;
 }
@@ -8,6 +8,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.938);
 }
 
 .banner {
@@ -15,7 +16,7 @@ body {
     top: 0;
     height: 80px;
     width: 100%;
-    background-color: black;
+    background-color: rgb(132, 0, 255);
 }
 
 #start-container {
@@ -23,7 +24,8 @@ body {
     height: 40%;
     margin-top: 80px;
     padding: 20px;
-    background-color: aqua;
+    background-color: rgb(62, 86, 223);
+    border-radius: 20px;
 }
 
 #game-screen {
@@ -33,12 +35,51 @@ body {
     height: 40%;
     margin-top: 80px;
     padding: 20px;
-    background-color: rgb(140, 0, 255);
+    background-color: rgb(62, 86, 223);
+    border-radius: 20px;
 }
 
 .question {
-    margin-bottom: 70%;
+    margin-bottom: 30%;
+    margin-top: 20%;
     
+}
+
+.question-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.answer-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #a8a3a3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+        background-color: #ff00b3cb;
+    }
+}
+
+.correct-answer {
+    background-color: green;
+}
+
+.wrong-answer {
+    background-color: red;
+}
+
+.real-answer {
+    background-color: green;
 }
 
 .answers-container {
@@ -46,19 +87,6 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     margin-top: auto;
-}
-
-.answer {
-    padding: 10px;
-    background-color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    
-    &:hover {
-        background-color: #ddd;
-    }
 }
 
 .cancel {

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="app.js" defer></script>
+    <script type="text/javascript" src="data.js" defer></script>
     <title>Document</title>
 </head>
 <body>
@@ -14,7 +16,7 @@
     <!-- Bakgrundsbild -->
 
     <div id="start-container">
-        <h2>BezzerQuizzer</h2>
+        <h2>BesserQuizzer</h2>
         <button id="start-game">Start Game:</button>
         <div class="game-info">
                 <ul>
@@ -27,18 +29,16 @@
     </div>
 
     <div id="game-screen" hidden>
-        <div class="question">Question</div>
+        <div class="question"><p class="question-text">Question</p></div>
         <div class="answers-container">
-            <button class="answer 0">answer 0</button>
-            <button class="answer 1">answer 1</button>
-            <button class="answer 2">answer 2</button>
-            <button class="answer 3">answer 3</button>
+            <button class="answer-button">answer 1</button>
+            <button class="answer-button">answer 2</button>
+            <button class="answer-button">answer 3</button>
+            <button class="answer-button">answer 4</button>
         </div>
         <button class="cancel">Cancel Game:</button>
     </div>
 
     
 </body>
-<script type="text/javascript" src="app.js"></script>
-<script type="text/javascript" src="data.js"></script>
 </html>
