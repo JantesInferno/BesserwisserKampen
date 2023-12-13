@@ -33,9 +33,7 @@ window.onload = function() {
         if(!target.classList.contains('popup') && !(target.classList.contains('settings') || target.classList.contains('help') || target.classList.contains('mode'))) {
             clearPopups()
             buttonSettings.style.scale = '1';
-            buttonSettings.style.stroke = 'white';
             buttonHelp.style.scale = '1';
-            buttonHelp.style.stroke = 'white';
       }
     })
 
@@ -87,7 +85,7 @@ window.onload = function() {
             swedishhMode.style = "background: black; color: white;";
         }
         else {
-            englishMode.style = "background: linear-gradient(90deg, rgba(12,2,181,1) 0%, rgba(179,3,167,1) 100%); color: white;";
+            englishMode.style = "background: linear-gradient(90deg, rgba(0,255,179,1) 0%, rgba(10,0,103,1) 100%); color: white;";
             swedishhMode.style = "background: white; color: black; border: 1px solid black;";
         }
     })
@@ -114,7 +112,7 @@ window.onload = function() {
             englishMode.style = "background: black; color: white;";
         }
         else {
-            swedishhMode.style = "background: linear-gradient(90deg, rgba(12,2,181,1) 0%, rgba(179,3,167,1) 100%); color: white;";
+            swedishhMode.style = "background: linear-gradient(90deg, rgba(0,255,179,1) 0%, rgba(10,0,103,1) 100%); color: white;";
             englishMode.style = "background: white; color: black; border: 1px solid black;";
         }
     })
@@ -148,40 +146,35 @@ function toggleLightMode () {
 
     dark = false;
     let a = document.querySelector('body');
-    a.style = "background: white;";
+    a.style = "background: url('../light.jpg') no-repeat center center fixed; background-size: cover;";
     let c = document.querySelectorAll('.mode');
-    c[0].style ="background: white; color: black; border: 1px solid black;";
-    c[1].style ="background: linear-gradient(90deg, rgba(12,2,181,1) 0%, rgba(179,3,167,1) 100%); color: white;";
+    c[0].style ="background: white; color: rgba(0,4,78,1); border: 1px solid rgba(0,4,78,1);";
+    c[1].style ="background: linear-gradient(90deg, rgba(0,255,179,1) 0%, rgba(10,0,103,1) 100%); color: white;";
     if (swedish){
-        c[3].style ="background: linear-gradient(90deg, rgba(12,2,181,1) 0%, rgba(179,3,167,1) 100%); color: white;";
-        c[2].style ="background: white; color: black; border: 1px solid black;";
+        c[3].style ="background: linear-gradient(90deg, rgba(0,255,179,1) 0%, rgba(10,0,103,1) 100%); color: white;";
+        c[2].style ="background: white; color: rgba(0,4,78,1); border: 1px solid rgba(0,4,78,1);";
     }
     else {
-        c[3].style ="background: white; color: black; border: 1px solid black;";
-        c[2].style ="background: linear-gradient(90deg, rgba(12,2,181,1) 0%, rgba(179,3,167,1) 100%); color: white;";
+        c[3].style ="background: white; color: rgba(0,4,78,1); border: 1px solid rgba(0,4,78,1);";
+        c[2].style ="background: linear-gradient(90deg, rgba(0,255,179,1) 0%, rgba(10,0,103,1) 100%); color: white;";
     }
     let d = document.querySelector('div.popup-left');
-    d.style.backgroundColor = "white";
-    d.style.color = "rgba(89,0,93,1)";
+    d.style.background = "rgba(255, 255, 255, 0.5)";
+    d.style.color = "rgba(0,4,78,1)";
     d.style.fontWeight = "bold";
-    d.style.border = "none";
-    d.style.borderRight = "1px solid black";
-    d.style.borderBottom = "1px solid black";
     let e = document.querySelector('div.popup-right');
-    e.style.backgroundColor = "white";
-    e.style.color = "black";
-    e.style.border = "none";
-    e.style.borderLeft = "1px solid black";
-    e.style.borderBottom = "1px solid black";
+    e.style.background = "rgba(255, 255, 255, 0.5)";
+    e.style.color = "rgba(0,4,78,1)";
     let h = document.querySelectorAll('.button-difficulty');
     h.forEach(x => {
         x.style.color = "rgba(89,0,93,1)";
         x.style.fontWeight = "bold";
         })
-    let i = document.querySelector('.difficulty-header');
-    i.style.color = "rgba(0,4,78,1)";
-    let j =  document.querySelector('header');
-    j.style.border = "none";
+    let i = document.querySelector('.difficulty-header').style.color = "rgba(89,0,93,1)";
+    let j =  document.querySelector('header').style.background = "rgba(255, 255, 255, 0.5)";
+    buttonHelp.style.stroke = "rgba(0,4,78,1)";
+    buttonSettings.style.stroke = "rgba(0,4,78,1)";
+    document.querySelector('span').style = "color: rgba(0,4,78,1); font-weight: bold;";
 }
 
 function toggleDarkMode () {
@@ -190,8 +183,7 @@ function toggleDarkMode () {
     playButton.classList.add('play-class-dark');
 
     dark = true;
-    let a = document.querySelector('body');
-    a.style = "background-image: url('../nebula.jpg');";
+    let a = document.querySelector('body').style = "background-image: url('../nebula.jpg');";
     let c = document.querySelectorAll('.mode');
     c[0].style ="background: linear-gradient(90deg, rgba(12,2,181,1) 0%, rgba(179,3,167,1) 100%); color: white;";
     c[1].style ="background: black; color: white;";
@@ -215,8 +207,10 @@ function toggleDarkMode () {
     h.forEach(x => {
         x.style.color = "white";
         })
-    let i = document.querySelector('.difficulty-header');
-    i.style.color = "white";
+    let i = document.querySelector('.difficulty-header').style.color = "white";
     let j =  document.querySelector('header');
-    j.style.border = "none";
+    j.style.background = "rgba(0, 0, 0, 0.5)";
+    buttonHelp.style.stroke = "white";
+    buttonSettings.style.stroke = "white";
+    document.querySelector('span').style = "color: white;";
 }

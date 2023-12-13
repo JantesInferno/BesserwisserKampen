@@ -190,20 +190,19 @@ header .settings:hover, header .help:hover {
 
 .play-class-light {
   background-color: white;
-  box-shadow: 0 0 10px 2px rgb(89, 0, 93);
+  box-shadow: 0 0 10px 2px rgb(0, 4, 78);
 }
 .play-class-light > .button-play {
-  color: purple;
   font-weight: bold;
 }
 .play-class-light > .icon-plus {
-  stroke: purple;
+  stroke: rgb(0, 4, 78);
   stroke-width: 2;
   margin-top: 5px;
 }
 .play-class-light:hover {
   border: 10px solid transparent;
-  background: linear-gradient(to right, white, white), linear-gradient(90deg, rgb(89, 0, 93) 0%, rgb(0, 4, 78) 100%);
+  background: linear-gradient(to right, white, white), linear-gradient(90deg, rgb(0, 255, 179) 0%, rgb(10, 0, 103) 100%);
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
   box-shadow: none;
