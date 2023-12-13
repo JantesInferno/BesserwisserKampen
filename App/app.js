@@ -167,14 +167,15 @@ function toggleLightMode () {
     e.style.color = "rgba(0,4,78,1)";
     let h = document.querySelectorAll('.button-difficulty');
     h.forEach(x => {
-        x.style.color = "rgba(89,0,93,1)";
+        x.style.color = "rgba(0,4,78,1)";
         x.style.fontWeight = "bold";
         })
-    let i = document.querySelector('.difficulty-header').style.color = "rgba(89,0,93,1)";
+    let i = document.querySelector('.difficulty-header').style.color = "rgba(0,4,78,1)";
     let j =  document.querySelector('header').style.background = "rgba(255, 255, 255, 0.5)";
     buttonHelp.style.stroke = "rgba(0,4,78,1)";
     buttonSettings.style.stroke = "rgba(0,4,78,1)";
     document.querySelector('span').style = "color: rgba(0,4,78,1); font-weight: bold;";
+    document.querySelector('.name-logo').src = "../light-logo.png";
 }
 
 function toggleDarkMode () {
@@ -213,4 +214,5 @@ function toggleDarkMode () {
     buttonHelp.style.stroke = "white";
     buttonSettings.style.stroke = "white";
     document.querySelector('span').style = "color: white;";
+    document.querySelector('.name-logo').src = "../dark-logo.png";
 }
