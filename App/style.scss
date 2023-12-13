@@ -413,3 +413,153 @@ header {
         cursor: pointer;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// JOELS SASS
+
+/*
+*, *::before, *::after  {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.938);
+}
+
+.banner {
+    position: sticky;
+    top: 0;
+    height: 80px;
+    width: 100%;
+    background-color: rgb(132, 0, 255);
+}
+
+#start-container {
+    width: 40%;
+    height: 40%;
+    margin-top: 80px;
+    padding: 20px;
+    background-color: rgb(62, 86, 223);
+    border-radius: 20px;
+}
+
+#game-screen {
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40%;
+    height: 40%;
+    margin-top: 80px;
+    padding: 20px;
+    background-color: rgb(62, 86, 223);
+    border-radius: 20px;
+}
+
+.question {
+    margin-bottom: 30%;
+    margin-top: 20%;
+    
+}
+
+.question-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.answer-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #a8a3a3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+        background-color: #ff00b3cb;
+    }
+}
+
+.correct-answer {
+    background-color: green;
+}
+
+.wrong-answer {
+    background-color: red;
+}
+
+.real-answer {
+    background-color: green;
+}
+
+.answers-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: auto;
+}
+
+.cancel {
+    margin-top: 5%;
+}
+
+// For normal screens 
+@media screen and (min-width: 768px) {
+    #game-container {
+        height: 40%;
+        width: 40%;
+    }
+
+    #game-screen {
+        height: 40%;
+        width: 40%;
+    }
+}
+
+// For mobile screens //
+@media screen and (max-width: 767px) {
+    #game-container {
+        height: 60%;
+        width: 75%;
+    }
+
+    #game-screen {
+        height: 60%;
+        width: 75%;
+    }
+}
+
+// For Ipad screens //
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    #game-container {
+        height: 55%;
+        width: 55%;
+    }
+
+    #game-screen {
+        height: 55%;
+        width: 55%;
+    }
+}*/
