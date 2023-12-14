@@ -278,10 +278,6 @@ header .settings:hover, header .help:hover {
     height: 80%;
     gap: 15%;
   }
-  .game-screen .continue-text {
-    bottom: 55vh;
-    margin-bottom: 5vh;
-  }
   .name-logo {
     width: 65%;
   }
@@ -340,7 +336,7 @@ header .settings:hover, header .help:hover {
     cursor: pointer;
   }
   .cancel-button {
-    margin-top: 5%;
+    margin-top: 10%;
   }
 }
 /*

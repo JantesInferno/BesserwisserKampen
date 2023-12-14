@@ -207,11 +207,11 @@ function toggleLightMode () {
         c[2].style ="background: linear-gradient(90deg, rgba(0,255,179,1) 0%, rgba(10,0,103,1) 100%); color: white;";
     }
     let d = document.querySelector('div.popup-left');
-    d.style.background = "rgba(255, 255, 255, 0.5)";
+    d.style.background = "rgba(255, 255, 255, 1)";
     d.style.color = "rgba(0,4,78,1)";
     d.style.fontWeight = "bold";
     let e = document.querySelector('div.popup-right');
-    e.style.background = "rgba(255, 255, 255, 0.5)";
+    e.style.background = "rgba(255, 255, 255, 1)";
     e.style.color = "rgba(0,4,78,1)";
     let h = document.querySelectorAll('.button-difficulty');
     h.forEach(x => {
@@ -219,7 +219,7 @@ function toggleLightMode () {
         x.style.fontWeight = "bold";
         })
     let i = document.querySelector('.difficulty-header').style.color = "rgba(0,4,78,1)";
-    let j =  document.querySelector('header').style.background = "rgba(255, 255, 255, 0.5)";
+    let j =  document.querySelector('header').style.background = "rgba(255, 255, 255, 1)";
     helpButton.style.stroke = "rgba(0,4,78,1)";
     settingsButton.style.stroke = "rgba(0,4,78,1)";
     document.querySelector('span').style = "color: rgba(0,4,78,1); font-weight: bold;";
