@@ -1,7 +1,4 @@
-const questionText = document.querySelector('.question-text');
-const answerButtons = document.querySelectorAll('.answer-button');
-const startButton = document.querySelector('#start-game');
-const gameScreen = document.querySelector('#game-screen');
+
 
 
 let questionAnswered = false;
@@ -215,52 +212,3 @@ const questions = [
     }
 
 ];
-
-window.addEventListener('load', handleEvent);
-gameScreen.addEventListener('click', handleEvent);
-
-function handleEvent(event) {
-    if (event.type === 'load') {
-        const randomQuestionIndex = Math.floor(Math.random() * questions.length);
-        randomQuestion = questions[randomQuestionIndex];
-
-        questionText.textContent = randomQuestion.question;
-
-        for (let i = 0; i < answerButtons.length; i++) {
-            answerButtons[i].textContent = randomQuestion.answers[i];
-        }
-    }
-
-    else if (event.type === 'click') {
-        if (event.target.matches('.answer-button')) {
-            const chosenAnswer = event.target.textContent;
-
-            if (chosenAnswer === randomQuestion.correctAnswer) {
-                questionAnswered = true;
-                event.target.classList.add('correct-answer');
-            }
-            else {
-                event.target.classList.add('wrong-answer');
-
-                for (let i = 0; i < answerButtons.length; i++) {
-                    if (answerButtons[i].textContent === randomQuestion.correctAnswer) {
-                        answerButtons[i].classList.add('real-answer');
-                    }
-                }
-            }
-        }
-        else if (!event.target.matches('.answer-button') && event.target.id !== 'question-text') {
-            const randomQuestionIndex = Math.floor(Math.random() * questions.length);
-            randomQuestion = questions[randomQuestionIndex];
-            questionText.textContent = randomQuestion.question;
-
-            for (let i = 0; i < answerButtons.length; i++) {
-                answerButtons[i].classList.remove('correct-answer', 'wrong-answer', 'real-answer');
-                answerButtons[i].textContent = randomQuestion.answers[i];
-            }
-
-            questionAnswered = false;
-        }
-
-    };
-}

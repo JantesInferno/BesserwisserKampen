@@ -1,9 +1,9 @@
-* {
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-* button:hover {
+* button:hover, *::before button:hover, *::after button:hover {
   cursor: pointer;
 }
 
@@ -11,6 +11,7 @@ body {
   height: 100vh;
   width: 100vw;
   background-image: url("../nebula.jpg");
+  overflow: hidden;
 }
 
 header {
@@ -35,17 +36,21 @@ header .settings:hover, header .help:hover {
   cursor: pointer;
 }
 
-.start-container {
+.start-container, .game-screen {
   width: 35vw;
   height: 60vh;
-  margin: 5% auto;
+  margin: 1% auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
 }
-.start-container .play {
+.start-container .game-screen, .game-screen .game-screen {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 5px solid white;
+}
+.start-container .play, .game-screen .play {
   justify-content: space-between;
   padding: 1.5em;
   margin: 1em;
@@ -57,29 +62,29 @@ header .settings:hover, header .help:hover {
   transition: all 0.3s;
   transform-origin: 50% 50%;
 }
-.start-container .play span {
+.start-container .play span, .game-screen .play span {
   margin: 0 auto;
   background-color: transparent;
   font-size: 1.7rem;
   color: white;
 }
-.start-container .play:active {
+.start-container .play:active, .game-screen .play:active {
   background-color: white;
   color: black;
 }
-.start-container h2 {
+.start-container h2, .game-screen h2 {
   margin-top: 3%;
   color: white;
   letter-spacing: 2px;
 }
-.start-container .difficulty-container {
+.start-container .difficulty-container, .game-screen .difficulty-container {
   margin-top: 5%;
   width: 30vw;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
 }
-.start-container .difficulty-container .button-difficulty {
+.start-container .difficulty-container .button-difficulty, .game-screen .difficulty-container .button-difficulty {
   overflow: hidden;
   overflow-x: auto;
   background-color: transparent;
@@ -91,7 +96,7 @@ header .settings:hover, header .help:hover {
   transition: all 0.3s;
   transform-origin: 50% 50%;
 }
-.start-container .difficulty-container .button-difficulty:hover {
+.start-container .difficulty-container .button-difficulty:hover, .game-screen .difficulty-container .button-difficulty:hover {
   transform: scale(1.5);
   font-size: 1.8rem;
   font-weight: bold;
@@ -169,46 +174,12 @@ header .settings:hover, header .help:hover {
   margin-top: 10%;
 }
 
-.play-class-dark {
-  background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 0 10px -2px white;
-}
-.play-class-dark > .button-play {
-  color: white;
-}
-.play-class-dark > .icon-plus {
-  stroke: white;
-  margin-top: 5px;
-}
-.play-class-dark:hover {
-  border: 6px solid transparent;
-  background: linear-gradient(to right, black, black), linear-gradient(90deg, rgb(12, 2, 181) 0%, rgb(179, 3, 167) 100%);
-  background-clip: padding-box, border-box;
-  background-origin: padding-box, border-box;
-  box-shadow: none;
-}
-
-.play-class-light {
-  background-color: white;
-  box-shadow: 0 0 10px 2px rgb(0, 4, 78);
-}
-.play-class-light > .button-play {
-  font-weight: bold;
-}
-.play-class-light > .icon-plus {
-  stroke: rgb(0, 4, 78);
-  stroke-width: 2;
-  margin-top: 5px;
-}
-.play-class-light:hover {
-  border: 10px solid transparent;
-  background: linear-gradient(to right, white, white), linear-gradient(90deg, rgb(0, 255, 179) 0%, rgb(10, 0, 103) 100%);
-  background-clip: padding-box, border-box;
-  background-origin: padding-box, border-box;
-  box-shadow: none;
-}
-
 @media only screen and (max-width: 390px) {
+  .game-screen {
+    width: 95%;
+    height: 80vh;
+    gap: 10%;
+  }
   .name-logo {
     width: 60%;
   }
@@ -242,6 +213,17 @@ header .settings:hover, header .help:hover {
   }
 }
 @media only screen and (max-width: 280px) {
+  .game-screen {
+    width: 95%;
+    height: 80vh;
+    gap: 15%;
+  }
+  .game-screen .question-text {
+    font-size: 1.5rem;
+  }
+  .game-screen .answer-button {
+    font-size: 1rem;
+  }
   .popup-left, .popup-right {
     width: 41vw;
     height: 35vh;
@@ -288,6 +270,15 @@ header .settings:hover, header .help:hover {
   }
 }
 @media only screen and (min-width: 391px) and (max-width: 480px) {
+  .game-screen {
+    width: 95%;
+    height: 80%;
+    gap: 15%;
+  }
+  .game-screen .continue-text {
+    bottom: 55vh;
+    margin-bottom: 5vh;
+  }
   .name-logo {
     width: 65%;
   }
@@ -345,4 +336,241 @@ header .settings:hover, header .help:hover {
     justify-content: space-evenly;
     cursor: pointer;
   }
+}
+/*
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.938);
+}
+
+.banner {
+    position: sticky;
+    top: 0;
+    height: 80px;
+    width: 100%;
+    background-color: rgb(132, 0, 255);
+}
+
+#start-container {
+    width: 40%;
+    height: 40%;
+    margin-top: 80px;
+    padding: 20px;
+    background-color: rgb(62, 86, 223);
+    border-radius: 20px;
+}
+*/
+/*
+#game-screen {
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    height: 40%;
+    margin-top: 80px;
+    padding: 20px;
+    background-color: rgb(0, 0, 0, 0.5);
+    border-radius: 20px;
+    border: 2px solid white;
+}
+*/
+.question {
+  height: 2rem;
+  margin-top: 5%;
+  margin-bottom: 30%;
+}
+
+.question-text {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.continue-text {
+  display: none;
+  bottom: 55%;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.answer-button {
+  padding: 1.5em;
+  width: 49%;
+  height: 49%;
+  border-radius: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.answer-class-dark {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  box-shadow: 0 0 10px -2px white;
+  border: none;
+  gap: 1%;
+}
+
+.answer-class-light {
+  background-color: white;
+  color: rgb(0, 4, 78);
+  font-size: 1.2rem;
+  font-weight: 500;
+  box-shadow: 0 0 10px 2px rgb(0, 4, 78);
+  border: none;
+  margin: 0;
+}
+
+.correct-answer {
+  background-color: green;
+}
+
+.wrong-answer {
+  background-color: red;
+}
+
+.real-answer {
+  border: 4px solid green;
+}
+
+.answers-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 1%;
+}
+
+.game-icons {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.game-icons .cancel-button, .game-icons .reload-button {
+  background: none;
+  border: none;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  gap: 0.5em;
+}
+.game-icons .cancel-button:hover, .game-icons .reload-button:hover {
+  cursor: pointer;
+  scale: 1.5;
+}
+.game-icons .cancel-button:active, .game-icons .reload-button:active {
+  color: rgb(179, 3, 167);
+}
+.game-icons .cancel-button:active svg, .game-icons .reload-button:active svg {
+  stroke: rgb(179, 3, 167);
+}
+.game-icons .cancel-button .cancel-icon, .game-icons .cancel-button .reload-icon, .game-icons .reload-button .cancel-icon, .game-icons .reload-button .reload-icon {
+  transition: scale 0.3s;
+  transform-origin: 50% 50%;
+}
+
+/*
+// For normal screens 
+@media screen and (min-width: 768px) {
+    #game-container {
+        height: 40%;
+        width: 40%;
+    }
+
+    #game-screen {
+        height: 40%;
+        width: 40%;
+    }
+}
+
+// For mobile screens //
+@media screen and (max-width: 767px) {
+    #game-container {
+        height: 60%;
+        width: 75%;
+    }
+
+    #game-screen {
+        height: 60%;
+        width: 75%;
+    }
+}
+
+// For Ipad screens //
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    #game-container {
+        height: 55%;
+        width: 55%;
+    }
+
+    #game-screen {
+        height: 55%;
+        width: 55%;
+    }
+}
+*/
+.play-class-dark {
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 10px -2px white;
+}
+.play-class-dark > .button-play {
+  color: white;
+}
+.play-class-dark > .icon-plus {
+  stroke: white;
+  margin-top: 5px;
+}
+.play-class-dark:hover {
+  border: 6px solid transparent;
+  background: linear-gradient(to right, black, black), linear-gradient(90deg, rgb(12, 2, 181) 0%, rgb(179, 3, 167) 100%);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  box-shadow: none;
+}
+
+.play-class-light {
+  background-color: white;
+  box-shadow: 0 0 10px 2px rgb(0, 4, 78);
+}
+.play-class-light > .button-play {
+  font-weight: bold;
+}
+.play-class-light > .icon-plus {
+  stroke: rgb(0, 4, 78);
+  stroke-width: 2;
+  margin-top: 5px;
+}
+.play-class-light:hover {
+  border: 10px solid transparent;
+  background: linear-gradient(to right, white, white), linear-gradient(90deg, rgb(0, 255, 179) 0%, rgb(10, 0, 103) 100%);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  box-shadow: none;
+}
+
+.question-class-dark {
+  color: white;
+}
+
+.question-class-light {
+  color: rgb(0, 4, 78);
+}
+
+.cancel-class-dark {
+  color: white;
+}
+.cancel-class-dark svg {
+  stroke: white;
+}
+
+.cancel-class-light {
+  color: rgb(0, 4, 78);
+}
+.cancel-class-light svg {
+  stroke: rgb(0, 4, 78);
 }/*# sourceMappingURL=style.css.map */

@@ -7,8 +7,12 @@
 let swedish = true;
 let dark = true;
 
-const buttonSettings = document.querySelector('.settings');
-const buttonHelp = document.querySelector('.help');
+const playButton = document.querySelector('.play');
+const settingsButton = document.querySelector('.settings');
+const helpButton = document.querySelector('.help');
+const reloadButton = document.querySelector('.reload-button');
+const cancelButton = document.querySelector('.cancel-button');
+const continueText = document.querySelector('.continue-text');
 
 const lightMode = document.querySelector('.light');
 const darkMode = document.querySelector('.dark');
@@ -16,7 +20,13 @@ const darkMode = document.querySelector('.dark');
 const englishMode = document.querySelector('.english');
 const swedishhMode = document.querySelector('.swedish');
 
-const playButton = document.querySelector('.play');
+
+
+
+
+const gameScreen = document.querySelector('.game-screen');
+const questionText = document.querySelector('.question-text');
+const answerButtons = document.querySelectorAll('.answer-button');
 
 /**
  * 
@@ -29,25 +39,47 @@ window.onload = function() {
      * Load EventListeners
      */
 
+
+
+
+    playButton.addEventListener('click', function() {
+        document.querySelector('.start-container').style.display = 'none';
+        document.querySelector('.game-screen').style.display = 'flex';
+    });
+
+    window.addEventListener('load', handleEvent);
+    gameScreen.addEventListener('click', handleEvent);
+    playButton.addEventListener('click', handleEvent);
+
+
+
+
+
+
     window.addEventListener('click', ({ target }) => {
         if(!target.classList.contains('popup') && !(target.classList.contains('settings') || target.classList.contains('help') || target.classList.contains('mode'))) {
             clearPopups()
-            buttonSettings.style.scale = '1';
-            buttonHelp.style.scale = '1';
+            settingsButton.style.scale = '1';
+            helpButton.style.scale = '1';
       }
     })
 
 
 
-    buttonSettings.addEventListener('click', () => {
-        buttonSettings.style.scale = '2';
+    settingsButton.addEventListener('click', () => {
+        settingsButton.style.scale = '1.5';
         toggleSlidePopup(".popup-right");
         
     })
     
-    buttonHelp.addEventListener('click', () => {
-        buttonHelp.style.scale = '2';
+    helpButton.addEventListener('click', () => {
+        helpButton.style.scale = '1.5';
         toggleSlidePopup('.popup-left');
+    })
+
+    cancelButton.addEventListener('click', () => {
+        document.querySelector('.start-container').style.display = 'flex';
+        document.querySelector('.game-screen').style.display = 'none';
     })
 
 
@@ -116,7 +148,6 @@ window.onload = function() {
             englishMode.style = "background: white; color: black; border: 1px solid black;";
         }
     })
-    
 }
 
 /**
@@ -129,6 +160,8 @@ const clearPopups = () => {
     document.querySelectorAll("[class^=popup]").forEach(text => text.classList.remove('open'));
 }
 
+
+
 function toggleSlidePopup (popupClass) {
     const popup = document.querySelector(popupClass);
 
@@ -139,10 +172,25 @@ function toggleSlidePopup (popupClass) {
     }
 }
 
+
+
 function toggleLightMode () {
 
     playButton.classList.remove('play-class-dark');
     playButton.classList.add('play-class-light');
+
+    document.querySelectorAll('.answer-button').forEach(x => {
+        x.classList.remove('answer-class-dark');
+        x.classList.add('answer-class-light');
+    })
+
+    const questionStyle = document.querySelector('.question-text')
+    questionStyle.classList.remove('question-class-dark');
+    questionStyle.classList.add('question-class-light');
+
+    const cancelStyle = document.querySelector('.cancel-button');
+    cancelStyle.classList.remove('cancel-class-dark');
+    cancelStyle.classList.add('cancel-class-light');
 
     dark = false;
     let a = document.querySelector('body');
@@ -172,16 +220,31 @@ function toggleLightMode () {
         })
     let i = document.querySelector('.difficulty-header').style.color = "rgba(0,4,78,1)";
     let j =  document.querySelector('header').style.background = "rgba(255, 255, 255, 0.5)";
-    buttonHelp.style.stroke = "rgba(0,4,78,1)";
-    buttonSettings.style.stroke = "rgba(0,4,78,1)";
+    helpButton.style.stroke = "rgba(0,4,78,1)";
+    settingsButton.style.stroke = "rgba(0,4,78,1)";
     document.querySelector('span').style = "color: rgba(0,4,78,1); font-weight: bold;";
     document.querySelector('.name-logo').src = "../light-logo.png";
 }
+
+
 
 function toggleDarkMode () {
 
     playButton.classList.remove('play-class-light');
     playButton.classList.add('play-class-dark');
+
+    document.querySelectorAll('.answer-button').forEach(x => {
+        x.classList.remove('answer-class-light');
+        x.classList.add('answer-class-dark');
+    })
+
+    const questionStyle = document.querySelector('.question-text');
+    questionStyle.classList.remove('question-class-light');
+    questionStyle.classList.add('question-class-dark');
+
+    const cancelStyle = document.querySelector('.cancel-button');
+    cancelStyle.classList.remove('cancel-class-light');
+    cancelStyle.classList.add('cancel-class-dark');
 
     dark = true;
     let a = document.querySelector('body').style = "background-image: url('../nebula.jpg');";
@@ -211,20 +274,61 @@ function toggleDarkMode () {
     let i = document.querySelector('.difficulty-header').style.color = "white";
     let j =  document.querySelector('header');
     j.style.background = "rgba(0, 0, 0, 0.5)";
-    buttonHelp.style.stroke = "white";
-    buttonSettings.style.stroke = "white";
+    helpButton.style.stroke = "white";
+    settingsButton.style.stroke = "white";
     document.querySelector('span').style = "color: white;";
     document.querySelector('.name-logo').src = "../dark-logo.png";
 }
 
 
-// JOELS APP.JS
 
-/*
-window.onload = function() {
-    document.querySelector('#start-game').addEventListener('click', function() {
-        document.querySelector('#start-container').style.display = 'none';
-        document.querySelector('#game-screen').style.display = 'block';
-    });
-};
-*/
+
+
+
+
+
+
+function handleEvent(event) {
+
+    if (event.type === 'load') {
+        const randomQuestionIndex = Math.floor(Math.random() * questions.length);
+        randomQuestion = questions[randomQuestionIndex];
+        questionText.textContent = randomQuestion.question;
+
+        for (let i = 0; i < answerButtons.length; i++) {
+            answerButtons[i].textContent = randomQuestion.answers[i];
+        }
+    }
+
+    else if (event.type === 'click') {
+        if (event.target.matches('.answer-button')) {
+            const chosenAnswer = event.target.textContent;
+            if (chosenAnswer === randomQuestion.correctAnswer) {
+                questionAnswered = true;
+                event.target.classList.add('correct-answer');
+            }
+            else {
+                event.target.classList.add('wrong-answer');
+                for (let i = 0; i < answerButtons.length; i++) {
+                    if (answerButtons[i].textContent === randomQuestion.correctAnswer) {
+                        answerButtons[i].classList.add('real-answer');
+                    }
+                }
+            }
+            continueText.style.display = "flex";
+        }
+        else if (!event.target.matches('.answer-button') && event.target.id !== 'question-text') {
+            const randomQuestionIndex = Math.floor(Math.random() * questions.length);
+            randomQuestion = questions[randomQuestionIndex];
+            questionText.textContent = randomQuestion.question;
+
+            for (let i = 0; i < answerButtons.length; i++) {
+                answerButtons[i].classList.remove('correct-answer', 'wrong-answer', 'real-answer');
+                answerButtons[i].textContent = randomQuestion.answers[i];
+            }
+
+            questionAnswered = false;
+            continueText.style.display = "none";
+        }
+    }
+}
