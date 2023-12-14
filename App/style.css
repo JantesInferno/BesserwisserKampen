@@ -411,18 +411,22 @@ body {
   font-size: 1.2rem;
   font-weight: 500;
   box-shadow: 0 0 10px -2px white;
-  border: none;
-  gap: 1%;
+}
+
+.answer-hover-dark:hover {
+  background: black;
 }
 
 .answer-class-light {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   color: rgb(0, 4, 78);
   font-size: 1.2rem;
   font-weight: 500;
   box-shadow: 0 0 10px 2px rgb(0, 4, 78);
-  border: none;
-  margin: 0;
+}
+
+.answer-hover-light:hover {
+  background: #a3a6f4;
 }
 
 .correct-answer {
