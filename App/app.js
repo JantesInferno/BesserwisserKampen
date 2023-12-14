@@ -284,7 +284,15 @@ function toggleDarkMode () {
 
 
 
-
+//lägga till så att man måste ha svarat på en fråga innan man kan gå vidare.
+//sätta timer på att gå vidare automatiskt eller vidare/nästa knapp?
+//ska bara kunna trycka på ett svar
+//det ska vara 10 st frågor
+//ska frågor sorteras efter svårighetsgrad?
+//ska samma fråga kunna komma flera ggr under samma runda?
+//texten kan gå ner bakom knapparna på långa frågor i smalare skärm
+//variabler för antal frågor, rätt antal svar
+//anpassning av knappar när man gör fönstret smalare
 
 
 
