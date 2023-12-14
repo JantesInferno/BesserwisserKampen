@@ -181,7 +181,9 @@ function toggleLightMode () {
 
     document.querySelectorAll('.answer-button').forEach(x => {
         x.classList.remove('answer-class-dark');
+        x.classList.remove('answer-hover-dark');
         x.classList.add('answer-class-light');
+        x.classList.add('answer-hover-light');
     })
 
     const questionStyle = document.querySelector('.question-text')
@@ -235,7 +237,9 @@ function toggleDarkMode () {
 
     document.querySelectorAll('.answer-button').forEach(x => {
         x.classList.remove('answer-class-light');
+        x.classList.remove('answer-hover-light');
         x.classList.add('answer-class-dark');
+        x.classList.add('answer-hover-dark');
     })
 
     const questionStyle = document.querySelector('.question-text');
@@ -315,7 +319,16 @@ function handleEvent(event) {
                     }
                 }
             }
-            continueText.style.display = "flex";
+            answerButtons.forEach(x => {
+                x.disabled = true;
+                if (dark) {
+                    x.classList.remove('answer-hover-dark');
+                }
+                else {
+                    x.classList.remove('answer-hover-light');
+                }
+            })
+            //continueText.style.display = "flex";
         }
         else if (!event.target.matches('.answer-button') && event.target.id !== 'question-text') {
             const randomQuestionIndex = Math.floor(Math.random() * questions.length);
@@ -326,9 +339,18 @@ function handleEvent(event) {
                 answerButtons[i].classList.remove('correct-answer', 'wrong-answer', 'real-answer');
                 answerButtons[i].textContent = randomQuestion.answers[i];
             }
-
             questionAnswered = false;
-            continueText.style.display = "none";
+            
+            answerButtons.forEach(x => {
+                x.disabled = false;
+                if (dark) {
+                    x.classList.add('answer-hover-dark');
+                }
+                else {
+                    x.classList.add('answer-hover-light');
+                }
+            })
+            //continueText.style.display = "none";
         }
     }
 }
