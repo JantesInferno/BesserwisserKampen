@@ -39,7 +39,7 @@ header .settings:hover, header .help:hover {
 .start-container, .game-screen {
   width: 35vw;
   height: 60vh;
-  margin: 1% auto;
+  margin: 5% auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -176,6 +176,7 @@ header .settings:hover, header .help:hover {
 
 @media only screen and (max-width: 390px) {
   .game-screen {
+    margin: 1% auto;
     width: 95%;
     height: 80vh;
     gap: 10%;
@@ -214,6 +215,7 @@ header .settings:hover, header .help:hover {
 }
 @media only screen and (max-width: 280px) {
   .game-screen {
+    margin: 1% auto;
     width: 95%;
     height: 80vh;
     gap: 15%;
@@ -271,6 +273,7 @@ header .settings:hover, header .help:hover {
 }
 @media only screen and (min-width: 391px) and (max-width: 480px) {
   .game-screen {
+    margin: 1% auto;
     width: 95%;
     height: 80%;
     gap: 15%;
@@ -335,6 +338,9 @@ header .settings:hover, header .help:hover {
     width: 70%;
     justify-content: space-evenly;
     cursor: pointer;
+  }
+  .cancel-button {
+    margin-top: 5%;
   }
 }
 /*
