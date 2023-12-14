@@ -174,6 +174,101 @@ header .settings:hover, header .help:hover {
   margin-top: 10%;
 }
 
+.result-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  margin: 5px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  border: 2px solid purple;
+  pointer-events: none;
+}
+.result-container h2 {
+  font-size: 45px;
+  text-align: center;
+  margin: 10px;
+  color: rgb(168, 0, 180);
+}
+.result-container span {
+  color: rgb(255, 255, 255);
+}
+.result-container button {
+  height: 50px;
+  width: 150px;
+  align-self: center;
+  margin-bottom: 20px;
+  background-color: rgb(132, 0, 132);
+  font-weight: 800;
+  font-size: 18px;
+  color: aliceblue;
+  border-radius: 10px;
+  border-color: purple;
+  transition: 0.3s;
+}
+.result-container button:hover {
+  background-color: rgb(102, 0, 102);
+  color: rgb(191, 165, 189);
+  cursor: pointer;
+}
+.result-container .calc-result-container {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0 40px;
+}
+.result-container .circular-progress {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background: conic-gradient(#c40094 3.6deg, rgba(255, 255, 255, 0.1) 0deg);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.result-container .circular-progress::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: rgb(8, 2, 26);
+  border-radius: 50%;
+}
+.result-container .progress-value {
+  position: relative;
+  font-size: 45px;
+  font-weight: 600;
+}
+.result-container .score-text {
+  font-size: 26px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.result-buttons {
+  padding: 2px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  outline: none;
+}
+.result-buttons .playAgain {
+  margin: 5%;
+}
+.result-buttons .goHome {
+  margin: 5%;
+}
+
 @media only screen and (max-width: 390px) {
   .game-screen {
     margin: 1% auto;

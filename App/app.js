@@ -44,7 +44,7 @@ window.onload = function() {
 
     playButton.addEventListener('click', function() {
         document.querySelector('.start-container').style.display = 'none';
-        document.querySelector('.game-screen').style.display = 'flex';
+        document.querySelector('.game-screen').style.display = 'flex'; 
     });
 
     window.addEventListener('load', handleEvent);
