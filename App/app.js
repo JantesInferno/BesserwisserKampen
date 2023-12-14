@@ -6,6 +6,8 @@
 
 let swedish = true;
 let dark = true;
+let timerWidth;
+let interval;
 
 const playButton = document.querySelector('.play');
 const settingsButton = document.querySelector('.settings');
@@ -39,9 +41,6 @@ window.onload = function() {
      * Load EventListeners
      */
 
-
-
-
     playButton.addEventListener('click', function() {
         document.querySelector('.start-container').style.display = 'none';
         document.querySelector('.game-screen').style.display = 'flex';
@@ -51,10 +50,7 @@ window.onload = function() {
     gameScreen.addEventListener('click', handleEvent);
     playButton.addEventListener('click', handleEvent);
 
-
-
-
-
+    
 
     window.addEventListener('click', ({ target }) => {
         if(!target.classList.contains('popup') && !(target.classList.contains('settings') || target.classList.contains('help') || target.classList.contains('mode'))) {
@@ -294,6 +290,8 @@ function toggleDarkMode () {
 
 function handleEvent(event) {
 
+    activateQuestionTimer();
+
     if (event.type === 'load') {
         const randomQuestionIndex = Math.floor(Math.random() * questions.length);
         randomQuestion = questions[randomQuestionIndex];
@@ -303,9 +301,11 @@ function handleEvent(event) {
             answerButtons[i].textContent = randomQuestion.answers[i];
         }
     }
-
     else if (event.type === 'click') {
         if (event.target.matches('.answer-button')) {
+
+            stopQuestionTimer();
+
             const chosenAnswer = event.target.textContent;
             if (chosenAnswer === randomQuestion.correctAnswer) {
                 questionAnswered = true;
@@ -319,15 +319,9 @@ function handleEvent(event) {
                     }
                 }
             }
-            answerButtons.forEach(x => {
-                x.disabled = true;
-                if (dark) {
-                    x.classList.remove('answer-hover-dark');
-                }
-                else {
-                    x.classList.remove('answer-hover-light');
-                }
-            })
+
+            disableAnswerButtons();
+
             //continueText.style.display = "flex";
         }
         else if (!event.target.matches('.answer-button') && event.target.id !== 'question-text') {
@@ -341,16 +335,58 @@ function handleEvent(event) {
             }
             questionAnswered = false;
             
-            answerButtons.forEach(x => {
-                x.disabled = false;
-                if (dark) {
-                    x.classList.add('answer-hover-dark');
-                }
-                else {
-                    x.classList.add('answer-hover-light');
-                }
-            })
+            disableAnswerButtons(false);
+
             //continueText.style.display = "none";
         }
     }
+}
+
+
+function disableAnswerButtons(disable = true) {
+    if (disable) {
+        answerButtons.forEach(x => {
+            x.disabled = true;
+            if (dark) {
+                x.classList.remove('answer-hover-dark');
+            }
+            else {
+                x.classList.remove('answer-hover-light');
+            }
+        })
+    }
+    else {
+        answerButtons.forEach(x => {
+            x.disabled = false;
+            if (dark) {
+                x.classList.add('answer-hover-dark');
+            }
+            else {
+                x.classList.add('answer-hover-light');
+            }
+        })
+    }
+}
+
+function activateQuestionTimer() {
+    clearInterval(interval);
+    timerWidth = 100;
+    interval = setInterval(() => {
+        if(timerWidth <= 0) {
+            clearInterval(interval)
+            disableAnswerButtons();
+            for (let i = 0; i < answerButtons.length; i++) {
+                if (answerButtons[i].textContent === randomQuestion.correctAnswer) {
+                    answerButtons[i].classList.add('real-answer');
+                }
+            }
+        }
+    
+        timerWidth -= 1;
+        document.querySelector('.timer').style.width = timerWidth + '%';
+    }, 150);
+}
+
+function stopQuestionTimer() {
+    clearInterval(interval);
 }
