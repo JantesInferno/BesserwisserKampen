@@ -516,10 +516,12 @@ body {
 
 .correct-answer {
     background: linear-gradient(90deg, rgba(205,255,205,1) 0%, rgba(128,255,128,1) 2%, rgba(0,182,0,1) 15%, rgba(0,147,0,1) 25%, rgba(0,147,0,1) 75%, rgba(0,182,0,1) 85%, rgba(128,255,128,1) 98%, rgba(205,255,205,1) 100%);
+    color: white;
 }
 
 .wrong-answer {
     background: linear-gradient(90deg, rgba(255,205,205,1) 0%, rgba(255,128,128,1) 2%, rgba(182,0,0,1) 15%, rgba(147,0,0,1) 25%, rgba(147,0,0,1) 75%, rgba(182,0,0,1) 85%, rgba(255,128,128,1) 98%, rgba(255,205,205,1) 100%);
+    color: white;
 }
 
 .real-answer {
