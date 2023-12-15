@@ -189,11 +189,13 @@ function toggleLightMode () {
     playButton.classList.remove('play-class-dark');
     playButton.classList.add('play-class-light');
 
-    document.querySelectorAll('.answer-button').forEach(x => {
+    answerButtons.forEach(x => {
         x.classList.remove('answer-class-dark');
         x.classList.remove('answer-hover-dark');
         x.classList.add('answer-class-light');
-        x.classList.add('answer-hover-light');
+        if (!x.disabled) {
+            x.classList.add('answer-hover-light');
+        }
     })
 
     questionStyle.classList.remove('question-class-dark');
@@ -207,6 +209,9 @@ function toggleLightMode () {
 
     helpButton.style.stroke = "#7058ad";
     settingsButton.style.stroke = "#499977";
+
+    continueText.querySelector('span').style.color = "rgba(0,4,78,1)";
+    continueText.querySelector('span').style.fontWeight = "bold";
 
     document.querySelector('body').style = "background: url('../light.jpg') no-repeat center center fixed; background-size: cover;";
 
@@ -247,12 +252,17 @@ function toggleDarkMode () {
     playButton.classList.remove('play-class-light');
     playButton.classList.add('play-class-dark');
 
-    document.querySelectorAll('.answer-button').forEach(x => {
+
+    answerButtons.forEach(x => {
         x.classList.remove('answer-class-light');
         x.classList.remove('answer-hover-light');
         x.classList.add('answer-class-dark');
-        x.classList.add('answer-hover-dark');
+        if (!x.disabled) {
+            x.classList.add('answer-hover-dark');
+        }
     })
+
+
 
     questionStyle.classList.remove('question-class-light');
     questionStyle.classList.add('question-class-dark');
@@ -265,6 +275,9 @@ function toggleDarkMode () {
 
     helpButton.style.stroke = "#c370be";
     settingsButton.style.stroke = "#fc6a6a";
+
+    continueText.querySelector('span').style.color = "white";
+    continueText.querySelector('span').style.fontWeight = "500";
 
     document.querySelector('body').style = "background-image: url('../nebula.jpg');";
 
