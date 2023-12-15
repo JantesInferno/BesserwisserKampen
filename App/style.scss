@@ -1,3 +1,15 @@
+// Variabler
+
+$backgroundBlackTransparent: rgba(0,0,0, 0.5);
+
+// Mixins/functions
+
+@mixin flexDirectionJustify($direction, $justify) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+}
+
 *, *::before, *::after  {
     margin: 0;
     padding: 0;
@@ -15,12 +27,17 @@ body {
     overflow: hidden;
 }
 
+/*
+######################################
+                HEADER       
+######################################
+*/
+
 header {
-    background-color: rgba(0,0,0, 0.5);
-    height: 15vh;
-    display: flex;
-    justify-content: space-around;
+    @include flexDirectionJustify(row, space-around);
     align-items: center;
+    background-color: $backgroundBlackTransparent;
+    height: 15vh;
     padding-left: 5%;
     padding-right: 5%;
 
@@ -33,7 +50,6 @@ header {
         transform-origin: 50% 50%;
         margin-right: 0.6%;
         margin-left: 0.6%;
-        margin-bottom: 5%;
     }  
 
     .settings:hover, .help:hover {
@@ -41,31 +57,33 @@ header {
     }
 }
 
+
+/*
+######################################
+            MAIN-CONTAINER      
+######################################
+*/
+
 .start-container, .game-screen {
+    @include flexDirectionJustify(column, center);
+    align-items: center;
     width: 35vw;
     height: 60vh;
     margin: 5% auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     color: white;
 
     .game-screen {
-        background-color: rgb(0, 0, 0, 0.5);
+        background-color: $backgroundBlackTransparent;
         border: 5px solid white;
     }
 
     .play{
-        justify-content: space-between;
+        @include flexDirectionJustify(row, space-between);
         padding: 1.5em;
         margin: 1em;
         width: 50%;
-        display: flex;
-        flex-direction: row;
         border-radius: 50px;
         border: none;
-
         transition: all 0.3s;
         transform-origin: 50% 50%;
 
@@ -90,11 +108,10 @@ header {
     }
 
     .difficulty-container {
+        @include flexDirectionJustify(row, space-around);
+        flex-wrap: nowrap;
         margin-top: 5%;
         width: 30vw;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-around;
 
         .button-difficulty {
             overflow: hidden;
@@ -105,7 +122,6 @@ header {
             color: white;
             padding: 5%;
             margin: 0 5px;
-
             transition: all 0.3s;
             transform-origin: 50% 50%;
 
@@ -118,12 +134,17 @@ header {
     }
 }
 
+/*
+######################################
+          SETTINGS/HELP-POPUP       
+######################################
+*/
 
-.popup-right{
+.popup-right {
     position: absolute;
     top: 15%;
     right: 0;
-    background-color: rgba(0,0,0, 0.5);
+    background-color: $backgroundBlackTransparent;
     border-top: none;
     border-right: none;
     width: 12vw;
@@ -156,20 +177,18 @@ header {
         font-weight:  500;
         color: white;
         
-        &:nth-of-type(1), &:nth-of-type(4){
+        &:nth-of-type(1), &:nth-of-type(4) {
             background: linear-gradient(90deg, rgba(12,2,181,1) 0%, rgba(179,3,167,1) 100%);
             color: white;
         }
     }
 }
-  
-
 
 .popup-left {
     position: absolute;
     top: 15%;
     left: 0;
-    background-color: rgba(0,0,0, 0.5);
+    background-color: $backgroundBlackTransparent;
     border-top: none;
     border-left: none;
     width: 12vw;
@@ -195,283 +214,26 @@ header {
 
         li {
            margin-top: 10%;
-           
         }
     }
 }
 
-
-
-
-// MEDIA QUERIES
-
-// IPHONE SE EDGE CASE
-@media only screen and (max-width: 390px) {
-    .game-screen {
-        margin: 1% auto;
-        width: 95%;
-        height: 80vh;
-
-        .question-text {
-            font-size: 1.5rem;
-        }
-        .answer-button {
-            font-size: 1rem;
-        }
-    }
-    .name-logo {
-        width: 60%;
-    }
-    .popup-left, .popup-right  {
-        width: 43vw;
-        height: 35vh;
-        font-size: 1.1rem;
-    }
-    
-    .popup-right .mode {
-        width: 90%;
-        width: 80%;
-        margin: 6% auto;
-        font-size: 1.1rem;
-    }
-
-    .start-container {
-        margin-top: 25%;
-        width: 100%;
-        height: 80%;
-
-        .play {
-            width: 80%;
-        }
-        .play:hover {
-            cursor: pointer;
-        }
-
-        .difficulty-container {
-            width: 85%;
-        }
-        .difficulty-container:hover {
-            cursor: pointer;
-        }
-    }
-}
-
-// GALAXY FOLD EDGE CASE
-
-@media only screen and (max-width: 280px) {
-    .game-screen {
-        margin: 1% auto;
-        width: 95%;
-        height: 80%;
-
-        .question-text {
-            font-size: 1.5rem;
-        }
-        .answer-button {
-            font-size: 1rem;
-        }
-    }
-    .popup-left, .popup-right  {
-        width: 41vw;
-        height: 35vh;
-        font-size: 0.85rem;
-
-        ul {
-         margin-left: 0;   
-        }
-        li {
-            margin: 0;
-        }
-    }
-    
-    .popup-right .mode {
-        width: 100%;
-        margin: 6% auto;
-        font-size: 1.1rem;
-    }
-
-    .start-container {
-        margin-top: 30%;
-        width: 90%;
-        height: 80%;
-
-        .play {
-            width: 80%;
-        }
-        .play:hover {
-            cursor: pointer;
-        }
-        h2 {
-            letter-spacing: 0;
-            font-size: 1.2rem;
-        }
-        .difficulty-container {
-            width: 100%;
-
-            .button-difficulty {
-                font-size: 0.9rem;
-                &:hover {
-                    transform: scale(1.3);
-                    font-weight: bold;
-                }
-            }
-        }
-        .difficulty-container:hover {
-            cursor: pointer;
-        }
-    }
-}
-
-// MOBILE
-
-@media only screen and (min-width: 391px) and (max-width: 480px) {
-    .game-screen {
-        margin: 1% auto;
-        width: 95%;
-        height: 80%;
-
-        .question-text {
-            font-size: 1.5rem;
-        }
-        .answer-button {
-            font-size: 1rem;
-        }
-    }
-
-
-    .name-logo {
-        width: 65%;
-    }
-
-    .popup-left, .popup-right  {
-        width: 44vw;
-        height: 30vh;
-        font-size: 1.1rem;
-    }
-    
-    .popup-right .mode {
-        width: 90%;
-        width: 80%;
-        margin: 6% auto;
-        font-size: 1.1rem;
-    }
-
-    .start-container {
-        margin-top: 10%;
-        width: 100%;
-        height: 80%;
-
-        .play {
-            width: 80%;
-        }
-        .play:hover {
-            cursor: pointer;
-        }
-
-        .difficulty-container {
-            width: 80%;
-        }
-        .difficulty-container:hover {
-            cursor: pointer;
-        }
-    }
-}
-
-// TABLET
-
-@media only screen and (min-width: 768px) and (max-width: 1024px){
-    .difficulty-container {
-        width: 50%;
-    }
-    .difficulty-container:hover {
-        cursor: pointer;
-    }
-
-    .start-container{
-        margin-top: 10%;
-        width: 100%;
-        height: 80%;
-    }
-}
-
-
-// DESKTOP
-
-@media only screen and (min-width: 1080px) {
-    header .logo:hover {
-        cursor: pointer;
-    }
-
-    header .settings:hover, .help:hover {
-        transform: scale(1.6);
-    }
-    
-    .start-container .play:hover {
-        width: 70%;
-        justify-content: space-evenly;
-        cursor: pointer;
-    }
-
-    .cancel-button {
-        margin-top: 10%;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// JOELS SASS
 
 /*
-
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.938);
-}
-
-.banner {
-    position: sticky;
-    top: 0;
-    height: 80px;
-    width: 100%;
-    background-color: rgb(132, 0, 255);
-}
-
-#start-container {
-    width: 40%;
-    height: 40%;
-    margin-top: 80px;
-    padding: 20px;
-    background-color: rgb(62, 86, 223);
-    border-radius: 20px;
-}
+########################################################################################
+                                      GAME SCREEN    
+########################################################################################
 */
-/*
-#game-screen {
-    flex-direction: column;
-    justify-content: center;
-    width: 40%;
-    height: 40%;
-    margin-top: 80px;
-    padding: 20px;
-    background-color: rgb(0, 0, 0, 0.5);
-    border-radius: 20px;
-    border: 2px solid white;
+
+.continue-text {
+    position: absolute;
+    span {
+        font-size: 1rem;
+        font-weight: 400;
+        letter-spacing: 3px;
+        color: white;
+    }
 }
-*/
 
 .question {
     height: 30%;
@@ -500,38 +262,10 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.answer-class-dark {
-    background-color: rgba(0,0,0, 0.7);
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 500;
-    box-shadow: 0 0 10px -2px white;
-}
-
-.answer-hover-dark {
-    &:hover {
-        background: black;
-    }
-}
-
-.answer-class-light {
-    background-color: rgba(255,255,255,1);
-    color: rgba(0,4,78,1);
-    font-size: 1.2rem;
-    font-weight: 500;
-    box-shadow: 0 0 10px 2px rgba(0,4,78,1);
-}
-
-.answer-hover-light {
-    &:hover {
-        background: #a3a6f4;
-    }
-}
-
 .correct-answer {
     // shine
     background: linear-gradient(90deg, rgba(205,255,205,1) 0%, rgba(128,255,128,1) 2%, rgba(0,182,0,1) 15%, rgba(0,147,0,1) 25%, rgba(0,147,0,1) 75%, rgba(0,182,0,1) 85%, rgba(128,255,128,1) 98%, rgba(205,255,205,1) 100%);
-    color: white;
+    color: white !important;
     // shadow
     //background: linear-gradient(90deg, rgba(0,87,0,1) 0%, rgba(0,147,0,1) 15%, rgba(0,162,0,1) 25%, rgba(0,162,0,1) 75%, rgba(0,147,0,1) 85%, rgba(0,87,0,1) 100%);
 }
@@ -539,7 +273,7 @@ body {
 .wrong-answer {
     // shine
     background: linear-gradient(90deg, rgba(255,205,205,1) 0%, rgba(255,128,128,1) 2%, rgba(182,0,0,1) 15%, rgba(147,0,0,1) 25%, rgba(147,0,0,1) 75%, rgba(182,0,0,1) 85%, rgba(255,128,128,1) 98%, rgba(255,205,205,1) 100%);
-    color: white;
+    color: white !important;
     // shadow
     //background: linear-gradient(90deg, rgba(87,0,0,1) 0%, rgba(147,0,0,1) 15%, rgba(162,0,0,1) 25%, rgba(162,0,0,1) 75%, rgba(147,0,0,1) 85%, rgba(87,0,0,1) 100%);
 }
@@ -553,21 +287,32 @@ body {
     flex-flow: row wrap;
     width: 100%;
     height: 40%;
-    gap: 1%;
+    gap: 2%;
+    margin-top: 5%;
+}
+
+.timer {
+    width: 98%;
+    height: 2%;
+    background: white;
+    border-radius: 4px;
+    margin-top: 2%;
+    align-self: flex-start;
+    margin-left: 0.5%;
     margin-top: 5%;
 }
 
 .game-icons {
-    display: flex;
-    justify-content: center;
+    @include flexDirectionJustify(row, center);
+
     width: 100%;
     .cancel-button {
+        @include flexDirectionJustify(row, center);
+        align-items: center;
+        gap: 5%;
         background: none;
         border: none;
         height: 33px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         font-size: 1rem;
         margin-top: 10%;
     
@@ -591,55 +336,10 @@ body {
 
 
 /*
-// For normal screens 
-@media screen and (min-width: 768px) {
-    #game-container {
-        height: 40%;
-        width: 40%;
-    }
-
-    #game-screen {
-        height: 40%;
-        width: 40%;
-    }
-}
-
-// For mobile screens //
-@media screen and (max-width: 767px) {
-    #game-container {
-        height: 60%;
-        width: 75%;
-    }
-
-    #game-screen {
-        height: 60%;
-        width: 75%;
-    }
-}
-
-// For Ipad screens //
-@media screen and (min-width: 768px) and (max-width: 1024px){
-    #game-container {
-        height: 55%;
-        width: 55%;
-    }
-
-    #game-screen {
-        height: 55%;
-        width: 55%;
-    }
-}
+########################################################################################
+                                    DARK/LIGHT MODE
+########################################################################################
 */
-
-
-
-
-
-
-
-
-
-// DARK/LIGHT MODE
 
 .play-class-dark {
     background-color: rgba(0,0,0, 0.7);
@@ -692,6 +392,34 @@ body {
     color: rgba(0,4,78,1);
 }
 
+.answer-class-dark {
+    background-color: rgba(0,0,0, 0.7);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    box-shadow: 0 0 10px -2px white;
+}
+
+.answer-class-light {
+    background-color: rgba(255,255,255,1);
+    color: rgba(0,4,78,1);
+    font-size: 1.2rem;
+    font-weight: 500;
+    box-shadow: 0 0 10px 2px rgba(0,4,78,1);
+}
+
+.answer-hover-dark {
+    &:hover {
+        background: black;
+    }
+}
+
+.answer-hover-light {
+    &:hover {
+        background: #a3a6f4;
+    }
+}
+
 .cancel-class-dark {
     color: white;
 
@@ -709,14 +437,249 @@ body {
     
 }
 
-.timer {
-    width: 99.5%;
-    height: 2%;
-    background: white;
-    border-radius: 4px;
+.timer-class-dark {
     background: linear-gradient(90deg, rgba(165,0,176,1) 0%, rgba(255,113,245,1) 50%, rgba(255,51,51,1) 100%);
-    margin-top: 2%;
-    align-self: flex-start;
-    margin-left: 0.5%;
-    margin-top: 5%;
+}
+
+.timer-class-light {
+    background: linear-gradient(90deg, rgba(112,88,173,1) 0%, rgba(73,153,119,1) 100%);;
+}
+
+
+
+
+/*
+########################################################################################
+                                     MEDIA QUERIES       
+########################################################################################
+*/
+
+/*
+######################################
+                IPHONE SE       
+######################################
+*/
+@media only screen and (max-width: 390px) {
+    .game-screen {
+        margin: 1% auto;
+        width: 95%;
+        height: 80vh;
+        .question-text {
+            font-size: 1.5rem;
+        }
+        .answer-button {
+            font-size: 1rem;
+        }
+    }
+    .settings, .help {
+        margin-bottom: 5%;
+    }
+    .name-logo {
+        width: 60%;
+    }
+    .popup-left, .popup-right  {
+        width: 43vw;
+        height: 35vh;
+        font-size: 1.1rem;
+    }
+    .popup-right .mode {
+        width: 90%;
+        width: 80%;
+        margin: 6% auto;
+        font-size: 1.1rem;
+    }
+    .start-container {
+        margin-top: 25%;
+        width: 100%;
+        height: 80%;
+        .play {
+            width: 80%;
+        }
+        .play:hover {
+            cursor: pointer;
+        }
+        .difficulty-container {
+            width: 85%;
+        }
+        .difficulty-container:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+/*
+######################################
+              GALAXY FOLD       
+######################################
+*/
+
+@media only screen and (max-width: 280px) {
+    .game-screen {
+        margin: 1% auto;
+        width: 95%;
+        height: 80%;
+
+        .question-text {
+            font-size: 1.5rem;
+        }
+        .answer-button {
+            font-size: 1rem;
+        }
+    }
+    .settings, .help {
+        margin-bottom: 5%;
+    }
+    .popup-left, .popup-right  {
+        width: 41vw;
+        height: 35vh;
+        font-size: 0.85rem;
+
+        ul {
+         margin-left: 0;   
+        }
+        li {
+            margin: 0;
+        }
+    }
+    .popup-right .mode {
+        width: 100%;
+        margin: 6% auto;
+        font-size: 1.1rem;
+    }
+
+    .start-container {
+        margin-top: 30%;
+        width: 90%;
+        height: 80%;
+
+        .play {
+            width: 80%;
+        }
+        .play:hover {
+            cursor: pointer;
+        }
+        h2 {
+            letter-spacing: 0;
+            font-size: 1.2rem;
+        }
+        .difficulty-container {
+            width: 100%;
+
+            .button-difficulty {
+                font-size: 0.9rem;
+                &:hover {
+                    transform: scale(1.3);
+                    font-weight: bold;
+                }
+            }
+        }
+        .difficulty-container:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+/*
+######################################
+                MOBILE       
+######################################
+*/
+
+@media only screen and (min-width: 391px) and (max-width: 480px) {
+    .game-screen {
+        margin: 1% auto;
+        width: 95%;
+        height: 80%;
+
+        .question-text {
+            font-size: 1.5rem;
+        }
+        .answer-button {
+            font-size: 1rem;
+        }
+    }
+    .settings, .help {
+        margin-bottom: 5%;
+    }
+    .name-logo {
+        width: 65%;
+    }
+    .popup-left, .popup-right  {
+        width: 44vw;
+        height: 30vh;
+        font-size: 1.1rem;
+    }
+    .popup-right .mode {
+        width: 90%;
+        width: 80%;
+        margin: 6% auto;
+        font-size: 1.1rem;
+    }
+    .start-container {
+        margin-top: 10%;
+        width: 100%;
+        height: 80%;
+
+        .play {
+            width: 80%;
+        }
+        .play:hover {
+            cursor: pointer;
+        }
+
+        .difficulty-container {
+            width: 80%;
+        }
+        .difficulty-container:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+/*
+######################################
+                TABLET       
+######################################
+*/
+
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+    .difficulty-container {
+        width: 50%;
+    }
+    .difficulty-container:hover {
+        cursor: pointer;
+    }
+    .start-container{
+        margin-top: 10%;
+        width: 100%;
+        height: 80%;
+    }
+}
+
+
+/*
+######################################
+                DESKTOP       
+######################################
+*/
+
+@media only screen and (min-width: 1080px) {
+    header .logo:hover {
+        cursor: pointer;
+    }
+    header {
+        justify-content: space-between;
+
+        .settings:hover, .help:hover {
+            transform: scale(1.6);
+        }
+    }
+    .start-container .play:hover {
+        width: 70%;
+        justify-content: space-evenly;
+        cursor: pointer;
+    }
+    .cancel-button {
+        margin-top: 10%;
+    }
 }

@@ -1,6 +1,4 @@
 
-let questionAnswered = false;
-let randomQuestion;
 
 const questions = [
     {
