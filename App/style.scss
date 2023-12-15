@@ -309,6 +309,7 @@ header {
     .cancel-button {
         @include flexDirectionJustify(row, center);
         align-items: center;
+        gap: 5%;
         background: none;
         border: none;
         height: 33px;

@@ -278,6 +278,7 @@ header .settings:hover, header .help:hover {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 5%;
   background: none;
   border: none;
   height: 33px;

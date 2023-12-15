@@ -9,6 +9,9 @@ let dark = true;
 let timerWidth;
 let interval;
 
+let questionAnswered = false;
+let randomQuestion;
+
 const playButton = document.querySelector('.play');
 const settingsButton = document.querySelector('.settings');
 const helpButton = document.querySelector('.help');
