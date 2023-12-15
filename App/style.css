@@ -31,7 +31,6 @@ header .settings, header .help {
   transform-origin: 50% 50%;
   margin-right: 0.6%;
   margin-left: 0.6%;
-  margin-bottom: 5%;
 }
 header .settings:hover, header .help:hover {
   cursor: pointer;
@@ -187,6 +186,9 @@ header .settings:hover, header .help:hover {
   .game-screen .answer-button {
     font-size: 1rem;
   }
+  .settings, .help {
+    margin-bottom: 5%;
+  }
   .name-logo {
     width: 60%;
   }
@@ -230,6 +232,9 @@ header .settings:hover, header .help:hover {
   }
   .game-screen .answer-button {
     font-size: 1rem;
+  }
+  .settings, .help {
+    margin-bottom: 5%;
   }
   .popup-left, .popup-right {
     width: 41vw;
@@ -288,6 +293,9 @@ header .settings:hover, header .help:hover {
   .game-screen .answer-button {
     font-size: 1rem;
   }
+  .settings, .help {
+    margin-bottom: 5%;
+  }
   .name-logo {
     width: 65%;
   }
@@ -337,7 +345,10 @@ header .settings:hover, header .help:hover {
   header .logo:hover {
     cursor: pointer;
   }
-  header .settings:hover, .help:hover {
+  header {
+    justify-content: space-between;
+  }
+  header .settings:hover, header .help:hover {
     transform: scale(1.6);
   }
   .start-container .play:hover {
@@ -349,46 +360,6 @@ header .settings:hover, header .help:hover {
     margin-top: 10%;
   }
 }
-/*
-
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.938);
-}
-
-.banner {
-    position: sticky;
-    top: 0;
-    height: 80px;
-    width: 100%;
-    background-color: rgb(132, 0, 255);
-}
-
-#start-container {
-    width: 40%;
-    height: 40%;
-    margin-top: 80px;
-    padding: 20px;
-    background-color: rgb(62, 86, 223);
-    border-radius: 20px;
-}
-*/
-/*
-#game-screen {
-    flex-direction: column;
-    justify-content: center;
-    width: 40%;
-    height: 40%;
-    margin-top: 80px;
-    padding: 20px;
-    background-color: rgb(0, 0, 0, 0.5);
-    border-radius: 20px;
-    border: 2px solid white;
-}
-*/
 .question {
   height: 30%;
   margin-top: 5%;
@@ -595,13 +566,20 @@ body {
 }
 
 .timer {
-  width: 99.5%;
+  width: 98%;
   height: 2%;
   background: white;
   border-radius: 4px;
-  background: linear-gradient(90deg, rgb(165, 0, 176) 0%, rgb(255, 113, 245) 50%, rgb(255, 51, 51) 100%);
   margin-top: 2%;
   align-self: flex-start;
   margin-left: 0.5%;
   margin-top: 5%;
+}
+
+.timer-class-dark {
+  background: linear-gradient(90deg, rgb(165, 0, 176) 0%, rgb(255, 113, 245) 50%, rgb(255, 51, 51) 100%);
+}
+
+.timer-class-light {
+  background: linear-gradient(90deg, rgb(112, 88, 173) 0%, rgb(73, 153, 119) 100%);
 }/*# sourceMappingURL=style.css.map */

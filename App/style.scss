@@ -33,7 +33,6 @@ header {
         transform-origin: 50% 50%;
         margin-right: 0.6%;
         margin-left: 0.6%;
-        margin-bottom: 5%;
     }  
 
     .settings:hover, .help:hover {
@@ -123,7 +122,7 @@ header {
     position: absolute;
     top: 15%;
     right: 0;
-    background-color: rgba(0,0,0, 0.5);
+    background-color: rgba(0,0,0,0.5);
     border-top: none;
     border-right: none;
     width: 12vw;
@@ -169,7 +168,7 @@ header {
     position: absolute;
     top: 15%;
     left: 0;
-    background-color: rgba(0,0,0, 0.5);
+    background-color: rgba(0,0,0,0.5);
     border-top: none;
     border-left: none;
     width: 12vw;
@@ -195,7 +194,6 @@ header {
 
         li {
            margin-top: 10%;
-           
         }
     }
 }
@@ -218,6 +216,9 @@ header {
         .answer-button {
             font-size: 1rem;
         }
+    }
+    .settings, .help {
+        margin-bottom: 5%;
     }
     .name-logo {
         width: 60%;
@@ -271,6 +272,9 @@ header {
             font-size: 1rem;
         }
     }
+    .settings, .help {
+        margin-bottom: 5%;
+    }
     .popup-left, .popup-right  {
         width: 41vw;
         height: 35vh;
@@ -283,7 +287,6 @@ header {
             margin: 0;
         }
     }
-    
     .popup-right .mode {
         width: 100%;
         margin: 6% auto;
@@ -337,25 +340,23 @@ header {
             font-size: 1rem;
         }
     }
-
-
+    .settings, .help {
+        margin-bottom: 5%;
+    }
     .name-logo {
         width: 65%;
     }
-
     .popup-left, .popup-right  {
         width: 44vw;
         height: 30vh;
         font-size: 1.1rem;
     }
-    
     .popup-right .mode {
         width: 90%;
         width: 80%;
         margin: 6% auto;
         font-size: 1.1rem;
     }
-
     .start-container {
         margin-top: 10%;
         width: 100%;
@@ -386,7 +387,6 @@ header {
     .difficulty-container:hover {
         cursor: pointer;
     }
-
     .start-container{
         margin-top: 10%;
         width: 100%;
@@ -401,17 +401,18 @@ header {
     header .logo:hover {
         cursor: pointer;
     }
+    header {
+        justify-content: space-between;
 
-    header .settings:hover, .help:hover {
-        transform: scale(1.6);
+        .settings:hover, .help:hover {
+            transform: scale(1.6);
+        }
     }
-    
     .start-container .play:hover {
         width: 70%;
         justify-content: space-evenly;
         cursor: pointer;
     }
-
     .cancel-button {
         margin-top: 10%;
     }
@@ -427,51 +428,6 @@ header {
 
 
 
-
-
-
-// JOELS SASS
-
-/*
-
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.938);
-}
-
-.banner {
-    position: sticky;
-    top: 0;
-    height: 80px;
-    width: 100%;
-    background-color: rgb(132, 0, 255);
-}
-
-#start-container {
-    width: 40%;
-    height: 40%;
-    margin-top: 80px;
-    padding: 20px;
-    background-color: rgb(62, 86, 223);
-    border-radius: 20px;
-}
-*/
-/*
-#game-screen {
-    flex-direction: column;
-    justify-content: center;
-    width: 40%;
-    height: 40%;
-    margin-top: 80px;
-    padding: 20px;
-    background-color: rgb(0, 0, 0, 0.5);
-    border-radius: 20px;
-    border: 2px solid white;
-}
-*/
 
 .question {
     height: 30%;
@@ -562,6 +518,8 @@ body {
     justify-content: center;
     width: 100%;
     .cancel-button {
+        //background: rgba(0,0,0,0.3);
+        //border-radius: 20px;
         background: none;
         border: none;
         height: 33px;
@@ -570,6 +528,7 @@ body {
         align-items: center;
         font-size: 1rem;
         margin-top: 10%;
+        //padding-right: 10px;
     
         &:hover {
             cursor: pointer;
@@ -710,13 +669,20 @@ body {
 }
 
 .timer {
-    width: 99.5%;
+    width: 98%;
     height: 2%;
     background: white;
     border-radius: 4px;
-    background: linear-gradient(90deg, rgba(165,0,176,1) 0%, rgba(255,113,245,1) 50%, rgba(255,51,51,1) 100%);
     margin-top: 2%;
     align-self: flex-start;
     margin-left: 0.5%;
     margin-top: 5%;
+}
+
+.timer-class-dark {
+    background: linear-gradient(90deg, rgba(165,0,176,1) 0%, rgba(255,113,245,1) 50%, rgba(255,51,51,1) 100%);
+}
+
+.timer-class-light {
+    background: linear-gradient(90deg, rgba(112,88,173,1) 0%, rgba(73,153,119,1) 100%);;
 }

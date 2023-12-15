@@ -190,6 +190,9 @@ function toggleLightMode () {
     cancelStyle.classList.remove('cancel-class-dark');
     cancelStyle.classList.add('cancel-class-light');
 
+    document.querySelector('.timer').classList.remove('timer-class-dark');
+    document.querySelector('.timer').classList.add('timer-class-light');
+
     dark = false;
     let a = document.querySelector('body');
     a.style = "background: url('../light.jpg') no-repeat center center fixed; background-size: cover;";
@@ -218,8 +221,8 @@ function toggleLightMode () {
         })
     let i = document.querySelector('.difficulty-header').style.color = "rgba(0,4,78,1)";
     let j =  document.querySelector('header').style.background = "rgba(255, 255, 255, 1)";
-    helpButton.style.stroke = "rgba(0,4,78,1)";
-    settingsButton.style.stroke = "rgba(0,4,78,1)";
+    helpButton.style.stroke = "#7058ad";
+    settingsButton.style.stroke = "#499977";
     document.querySelector('span').style = "color: rgba(0,4,78,1); font-weight: bold;";
     document.querySelector('.name-logo').src = "../light-logo.png";
 }
@@ -245,6 +248,9 @@ function toggleDarkMode () {
     const cancelStyle = document.querySelector('.cancel-button');
     cancelStyle.classList.remove('cancel-class-light');
     cancelStyle.classList.add('cancel-class-dark');
+
+    document.querySelector('.timer').classList.remove('timer-class-light');
+    document.querySelector('.timer').classList.add('timer-class-dark');
 
     dark = true;
     let a = document.querySelector('body').style = "background-image: url('../nebula.jpg');";
@@ -274,8 +280,8 @@ function toggleDarkMode () {
     let i = document.querySelector('.difficulty-header').style.color = "white";
     let j =  document.querySelector('header');
     j.style.background = "rgba(0, 0, 0, 0.5)";
-    helpButton.style.stroke = "white";
-    settingsButton.style.stroke = "white";
+    helpButton.style.stroke = "#c370be";
+    settingsButton.style.stroke = "#fc6a6a";
     document.querySelector('span').style = "color: white;";
     document.querySelector('.name-logo').src = "../dark-logo.png";
 }
@@ -370,7 +376,7 @@ function disableAnswerButtons(disable = true) {
 
 function activateQuestionTimer() {
     clearInterval(interval);
-    timerWidth = 100;
+    timerWidth = 98;
     interval = setInterval(() => {
         if(timerWidth <= 0) {
             clearInterval(interval)
@@ -384,7 +390,7 @@ function activateQuestionTimer() {
     
         timerWidth -= 1;
         document.querySelector('.timer').style.width = timerWidth + '%';
-    }, 150);
+    }, 102);
 }
 
 function stopQuestionTimer() {
