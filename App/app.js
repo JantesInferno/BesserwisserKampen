@@ -20,8 +20,12 @@ const darkMode = document.querySelector('.dark');
 const englishMode = document.querySelector('.english');
 const swedishhMode = document.querySelector('.swedish');
 
-
-
+const playAgainButton = document.querySelector('.play-again-button');
+const goHomeButton = document.querySelector('.goHome');
+const totalQuestions = 10;
+let questionCount = 1;
+let correctAnswers = 0;
+let autoProceedTimeout;
 
 
 const gameScreen = document.querySelector('.game-screen');
@@ -41,10 +45,13 @@ window.onload = function() {
 
 
 
-
     playButton.addEventListener('click', function() {
         document.querySelector('.start-container').style.display = 'none';
         document.querySelector('.game-screen').style.display = 'flex'; 
+
+        playAgainButton.addEventListener('click', resetGame);
+        goHomeButton.addEventListener('click', goToHome);
+
     });
 
     window.addEventListener('load', handleEvent);
@@ -148,6 +155,12 @@ window.onload = function() {
             englishMode.style = "background: white; color: black; border: 1px solid black;";
         }
     })
+
+    
+   
+    gameScreen.addEventListener('click', function(event) {
+        handleEvent(event);  
+    });
 }
 
 /**
@@ -295,48 +308,114 @@ function toggleDarkMode () {
 //anpassning av knappar när man gör fönstret smalare
 
 
-
 function handleEvent(event) {
-
     if (event.type === 'load') {
-        const randomQuestionIndex = Math.floor(Math.random() * questions.length);
-        randomQuestion = questions[randomQuestionIndex];
-        questionText.textContent = randomQuestion.question;
-
-        for (let i = 0; i < answerButtons.length; i++) {
-            answerButtons[i].textContent = randomQuestion.answers[i];
+        loadNewQuestion();
+    } else if (event.type === 'click') {
+        if (event.target.matches('.answer-button') && !questionAnswered) {
+            handleAnswer(event);
+        } else if (!event.target.matches('.answer-button') && event.target.id !== 'question-text') {
+            loadNewQuestion();
+        } else if (event.target.matches('.play-again-button')) {
+            resetGame();
+        } else if (event.target.matches('.goHome')) {
+            goToHome();
         }
     }
+}
 
-    else if (event.type === 'click') {
-        if (event.target.matches('.answer-button')) {
-            const chosenAnswer = event.target.textContent;
-            if (chosenAnswer === randomQuestion.correctAnswer) {
-                questionAnswered = true;
-                event.target.classList.add('correct-answer');
-            }
-            else {
-                event.target.classList.add('wrong-answer');
-                for (let i = 0; i < answerButtons.length; i++) {
-                    if (answerButtons[i].textContent === randomQuestion.correctAnswer) {
-                        answerButtons[i].classList.add('real-answer');
-                    }
+function loadNewQuestion() {
+    const randomQuestionIndex = Math.floor(Math.random() * questions.length);
+    randomQuestion = questions[randomQuestionIndex];
+    questionText.textContent = randomQuestion.question;
+
+    for (let i = 0; i < answerButtons.length; i++) {
+        answerButtons[i].classList.remove('correct-answer', 'wrong-answer', 'real-answer');
+        answerButtons[i].textContent = randomQuestion.answers[i];
+    }
+
+    clearTimeout(autoProceedTimeout);
+
+    questionAnswered = false;
+}
+
+function handleAnswer(event) {
+    const chosenAnswer = event.target.textContent;
+
+    if (!questionAnswered) {
+        questionAnswered = true;
+
+        const isCorrect = chosenAnswer === randomQuestion.correctAnswer;
+
+        if (isCorrect) {
+            correctAnswers++;
+        }
+
+        const resultContainer = document.querySelector('.result-container');
+        const scoreText = resultContainer.querySelector('.scoreText');
+        scoreText.textContent = 'Your score: ' + correctAnswers + ' out of ' + totalQuestions;
+
+        
+        if (isCorrect) {
+            event.target.classList.add('correct-answer');
+        } else {
+            event.target.classList.add('wrong-answer');
+            for (let i = 0; i < answerButtons.length; i++) {
+                if (answerButtons[i].textContent === randomQuestion.correctAnswer) {
+                    answerButtons[i].classList.add('real-answer');
                 }
             }
-            continueText.style.display = "flex";
         }
-        else if (!event.target.matches('.answer-button') && event.target.id !== 'question-text') {
-            const randomQuestionIndex = Math.floor(Math.random() * questions.length);
-            randomQuestion = questions[randomQuestionIndex];
-            questionText.textContent = randomQuestion.question;
 
-            for (let i = 0; i < answerButtons.length; i++) {
-                answerButtons[i].classList.remove('correct-answer', 'wrong-answer', 'real-answer');
-                answerButtons[i].textContent = randomQuestion.answers[i];
+       
+        setTimeout(function () {
+            if (questionCount < totalQuestions) {
+                questionCount++;
+                loadNewQuestion();
+            } else {
+                showResults();
             }
-
-            questionAnswered = false;
-            continueText.style.display = "none";
-        }
+        }, 1000);
     }
+}
+
+function showResults() {
+    const resultContainer = document.querySelector('.result-container');
+
+    if (resultContainer) {
+        const scoreText = resultContainer.querySelector('.scoreText');
+
+        if (scoreText) {
+            scoreText.textContent = 'Your score is: ' + correctAnswers + ' out of ' + totalQuestions;
+
+           
+            resultContainer.style.display = 'flex';
+            questionCount = 1;
+            correctAnswers = 0;
+            questionAnswered = false;
+            document.querySelector('.game-screen').style.display = 'none';
+
+            
+            const playAgainButton = resultContainer.querySelector('.play-again-button');
+            const goHomeButton = resultContainer.querySelector('.goHome');
+
+            playAgainButton.addEventListener('click', resetGame);
+            goHomeButton.addEventListener('click', goToHome);
+        } else {
+            console.error("Fel: scoreText hittades inte i resultContainer");
+        }
+    } else {
+        console.error("Fel: resultContainer hittades inte");
+    }
+}
+
+function resetGame() {
+    document.querySelector('.result-container').style.display = 'none';
+    document.querySelector('.game-screen').style.display = 'flex';
+    loadNewQuestion(); 
+}
+
+function goToHome() {
+    document.querySelector('.result-container').style.display = 'none';
+    document.querySelector('.start-container').style.display = 'flex';
 }

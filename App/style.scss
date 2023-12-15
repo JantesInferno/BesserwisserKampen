@@ -3,11 +3,11 @@
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     
-    button:hover {
-        cursor: pointer;
-    }
+    
 }
-
+button:hover {
+    cursor: pointer;
+}
 body {
     height: 100vh;
     width: 100vw;
@@ -212,6 +212,7 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 450px;
+    height: auto;
     margin: 5px;  
     background: rgb(0, 0, 0, 0.8);
     border-radius: 5px;
@@ -229,27 +230,34 @@ header {
         color: rgb(255, 255, 255);
     }
 
-    button {
-        height: 50px;
-        width: 150px;
+    .result-buttons {
+        margin: 20px;
+        display: flex;
+        width: 90%;
         align-self: center;
-        margin-bottom: 20px;
-        background-color: rgb(132, 0, 132);
-        font-weight: 800;
-        font-size: 18px;
-        color: aliceblue;
-        border-radius: 10px;
-        border-color: purple;
-        transition: 0.3s;
+        justify-content: space-between;
        
-        
+        transition: 0.3s;
 
     }
-    button:hover {
-        background-color: rgb(102, 0, 102);
-        color: rgb(191, 165, 189);
+    .play-again-button, .goHome {
+        height: 50px;
+        width: 150px;
+        background-color: #c40094;
+        color: aliceblue;
+        border-radius: 5px;
         cursor: pointer;
+        transition: 0.3s;
+        pointer-events: auto;
+        &:hover {
+            background-color: rgb(102, 0, 102);
+            color: rgb(191, 165, 189);
+            cursor: pointer;
+        }
     }
+    
+    
+    
     .calc-result-container {
         width: 300px;
         display: flex;
@@ -284,27 +292,20 @@ header {
         font-size: 45px;
         font-weight: 600;
     }
-    .score-text {
+   
+    .scoreText {
         font-size: 26px;
-        font-weight: 600;
+        font-weight: bold;
+        color: aliceblue;
         margin-top: 20px;
+        font-weight: 600;
     }
+    
 }
 
-.result-buttons {
-    padding: 2px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-    outline: none;
-    .playAgain {
-        margin: 5%;
-    }
-    .goHome {
-        margin: 5%;
-    }
-}
+
+
+
 
 
 // MEDIA QUERIES

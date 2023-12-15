@@ -3,7 +3,8 @@
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-* button:hover, *::before button:hover, *::after button:hover {
+
+button:hover {
   cursor: pointer;
 }
 
@@ -185,6 +186,7 @@ header .settings:hover, header .help:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 450px;
+  height: auto;
   margin: 5px;
   background: rgba(0, 0, 0, 0.8);
   border-radius: 5px;
@@ -200,20 +202,25 @@ header .settings:hover, header .help:hover {
 .result-container span {
   color: rgb(255, 255, 255);
 }
-.result-container button {
-  height: 50px;
-  width: 150px;
+.result-container .result-buttons {
+  margin: 20px;
+  display: flex;
+  width: 90%;
   align-self: center;
-  margin-bottom: 20px;
-  background-color: rgb(132, 0, 132);
-  font-weight: 800;
-  font-size: 18px;
-  color: aliceblue;
-  border-radius: 10px;
-  border-color: purple;
+  justify-content: space-between;
   transition: 0.3s;
 }
-.result-container button:hover {
+.result-container .play-again-button, .result-container .goHome {
+  height: 50px;
+  width: 150px;
+  background-color: #c40094;
+  color: aliceblue;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  pointer-events: auto;
+}
+.result-container .play-again-button:hover, .result-container .goHome:hover {
   background-color: rgb(102, 0, 102);
   color: rgb(191, 165, 189);
   cursor: pointer;
@@ -248,25 +255,12 @@ header .settings:hover, header .help:hover {
   font-size: 45px;
   font-weight: 600;
 }
-.result-container .score-text {
+.result-container .scoreText {
   font-size: 26px;
-  font-weight: 600;
+  font-weight: bold;
+  color: aliceblue;
   margin-top: 20px;
-}
-
-.result-buttons {
-  padding: 2px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-  outline: none;
-}
-.result-buttons .playAgain {
-  margin: 5%;
-}
-.result-buttons .goHome {
-  margin: 5%;
+  font-weight: 600;
 }
 
 @media only screen and (max-width: 390px) {
