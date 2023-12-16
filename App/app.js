@@ -384,10 +384,28 @@ function showResults() {
 
     if (resultContainer) {
         const scoreText = resultContainer.querySelector('.scoreText');
+       
 
         if (scoreText) {
             scoreText.textContent = 'Your score is: ' + correctAnswers + ' out of ' + totalQuestions;
 
+            const circularProgress = document.querySelector('.circular-progress');
+            const progressValue = document.querySelector('.progress-value');
+            let progressStartValue = -1;
+            let progressEndValue = (correctAnswers / totalQuestions) * 100;
+            let speed = 20;
+
+            let progress = setInterval(() => {
+                progressStartValue++;
+
+                progressValue.textContent = `${progressStartValue}%`;
+                circularProgress.style.background = `conic-gradient(#c40094 ${progressStartValue * 3.6}deg, rgba(255, 255, 255, .1) 0deg)`;
+
+                
+                if (progressStartValue == progressEndValue) {
+                    clearInterval(progress);
+                }
+            },speed);
            
             resultContainer.style.display = 'flex';
             questionCount = 1;

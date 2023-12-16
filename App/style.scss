@@ -206,7 +206,7 @@ header {
     justify-content: center;
     flex-direction: column;
     border: 15px;
-        
+    font-weight: 600;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -216,15 +216,14 @@ header {
     margin: 5px;  
     background: rgb(0, 0, 0, 0.8);
     border-radius: 5px;
-    border: 2px solid purple;
-    //opacity: 0;
+    border: 2px solid rgb(143, 25, 92);
     pointer-events: none;
 
     h2 {
         font-size: 45px;
         text-align: center;
         margin: 10px;
-        color: rgb(168, 0, 180);
+        color: rgb(233, 105, 122);
     }
     span {
         color: rgb(255, 255, 255);
@@ -232,6 +231,8 @@ header {
 
     .result-buttons {
         margin: 20px;
+        font-size: 30px;
+        font-weight:600;
         display: flex;
         width: 90%;
         align-self: center;
@@ -243,9 +244,10 @@ header {
     .play-again-button, .goHome {
         height: 50px;
         width: 150px;
-        background-color: #c40094;
+        background-color: rgba(0,0,0, 0.7);
+        box-shadow: 0 0 10px -2px white;
         color: aliceblue;
-        border-radius: 5px;
+        border-radius: 15px;
         cursor: pointer;
         transition: 0.3s;
         pointer-events: auto;
@@ -253,6 +255,8 @@ header {
             background-color: rgb(102, 0, 102);
             color: rgb(191, 165, 189);
             cursor: pointer;
+            transform: scale(1.1);
+
         }
     }
     
@@ -270,7 +274,7 @@ header {
         position: relative;
         width: 150px;
         height: 150px;
-        background: conic-gradient(#c40094 3.6deg, rgba(255, 255, 255, 0.1) 0deg);
+        background: conic-gradient(#c40094 3.6deg, rgba(255, 255, 255, .1) 0deg);
         border-radius: 50%;
         display: flex;
         justify-content: center;
@@ -288,8 +292,8 @@ header {
 
     }
     .progress-value {
-        position: relative;
-        font-size: 45px;
+        position: relative; 
+        font-size: 35px;
         font-weight: 600;
     }
    
