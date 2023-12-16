@@ -14,10 +14,10 @@ $backgroundBlackTransparent: rgba(0,0,0, 0.5);
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
     button:hover {
         cursor: pointer;
     }
+    cursor: default;
 }
 
 body {
@@ -50,8 +50,10 @@ header {
         transform-origin: 50% 50%;
         margin-right: 0.6%;
         margin-left: 0.6%;
+        path {
+            pointer-events: none;
+        }
     }  
-
     .settings:hover, .help:hover {
         cursor: pointer;
     }
@@ -60,7 +62,7 @@ header {
 
 /*
 ######################################
-            MAIN-CONTAINER      
+            START-CONTAINER      
 ######################################
 */
 
@@ -86,19 +88,23 @@ header {
         border: none;
         transition: all 0.3s;
         transform-origin: 50% 50%;
-
         span {
             margin: 0 auto;
             background-color: transparent;
             font-size: 1.7rem;
             color: white;
+            cursor: pointer;
         }
-
         &:active {
             background-color: white;
             color: black;
+        } 
+        svg {
+            cursor: pointer;
+            path {
+                pointer-events: none;
+            }
         }
-
     }
 
     h2 {
@@ -267,19 +273,13 @@ header {
 }
 
 .correct-answer {
-    // shine
     background: linear-gradient(90deg, rgba(205,255,205,1) 0%, rgba(128,255,128,1) 2%, rgba(0,182,0,1) 15%, rgba(0,147,0,1) 25%, rgba(0,147,0,1) 75%, rgba(0,182,0,1) 85%, rgba(128,255,128,1) 98%, rgba(205,255,205,1) 100%);
     color: white !important;
-    // shadow
-    //background: linear-gradient(90deg, rgba(0,87,0,1) 0%, rgba(0,147,0,1) 15%, rgba(0,162,0,1) 25%, rgba(0,162,0,1) 75%, rgba(0,147,0,1) 85%, rgba(0,87,0,1) 100%);
 }
 
 .wrong-answer {
-    // shine
     background: linear-gradient(90deg, rgba(255,205,205,1) 0%, rgba(255,128,128,1) 2%, rgba(182,0,0,1) 15%, rgba(147,0,0,1) 25%, rgba(147,0,0,1) 75%, rgba(182,0,0,1) 85%, rgba(255,128,128,1) 98%, rgba(255,205,205,1) 100%);
     color: white !important;
-    // shadow
-    //background: linear-gradient(90deg, rgba(87,0,0,1) 0%, rgba(147,0,0,1) 15%, rgba(162,0,0,1) 25%, rgba(162,0,0,1) 75%, rgba(147,0,0,1) 85%, rgba(87,0,0,1) 100%);
 }
 
 .real-answer {
@@ -307,7 +307,6 @@ header {
 
 .game-icons {
     @include flexDirectionJustify(row, center);
-
     width: 100%;
     .cancel-button {
         @include flexDirectionJustify(row, center);
@@ -318,21 +317,17 @@ header {
         height: 33px;
         font-size: 1rem;
         margin-top: 10%;
-    
+        cursor: pointer;
         &:hover {
-            cursor: pointer;
             scale: 1.5;
         }
-        &:active {
-            color: rgba(179,3,167,1);
-            svg {
-                stroke: rgba(179,3,167,1);
-            }
-        }
-    
         .cancel-icon {
             transition: scale 0.3s;
             transform-origin: 50% 50%;
+            cursor: inherit;
+            path {
+                pointer-events: none;
+            }
         }
     }
 }

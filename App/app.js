@@ -402,6 +402,7 @@ function activateQuestionTimer() {
         if(timerWidth <= 0) {
             clearInterval(interval)
             disableAnswerButtons();
+            continueText.style.display = "flex";
             for (let i = 0; i < answerButtons.length; i++) {
                 if (answerButtons[i].textContent === randomQuestion.correctAnswer) {
                     answerButtons[i].classList.add('real-answer');
