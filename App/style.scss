@@ -104,7 +104,7 @@ header {
     h2 {
         margin-top: 3%;
         color: white;
-        letter-spacing: 2px;
+        letter-spacing: 3px;
     }
 
     .difficulty-container {
@@ -118,7 +118,7 @@ header {
             overflow-x: auto;
             background-color: transparent;
             border: none;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: white;
             padding: 5%;
             margin: 0 5px;
@@ -206,14 +206,18 @@ header {
         visibility: visible;
         max-height: 100vw;
     }
-
+    display: flex;
+    align-items: center;
     ul {
         padding: 20px;
-        margin-top: 10%;
-        margin-left: 10%;
+        width: 80%;
+        height: auto;
 
         li {
            margin-top: 10%;
+        }
+        li:first-child {
+            margin-top: 0;
         }
     }
 }
@@ -296,7 +300,6 @@ header {
     height: 2%;
     background: white;
     border-radius: 4px;
-    margin-top: 2%;
     align-self: flex-start;
     margin-left: 0.5%;
     margin-top: 5%;
@@ -456,7 +459,7 @@ header {
 
 /*
 ######################################
-                IPHONE SE       
+               IPHONE SE
 ######################################
 */
 @media only screen and (max-width: 390px) {
@@ -465,10 +468,15 @@ header {
         width: 95%;
         height: 80vh;
         .question-text {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
         .answer-button {
-            font-size: 1rem;
+            font-size: 0.9rem;
+        }
+        .continue-text {
+            span {
+                font-size: 0.8rem;
+            }
         }
     }
     .settings, .help {
@@ -513,21 +521,23 @@ header {
 ######################################
 */
 
-@media only screen and (max-width: 280px) {
+@media only screen and (width: 280px) {
     .game-screen {
         margin: 1% auto;
         width: 95%;
         height: 80%;
 
         .question-text {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
         .answer-button {
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
     }
     .settings, .help {
         margin-bottom: 5%;
+        width: 33px ;
+        height: 33px;
     }
     .popup-left, .popup-right  {
         width: 41vw;
@@ -553,7 +563,10 @@ header {
         height: 80%;
 
         .play {
-            width: 80%;
+            width: 100%;
+            span {
+                font-size: 1.6rem;
+            }
         }
         .play:hover {
             cursor: pointer;
@@ -585,7 +598,7 @@ header {
 ######################################
 */
 
-@media only screen and (min-width: 391px) and (max-width: 480px) {
+@media only screen and (min-width: 391px) and (max-width: 767px) {
     .game-screen {
         margin: 1% auto;
         width: 95%;
@@ -643,16 +656,306 @@ header {
 */
 
 @media only screen and (min-width: 768px) and (max-width: 1024px){
-    .difficulty-container {
-        width: 50%;
-    }
-    .difficulty-container:hover {
-        cursor: pointer;
-    }
-    .start-container{
-        margin-top: 10%;
-        width: 100%;
+    .game-screen {
+        margin: 1% auto;
+        width: 95%;
         height: 80%;
+
+        .question-text {
+            font-size: 2rem;
+        }
+        .answer-button {
+            font-size: 1.5rem;
+        }
+        .continue-text span{
+            font-size: 1.3rem;
+        }
+    }
+    .settings, .help {
+        margin-bottom: 3%;
+        width: 66px ;
+        height: 66px;
+    }
+    .name-logo {
+        width: 65%;
+    }
+    .popup-left, .popup-right  {
+        width: 46vw;
+        height: 30vh;
+        font-size: 1.1rem;
+    }
+    .popup-right .mode {
+        width: 90%;
+        width: 80%;
+        margin: 4% auto;
+        font-size: 1.1rem;
+        &:first-child{
+            margin-top: 3%;
+        }
+    }
+    .popup-left {
+        font-size: 1.3rem;
+    }
+
+    .start-container {
+        margin-top: 10%;
+        width: 80%;
+        height: 80%;
+
+        .play {
+            width: 80%;
+        }
+        .play:hover {
+            cursor: pointer;
+        }
+
+        .difficulty-container {
+            width: 80%;
+        }
+        .difficulty-container:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+/*
+######################################
+             SURFACE DUO     
+######################################
+*/
+
+@media only screen and (width: 540px) and (height: 720px){
+    .game-screen {
+        margin: 1% auto;
+        width: 95%;
+        height: 80%;
+
+        .question-text {
+            font-size: 1.5rem;
+        }
+        .answer-button {
+            font-size: 1rem;
+        }
+        .continue-text span{
+            font-size: 0.9rem;
+        }
+    }
+    .settings, .help {
+        margin-bottom: 3%;
+        width: 44px ;
+        height: 44px;
+    }
+    .name-logo {
+        width: 65%;
+    }
+    .popup-left, .popup-right  {
+        width: 46vw;
+        height: 30vh;
+        font-size: 1.1rem;
+    }
+    .popup-right .mode {
+        width: 90%;
+        width: 80%;
+        margin: 4% auto;
+        font-size: 1.1rem;
+        &:first-child{
+            margin-top: 3%;
+        }
+    }
+    .popup-left {
+        font-size: 1rem;
+    }
+
+    .start-container {
+        margin-top: 10%;
+        width: 80%;
+        height: 80%;
+
+        .play {
+            width: 80%;
+        }
+        .play:hover {
+            cursor: pointer;
+        }
+
+        .difficulty-container {
+            width: 80%;
+        }
+        .difficulty-container:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+/*
+######################################
+               NEST HUB     
+######################################
+*/
+
+@media only screen and (width: 1024px) and (height: 600px){
+    .game-screen {
+        margin: 1% auto;
+        width: 70%;
+        height: 80%;
+        gap: 1%;
+
+        .timer {
+            margin-top: 2%;
+            height: 3%;
+        }
+        .question-text {
+            font-size: 1.5rem;
+        }
+        .answer-button {
+            font-size: 0.9rem;
+        }
+        .continue-text span{
+            font-size: 0.9rem;
+        }
+        .game-icons {
+            .cancel-button {
+                margin-top: 1%;
+            }
+        }
+    }
+    header {
+        justify-content: space-between;
+    }
+    .settings, .help {
+        margin-bottom: 1%;
+        width: 44px ;
+        height: 44px;
+    }
+    .name-logo {
+        width: 30%;
+    }
+    .popup-left, .popup-right  {
+        width: 46vw;
+        height: 34vh;
+        font-size: 1.1rem;
+    }
+    .popup-right .mode {
+        width: 80%;
+        margin: 2% auto;
+        font-size: 0.8rem;
+        &:first-child{
+            margin-top: 1%;
+        }
+    }
+    .popup-left {
+        font-size: 1rem;
+        ul li {
+            margin: 5%;
+        }
+    }
+
+    .start-container {
+        margin-top: 10%;
+        width: 70%;
+        height: 70%;
+
+        .play {
+            width: 80%;
+        }
+        .play:hover {
+            cursor: pointer;
+        }
+
+        .difficulty-container {
+            width: 80%;
+            height: 5%;
+        }
+        .difficulty-container:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+/*
+######################################
+             NEST HUB MAX     
+######################################
+*/
+
+@media only screen and (width: 1280px) and (height: 800px){
+    .game-screen {
+        margin: 1% auto;
+        width: 70%;
+        height: 80%;
+        gap: 2%;
+
+        .timer {
+            margin-top: 2%;
+            height: 3%;
+        }
+        .question-text {
+            font-size: 1.7rem;
+        }
+        .answer-button {
+            font-size: 1.1rem;
+        }
+        .continue-text span{
+            font-size: 1rem;
+            margin-bottom: 0%;
+        }
+        .game-icons {
+            .cancel-button {
+                margin-top: 3%;
+            }
+        }
+
+    }
+    header {
+        justify-content: space-between;
+    }
+    .settings, .help {
+        margin-bottom: 1%;
+        width: 44px ;
+        height: 44px;
+    }
+    .name-logo {
+        width: 30%;
+    }
+    .popup-left, .popup-right  {
+        width: 46vw;
+        height: 34vh;
+        font-size: 1.1rem;
+    }
+    .popup-right .mode {
+        width: 80%;
+        margin: 2% auto;
+        font-size: 0.8rem;
+        &:first-child{
+            margin-top: 1%;
+        }
+    }
+    .popup-left {
+        font-size: 1rem;
+        ul li {
+            margin: 5%;
+        }
+    }
+
+    .start-container {
+        margin-top: 10%;
+        width: 70%;
+        height: 70%;
+
+        .play {
+            width: 80%;
+        }
+        .play:hover {
+            cursor: pointer;
+        }
+
+        .difficulty-container {
+            width: 80%;
+            height: 5%;
+        }
+        .difficulty-container:hover {
+            cursor: pointer;
+        }
     }
 }
 
@@ -663,11 +966,47 @@ header {
 ######################################
 */
 
-@media only screen and (min-width: 1080px) {
-    header .logo:hover {
+@media only screen and (min-width: 1025px) {
+    header {
+        justify-content: space-between;
+
+        .settings:hover, .help:hover {
+            transform: scale(1.6);
+        }
+    }
+    .game-screen {
+        margin: 1% auto;
+        height: 80%;
+        gap: 2%;
+
+        .question-text {
+            font-size: 1.6rem;
+        }
+        .timer {
+            height: 1%;
+        }
+    }
+    .start-container {
+        width: 35vw;
+        height: 70vh;
+        .play {
+            width: min(300px, 35vw);
+        }
+    }
+
+
+    .start-container .play:hover {
+        width: 70%;
+        justify-content: space-evenly;
         cursor: pointer;
     }
-    header {
+    .cancel-button {
+        margin-top: 10%;
+    }
+}
+
+/*
+header {
         justify-content: space-between;
 
         .settings:hover, .help:hover {
@@ -682,4 +1021,4 @@ header {
     .cancel-button {
         margin-top: 10%;
     }
-}
+*/
