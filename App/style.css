@@ -409,6 +409,24 @@ header .settings:hover, header .help:hover {
 */
 /*
 ######################################
+              ALL MOBILES      
+######################################
+*/
+@media only screen and (max-width: 767px) {
+  .game-screen {
+    margin: 1% auto;
+    width: 95%;
+    height: 80vh;
+  }
+  .settings, .help {
+    margin-bottom: 5%;
+  }
+  .name-logo {
+    width: 60%;
+  }
+}
+/*
+######################################
                IPHONE SE
 ######################################
 */
@@ -426,12 +444,6 @@ header .settings:hover, header .help:hover {
   }
   .game-screen .continue-text span {
     font-size: 0.8rem;
-  }
-  .settings, .help {
-    margin-bottom: 5%;
-  }
-  .name-logo {
-    width: 60%;
   }
   .popup-left, .popup-right {
     width: 43vw;
@@ -452,14 +464,8 @@ header .settings:hover, header .help:hover {
   .start-container .play {
     width: 80%;
   }
-  .start-container .play:hover {
-    cursor: pointer;
-  }
   .start-container .difficulty-container {
     width: 85%;
-  }
-  .start-container .difficulty-container:hover {
-    cursor: pointer;
   }
 }
 /*
@@ -468,11 +474,6 @@ header .settings:hover, header .help:hover {
 ######################################
 */
 @media only screen and (width: 280px) {
-  .game-screen {
-    margin: 1% auto;
-    width: 95%;
-    height: 80%;
-  }
   .game-screen .question-text {
     font-size: 1.2rem;
   }
@@ -480,7 +481,6 @@ header .settings:hover, header .help:hover {
     font-size: 0.9rem;
   }
   .settings, .help {
-    margin-bottom: 5%;
     width: 33px;
     height: 33px;
   }
@@ -511,9 +511,6 @@ header .settings:hover, header .help:hover {
   .start-container .play span {
     font-size: 1.6rem;
   }
-  .start-container .play:hover {
-    cursor: pointer;
-  }
   .start-container h2 {
     letter-spacing: 0;
     font-size: 1.2rem;
@@ -528,9 +525,6 @@ header .settings:hover, header .help:hover {
     transform: scale(1.3);
     font-weight: bold;
   }
-  .start-container .difficulty-container:hover {
-    cursor: pointer;
-  }
 }
 /*
 ######################################
@@ -538,22 +532,11 @@ header .settings:hover, header .help:hover {
 ######################################
 */
 @media only screen and (min-width: 391px) and (max-width: 767px) {
-  .game-screen {
-    margin: 1% auto;
-    width: 95%;
-    height: 80%;
-  }
   .game-screen .question-text {
     font-size: 1.5rem;
   }
   .game-screen .answer-button {
     font-size: 1rem;
-  }
-  .settings, .help {
-    margin-bottom: 5%;
-  }
-  .name-logo {
-    width: 65%;
   }
   .popup-left, .popup-right {
     width: 44vw;
@@ -574,14 +557,8 @@ header .settings:hover, header .help:hover {
   .start-container .play {
     width: 80%;
   }
-  .start-container .play:hover {
-    cursor: pointer;
-  }
   .start-container .difficulty-container {
     width: 80%;
-  }
-  .start-container .difficulty-container:hover {
-    cursor: pointer;
   }
 }
 /*
@@ -637,14 +614,47 @@ header .settings:hover, header .help:hover {
   .start-container .play {
     width: 80%;
   }
-  .start-container .play:hover {
-    cursor: pointer;
-  }
   .start-container .difficulty-container {
     width: 80%;
   }
-  .start-container .difficulty-container:hover {
+}
+/*
+######################################
+                DESKTOP       
+######################################
+*/
+@media only screen and (min-width: 1025px) {
+  header {
+    justify-content: space-between;
+  }
+  header .settings:hover, header .help:hover {
+    transform: scale(1.6);
+  }
+  .game-screen {
+    margin: 1% auto;
+    height: 80%;
+    gap: 2%;
+  }
+  .game-screen .question-text {
+    font-size: 1.6rem;
+  }
+  .game-screen .timer {
+    height: 1%;
+  }
+  .start-container {
+    width: 35vw;
+    height: 70vh;
+  }
+  .start-container .play {
+    width: min(300px, 35vw);
+  }
+  .start-container .play:hover {
+    width: 70%;
+    justify-content: space-evenly;
     cursor: pointer;
+  }
+  .cancel-button {
+    margin-top: 10%;
   }
 }
 /*
@@ -700,14 +710,8 @@ header .settings:hover, header .help:hover {
   .start-container .play {
     width: 80%;
   }
-  .start-container .play:hover {
-    cursor: pointer;
-  }
   .start-container .difficulty-container {
     width: 80%;
-  }
-  .start-container .difficulty-container:hover {
-    cursor: pointer;
   }
 }
 /*
@@ -776,15 +780,9 @@ header .settings:hover, header .help:hover {
   .start-container .play {
     width: 80%;
   }
-  .start-container .play:hover {
-    cursor: pointer;
-  }
   .start-container .difficulty-container {
     width: 80%;
     height: 5%;
-  }
-  .start-container .difficulty-container:hover {
-    cursor: pointer;
   }
 }
 /*
@@ -854,70 +852,8 @@ header .settings:hover, header .help:hover {
   .start-container .play {
     width: 80%;
   }
-  .start-container .play:hover {
-    cursor: pointer;
-  }
   .start-container .difficulty-container {
     width: 80%;
     height: 5%;
   }
-  .start-container .difficulty-container:hover {
-    cursor: pointer;
-  }
-}
-/*
-######################################
-                DESKTOP       
-######################################
-*/
-@media only screen and (min-width: 1025px) {
-  header {
-    justify-content: space-between;
-  }
-  header .settings:hover, header .help:hover {
-    transform: scale(1.6);
-  }
-  .game-screen {
-    margin: 1% auto;
-    height: 80%;
-    gap: 2%;
-  }
-  .game-screen .question-text {
-    font-size: 1.6rem;
-  }
-  .game-screen .timer {
-    height: 1%;
-  }
-  .start-container {
-    width: 35vw;
-    height: 70vh;
-  }
-  .start-container .play {
-    width: min(300px, 35vw);
-  }
-  .start-container .play:hover {
-    width: 70%;
-    justify-content: space-evenly;
-    cursor: pointer;
-  }
-  .cancel-button {
-    margin-top: 10%;
-  }
-}
-/*
-header {
-        justify-content: space-between;
-
-        .settings:hover, .help:hover {
-            transform: scale(1.6);
-        }
-    }
-    .start-container .play:hover {
-        width: 70%;
-        justify-content: space-evenly;
-        cursor: pointer;
-    }
-    .cancel-button {
-        margin-top: 10%;
-    }
-*//*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
