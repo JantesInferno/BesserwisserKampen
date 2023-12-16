@@ -459,6 +459,27 @@ header {
 
 /*
 ######################################
+              ALL MOBILES      
+######################################
+*/
+
+@media only screen and (max-width: 767px) {
+        .game-screen {
+            margin: 1% auto;
+            width: 95%;
+            height: 80vh;
+        }
+        .settings, .help {
+            margin-bottom: 5%;
+        }
+        .name-logo {
+            width: 60%;
+        }
+}
+
+
+/*
+######################################
                IPHONE SE
 ######################################
 */
@@ -479,12 +500,6 @@ header {
             }
         }
     }
-    .settings, .help {
-        margin-bottom: 5%;
-    }
-    .name-logo {
-        width: 60%;
-    }
     .popup-left, .popup-right  {
         width: 43vw;
         height: 35vh;
@@ -503,14 +518,8 @@ header {
         .play {
             width: 80%;
         }
-        .play:hover {
-            cursor: pointer;
-        }
         .difficulty-container {
             width: 85%;
-        }
-        .difficulty-container:hover {
-            cursor: pointer;
         }
     }
 }
@@ -523,10 +532,6 @@ header {
 
 @media only screen and (width: 280px) {
     .game-screen {
-        margin: 1% auto;
-        width: 95%;
-        height: 80%;
-
         .question-text {
             font-size: 1.2rem;
         }
@@ -535,7 +540,6 @@ header {
         }
     }
     .settings, .help {
-        margin-bottom: 5%;
         width: 33px ;
         height: 33px;
     }
@@ -556,20 +560,15 @@ header {
         margin: 6% auto;
         font-size: 1.1rem;
     }
-
     .start-container {
         margin-top: 30%;
         width: 90%;
         height: 80%;
-
         .play {
             width: 100%;
             span {
                 font-size: 1.6rem;
             }
-        }
-        .play:hover {
-            cursor: pointer;
         }
         h2 {
             letter-spacing: 0;
@@ -586,9 +585,6 @@ header {
                 }
             }
         }
-        .difficulty-container:hover {
-            cursor: pointer;
-        }
     }
 }
 
@@ -600,22 +596,12 @@ header {
 
 @media only screen and (min-width: 391px) and (max-width: 767px) {
     .game-screen {
-        margin: 1% auto;
-        width: 95%;
-        height: 80%;
-
         .question-text {
             font-size: 1.5rem;
         }
         .answer-button {
             font-size: 1rem;
         }
-    }
-    .settings, .help {
-        margin-bottom: 5%;
-    }
-    .name-logo {
-        width: 65%;
     }
     .popup-left, .popup-right  {
         width: 44vw;
@@ -632,19 +618,11 @@ header {
         margin-top: 10%;
         width: 100%;
         height: 80%;
-
         .play {
             width: 80%;
         }
-        .play:hover {
-            cursor: pointer;
-        }
-
         .difficulty-container {
             width: 80%;
-        }
-        .difficulty-container:hover {
-            cursor: pointer;
         }
     }
 }
@@ -660,7 +638,6 @@ header {
         margin: 1% auto;
         width: 95%;
         height: 80%;
-
         .question-text {
             font-size: 2rem;
         }
@@ -696,25 +673,58 @@ header {
     .popup-left {
         font-size: 1.3rem;
     }
-
     .start-container {
         margin-top: 10%;
         width: 80%;
         height: 80%;
-
         .play {
             width: 80%;
         }
-        .play:hover {
-            cursor: pointer;
-        }
-
         .difficulty-container {
             width: 80%;
         }
-        .difficulty-container:hover {
-            cursor: pointer;
+    }
+}
+
+
+/*
+######################################
+                DESKTOP       
+######################################
+*/
+
+@media only screen and (min-width: 1025px) {
+    header {
+        justify-content: space-between;
+        .settings:hover, .help:hover {
+            transform: scale(1.6);
         }
+    }
+    .game-screen {
+        margin: 1% auto;
+        height: 80%;
+        gap: 2%;
+        .question-text {
+            font-size: 1.6rem;
+        }
+        .timer {
+            height: 1%;
+        }
+    }
+    .start-container {
+        width: 35vw;
+        height: 70vh;
+        .play {
+            width: min(300px, 35vw);
+        }
+    }
+    .start-container .play:hover {
+        width: 70%;
+        justify-content: space-evenly;
+        cursor: pointer;
+    }
+    .cancel-button {
+        margin-top: 10%;
     }
 }
 
@@ -729,7 +739,6 @@ header {
         margin: 1% auto;
         width: 95%;
         height: 80%;
-
         .question-text {
             font-size: 1.5rem;
         }
@@ -765,24 +774,15 @@ header {
     .popup-left {
         font-size: 1rem;
     }
-
     .start-container {
         margin-top: 10%;
         width: 80%;
         height: 80%;
-
         .play {
             width: 80%;
         }
-        .play:hover {
-            cursor: pointer;
-        }
-
         .difficulty-container {
             width: 80%;
-        }
-        .difficulty-container:hover {
-            cursor: pointer;
         }
     }
 }
@@ -799,7 +799,6 @@ header {
         width: 70%;
         height: 80%;
         gap: 1%;
-
         .timer {
             margin-top: 2%;
             height: 3%;
@@ -849,25 +848,16 @@ header {
             margin: 5%;
         }
     }
-
     .start-container {
         margin-top: 10%;
         width: 70%;
         height: 70%;
-
         .play {
             width: 80%;
         }
-        .play:hover {
-            cursor: pointer;
-        }
-
         .difficulty-container {
             width: 80%;
             height: 5%;
-        }
-        .difficulty-container:hover {
-            cursor: pointer;
         }
     }
 }
@@ -884,7 +874,6 @@ header {
         width: 70%;
         height: 80%;
         gap: 2%;
-
         .timer {
             margin-top: 2%;
             height: 3%;
@@ -904,7 +893,6 @@ header {
                 margin-top: 3%;
             }
         }
-
     }
     header {
         justify-content: space-between;
@@ -936,89 +924,16 @@ header {
             margin: 5%;
         }
     }
-
     .start-container {
         margin-top: 10%;
         width: 70%;
         height: 70%;
-
         .play {
             width: 80%;
         }
-        .play:hover {
-            cursor: pointer;
-        }
-
         .difficulty-container {
             width: 80%;
             height: 5%;
         }
-        .difficulty-container:hover {
-            cursor: pointer;
-        }
     }
 }
-
-
-/*
-######################################
-                DESKTOP       
-######################################
-*/
-
-@media only screen and (min-width: 1025px) {
-    header {
-        justify-content: space-between;
-
-        .settings:hover, .help:hover {
-            transform: scale(1.6);
-        }
-    }
-    .game-screen {
-        margin: 1% auto;
-        height: 80%;
-        gap: 2%;
-
-        .question-text {
-            font-size: 1.6rem;
-        }
-        .timer {
-            height: 1%;
-        }
-    }
-    .start-container {
-        width: 35vw;
-        height: 70vh;
-        .play {
-            width: min(300px, 35vw);
-        }
-    }
-
-
-    .start-container .play:hover {
-        width: 70%;
-        justify-content: space-evenly;
-        cursor: pointer;
-    }
-    .cancel-button {
-        margin-top: 10%;
-    }
-}
-
-/*
-header {
-        justify-content: space-between;
-
-        .settings:hover, .help:hover {
-            transform: scale(1.6);
-        }
-    }
-    .start-container .play:hover {
-        width: 70%;
-        justify-content: space-evenly;
-        cursor: pointer;
-    }
-    .cancel-button {
-        margin-top: 10%;
-    }
-*/
