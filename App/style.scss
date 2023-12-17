@@ -45,7 +45,7 @@ header {
         height: 50%;
     }
 
-    .settings, .help {
+    .settings, .help, .star-icon {
         transition: all 0.3s;
         transform-origin: 50% 50%;
         margin-right: 0.6%;
@@ -54,7 +54,7 @@ header {
             pointer-events: none;
         }
     }  
-    .settings:hover, .help:hover {
+    .settings:hover, .help:hover, .star-icon {
         cursor: pointer;
     }
 }
@@ -691,7 +691,7 @@ header {
 @media only screen and (min-width: 1025px) {
     header {
         justify-content: space-between;
-        .settings:hover, .help:hover {
+        .settings:hover, .help:hover, .star-icon:hover {
             transform: scale(1.6);
         }
     }
@@ -931,4 +931,40 @@ header {
             height: 5%;
         }
     }
+}
+
+$starStartPath: 'M334,113';
+.star {
+    // DESKTOP PATH
+    offset-path: path($starStartPath + ' C20,0 -500, -200 -495,-435');
+    animation: move 800ms 1 alternate ease-in-out;
+    height: 30px;
+    width: 30px;
+    display: none;
+    position: absolute;
+}
+
+@keyframes move {
+    0% {
+        offset-distance: 0;
+    }
+    100% {
+        offset-distance: 100%;
+    }
+}
+
+.star-container {
+    display: flex;
+    gap: 25%;
+    .score {
+        align-self: flex-end;
+        color: #d4cc02;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+    img {
+        mask: url("../star-icon.svg") center;
+    }
+    margin-right: 0.6%;
+    margin-left: 0.6%;
 }

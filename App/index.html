@@ -12,15 +12,17 @@
 <body>
 
     <header class="banner">
-        
+        <!--
             <svg xmlns="http://www.w3.org/2000/svg" class="help" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#c370be" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
                 <path d="M12 16v.01" />
                 <path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
-            </svg>
-
-        <img class="name-logo" src="../dark-logo.png" alt="">
+            </svg>-->
+            <div class="star-container">
+                <img class="star-icon" src="../star-icon.svg" alt="" width="44" height="44"><span class="score"></span>
+            </div>
+            <img class="name-logo" src="../dark-logo.png" alt="">
 
             <svg xmlns="http://www.w3.org/2000/svg" class="settings" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fc6a6a" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -48,8 +50,8 @@
     </div>
 
     <div class="start-container">
-        
-        <button class="play play-class-dark"><span>Starta nytt spel</span><svg xmlns="http://www.w3.org/2000/svg" class="icon-plus" width="33" height="33" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+        <button class="play play-class-dark"><span class="play-text">Starta nytt spel</span><svg xmlns="http://www.w3.org/2000/svg" class="icon-plus" width="33" height="33" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
             <path d="M9 12h6" />
@@ -77,9 +79,11 @@
             <span><b>-</b> Tap to continue <b>-</b></span>
         </div>
 
+
         <div class="answers-container">
             <button class="answer-button answer-class-dark answer-hover-dark">answer 1</button>
             <button class="answer-button answer-class-dark answer-hover-dark">answer 2</button>
+            <img class="star" src="../star-icon.svg" alt="">
             <button class="answer-button answer-class-dark answer-hover-dark">answer 3</button>
             <button class="answer-button answer-class-dark answer-hover-dark">answer 4</button>
         </div>

@@ -33,16 +33,16 @@ header {
 header .name-logo {
   height: 50%;
 }
-header .settings, header .help {
+header .settings, header .help, header .star-icon {
   transition: all 0.3s;
   transform-origin: 50% 50%;
   margin-right: 0.6%;
   margin-left: 0.6%;
 }
-header .settings path, header .help path {
+header .settings path, header .help path, header .star-icon path {
   pointer-events: none;
 }
-header .settings:hover, header .help:hover {
+header .settings:hover, header .help:hover, header .star-icon {
   cursor: pointer;
 }
 
@@ -636,7 +636,7 @@ header .settings:hover, header .help:hover {
   header {
     justify-content: space-between;
   }
-  header .settings:hover, header .help:hover {
+  header .settings:hover, header .help:hover, header .star-icon:hover {
     transform: scale(1.6);
   }
   .game-screen {
@@ -865,4 +865,37 @@ header .settings:hover, header .help:hover {
     width: 80%;
     height: 5%;
   }
+}
+.star {
+  offset-path: path("M334,113 C20,0 -500, -200 -495,-435");
+  animation: move 800ms 1 alternate ease-in-out;
+  height: 30px;
+  width: 30px;
+  display: none;
+  position: absolute;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+.star-container {
+  display: flex;
+  gap: 25%;
+  margin-right: 0.6%;
+  margin-left: 0.6%;
+}
+.star-container .score {
+  align-self: flex-end;
+  color: #d4cc02;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.star-container img {
+  -webkit-mask: url("../star-icon.svg") center;
+          mask: url("../star-icon.svg") center;
 }/*# sourceMappingURL=style.css.map */
