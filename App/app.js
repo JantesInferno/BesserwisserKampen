@@ -57,7 +57,7 @@ window.onload = function() {
      * EVENTLISTENERS
      * 
      */
-    scoreText.textContent = score;
+    scoreText.textContent = score
 
     playButton.addEventListener('click', function() {
         document.querySelector('.start-container').style.display = 'none';
@@ -346,12 +346,12 @@ function handleEvent(event) {
                 starImg.style.display = "block";
                 setTimeout(function() {
                     starImg.style.display = "none";
-                    scoreText.textContent = score;
-                    starButton.style.backgroundColor = "white";
+                    starButton.style.scale = "0.7";
                 }, 800);
                 setTimeout(function() {
-                    starButton.style.backgroundColor = "";
-                }, 900)
+                    starButton.style.scale = "1";
+                    scoreText.textContent = score;
+                }, 950)
                 localStorage.setItem('userScore', score);
             }
             else {

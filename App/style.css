@@ -894,8 +894,4 @@ header .settings:hover, header .help:hover, header .star-icon {
   color: #d4cc02;
   font-size: 1.2rem;
   font-weight: 500;
-}
-.star-container img {
-  -webkit-mask: url("../star-icon.svg") center;
-          mask: url("../star-icon.svg") center;
 }/*# sourceMappingURL=style.css.map */
