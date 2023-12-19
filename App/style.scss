@@ -255,6 +255,123 @@ header {
 }
 
 
+
+
+
+/*
+######################################
+          RESULT-CONTAINER       
+######################################
+*/
+
+.result-container {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 15px;
+    font-weight: 600;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: auto;
+    margin: 5px;  
+    background: rgb(0, 0, 0, 0.8);
+    border-radius: 5px;
+    border: 2px solid rgb(143, 25, 92);
+    pointer-events: none;
+
+    h2 {
+        font-size: 45px;
+        text-align: center;
+        margin: 10px;
+        color: rgb(233, 105, 122);
+    }
+    span {
+        color: rgb(255, 255, 255);
+    }
+
+    .result-buttons {
+        margin: 20px;
+        font-size: 30px;
+        font-weight:600;
+        display: flex;
+        width: 90%;
+        align-self: center;
+        justify-content: space-between;
+       
+        transition: 0.3s;
+
+    }
+    .play-again-button, .goHome {
+        height: 50px;
+        width: 150px;
+        background-color: rgba(0,0,0, 0.7);
+        box-shadow: 0 0 10px -2px white;
+        color: aliceblue;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+        pointer-events: auto;
+        &:hover {
+            background-color:rgba(0,0,0, 0.7);
+            color: #cb0163;
+            cursor: pointer;
+            transform: scale(1.1);
+
+        }
+    } 
+    
+    .calc-result-container {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0 40px;
+
+    }
+    .circular-progress {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        background: conic-gradient(#cb0163 3.6deg, rgba(255, 255, 255, .1) 0deg);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .circular-progress::before {
+        content: '';
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: rgb(8, 2, 26);
+        border-radius: 50%;
+
+    }
+    .progress-value {
+        position: relative; 
+        font-size: 35px;
+        font-weight: 600;
+    }
+   
+    .scoreText {
+        font-size: 26px;
+        font-weight: bold;
+        color: aliceblue;
+        margin-top: 20px;
+        font-weight: 600;
+    }
+    
+}
+
+
+
 /*
 ########################################################################################
                                       GAME SCREEN    
@@ -448,18 +565,6 @@ header {
     font-size: 1.2rem;
     font-weight: 500;
     box-shadow: 0 0 10px 2px rgba(0,4,78,1);
-}
-
-.answer-hover-dark {
-    &:hover {
-        background: black;
-    }
-}
-
-.answer-hover-light {
-    &:hover {
-        background: #a3a6f4;
-    }
 }
 
 .cancel-class-dark {
@@ -900,6 +1005,17 @@ header {
         .star-button4 {
             offset-path: path('M505,170 C20,0 -500, -200 -500,-435');
         }
+        .answer-hover-dark {
+            &:hover {
+                background: black;
+            }
+        }
+        
+        .answer-hover-light {
+            &:hover {
+                background: #a3a6f4;
+            }
+        }
     }
     .start-container {
         width: 35vw;
@@ -1126,121 +1242,4 @@ header {
             height: 5%;
         }
     }
-}
-
-
-
-/*
-
-PERS SCSS
-
-*/
-
-
-.result-container {
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border: 15px;
-    font-weight: 600;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 450px;
-    height: auto;
-    margin: 5px;  
-    background: rgb(0, 0, 0, 0.8);
-    border-radius: 5px;
-    border: 2px solid rgb(143, 25, 92);
-    pointer-events: none;
-
-    h2 {
-        font-size: 45px;
-        text-align: center;
-        margin: 10px;
-        color: rgb(233, 105, 122);
-    }
-    span {
-        color: rgb(255, 255, 255);
-    }
-
-    .result-buttons {
-        margin: 20px;
-        font-size: 30px;
-        font-weight:600;
-        display: flex;
-        width: 90%;
-        align-self: center;
-        justify-content: space-between;
-       
-        transition: 0.3s;
-
-    }
-    .play-again-button, .goHome {
-        height: 50px;
-        width: 150px;
-        background-color: rgba(0,0,0, 0.7);
-        box-shadow: 0 0 10px -2px white;
-        color: aliceblue;
-        border-radius: 15px;
-        cursor: pointer;
-        transition: 0.3s;
-        pointer-events: auto;
-        &:hover {
-            background-color:rgba(0,0,0, 0.7);
-            color: #cb0163;
-            cursor: pointer;
-            transform: scale(1.1);
-
-        }
-    }
-    
-    
-    
-    .calc-result-container {
-        width: 300px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 20px 0 40px;
-
-    }
-    .circular-progress {
-        position: relative;
-        width: 150px;
-        height: 150px;
-        background: conic-gradient(#cb0163 3.6deg, rgba(255, 255, 255, .1) 0deg);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-    }
-
-    .circular-progress::before {
-        content: '';
-        position: absolute;
-        width: 120px;
-        height: 120px;
-        background: rgb(8, 2, 26);
-        border-radius: 50%;
-
-    }
-    .progress-value {
-        position: relative; 
-        font-size: 35px;
-        font-weight: 600;
-    }
-   
-    .scoreText {
-        font-size: 26px;
-        font-weight: bold;
-        color: aliceblue;
-        margin-top: 20px;
-        font-weight: 600;
-    }
-    
 }

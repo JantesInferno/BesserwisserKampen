@@ -16,7 +16,7 @@ let scoreAverage = +localStorage.getItem('scoreAverage');
 let totalQuizesTaken = +localStorage.getItem('totalQuizesTaken');
 let currentQuiz;
 
-let index;
+let starIndex;
 
 let questionAnswered = false;
 let randomQuestion;
@@ -32,6 +32,12 @@ const lightMode = document.querySelector('.light');
 const englishMode = document.querySelector('.english');
 const swedishhMode = document.querySelector('.swedish');
 
+const playAgainButton = document.querySelector('.play-again-button');
+const goHomeButton = document.querySelector('.goHome');
+const totalQuestions = 10;
+let questionCount = 1;
+let correctAnswers = 0;
+let autoProceedTimeout;
 
 const easyButton = document.querySelector('.easy');
 const mediumButton = document.querySelector('.medium');
@@ -44,7 +50,7 @@ const answerButtons = document.querySelectorAll('.answer-button');
 
 const starImg = document.querySelector('.star');
 const starButton = document.querySelector('.star-icon');
-const scoreText = document.querySelector('.score');
+const scoreHeader = document.querySelector('.score');
 
 const popupScoreRight = document.querySelector('.right');
 const popupScoreWrong = document.querySelector('.wrong');
@@ -80,7 +86,7 @@ window.onload = function() {
     popupScoreWrong.textContent = scoreWrong;
     popupScorePercentage.textContent = scorePercentage + "%";
     popupScoreAverage.textContent = scoreAverage;
-    scoreText.textContent = score
+    scoreHeader.textContent = score
   
     startGame();
 
@@ -100,7 +106,6 @@ window.onload = function() {
         if(!target.classList.contains('popup') && !(target.classList.contains('settings') || target.classList.contains('help') || target.classList.contains('mode') || target.classList.contains('star-icon'))) {
             clearPopups()
             settingsButton.style.scale = '1';
-            //helpButton.style.scale = '1';
             starButton.style.scale = '1';
       }
     })
@@ -165,73 +170,10 @@ window.onload = function() {
  * 
  */
 
-function getRandomQuestion() {
-    let difficultyQuestions;
-
-    if (isEasy) {
-        difficultyQuestions = copyQuestions.filter(question => question.difficulty === "easy");
-    } 
-    else if (isMedium) {
-        difficultyQuestions = copyQuestions.filter(question => question.difficulty === "medium");
-    } 
-    else if (isHard) {
-        difficultyQuestions = copyQuestions.filter(question => question.difficulty === "hard");
-    }
-
-    if (difficultyQuestions && difficultyQuestions.length > 0) {
-        const randomQuestionIndex = Math.floor(Math.random() * difficultyQuestions.length);
-        randomQuestion = difficultyQuestions[randomQuestionIndex];
-        questionText.textContent = randomQuestion.question;
-
-        for (let i = 0; i < answerButtons.length; i++) {
-            answerButtons[i].classList.remove('correct-answer', 'wrong-answer', 'real-answer');
-            answerButtons[i].textContent = randomQuestion.answers[i];
-        }
-
-        const indexInCopyQuestions = copyQuestions.indexOf(randomQuestion);
-        copyQuestions.splice(indexInCopyQuestions, 1);
-    }
-
-}
-
-function getRandomQuestionSwedish() {
-    let difficultyQuestions;
-
-    if (isEasy) {
-        difficultyQuestions = copyQuestionsSwedish.filter(question => question.difficulty === "easy");
-    } 
-    else if (isMedium) {
-        difficultyQuestions = copyQuestionsSwedish.filter(question => question.difficulty === "medium");
-    } 
-    else if (isHard) {
-        difficultyQuestions = copyQuestionsSwedish.filter(question => question.difficulty === "hard");
-    }
-
-    if (difficultyQuestions && difficultyQuestions.length > 0) {
-        const randomQuestionIndex = Math.floor(Math.random() * difficultyQuestions.length);
-        randomQuestion = difficultyQuestions[randomQuestionIndex];
-        questionText.textContent = randomQuestion.question;
-
-        for (let i = 0; i < answerButtons.length; i++) {
-            answerButtons[i].classList.remove('correct-answer', 'wrong-answer', 'real-answer');
-            answerButtons[i].textContent = randomQuestion.answers[i];
-        }
-
-        const indexInCopyQuestionsSwedish = copyQuestionsSwedish.indexOf(randomQuestion);
-        copyQuestionsSwedish.splice(indexInCopyQuestionsSwedish, 1);
-    }
-
-}
-
-function startGame () {
-    copyQuestions = [...questions];
-    copyQuestionsSwedish = [...questionsSwedish];
-}
 
 const clearPopups = () => {
     document.querySelectorAll("[class^=popup]").forEach(text => text.classList.remove('open'));
 }
-
 
 
 function toggleSlidePopup (popupClass) {
@@ -244,6 +186,7 @@ function toggleSlidePopup (popupClass) {
     }
 }
 
+
 function toggleEnglish () {
     swedish = false;
     
@@ -254,12 +197,13 @@ function toggleEnglish () {
     buttonDifficulty[1].textContent = "Normal";
     buttonDifficulty[2].textContent = "Hard";
 
+    /*
     popupLis[0].textContent = "Do this";
     popupLis[1].textContent = "then do that";
     popupLis[2].textContent = "then do this";
     popupLis[3].textContent = "then do that";
     popupLis[4].textContent = "if !this then that is this";
-
+    */
 
     if (dark) {
         englishMode.style = "background: linear-gradient(90deg, rgba(12,2,181,1) 0%, rgba(179,3,167,1) 100%); color: white;";
@@ -281,11 +225,13 @@ function toggleSwedish () {
     buttonDifficulty[1].textContent = "Normal";
     buttonDifficulty[2].textContent = "Svår";
 
+    /*
     popupLis[0].textContent = "Gör si gör så";
     popupLis[1].textContent = "gör så gör si";
     popupLis[2].textContent = "om !si gör så";
     popupLis[3].textContent = "gör så som si";
     popupLis[4].textContent = "simsalabam";
+    */
 
     if (dark) {
         swedishhMode.style = "background: linear-gradient(90deg, rgba(12,2,181,1) 0%, rgba(179,3,167,1) 100%); color: white;";
@@ -296,6 +242,7 @@ function toggleSwedish () {
         englishMode.style = "background: white; color: black; border: 1px solid black;";
     }
 }
+
 
 function toggleLightMode () {
     dark = false;
@@ -321,7 +268,6 @@ function toggleLightMode () {
     timerStyle.classList.remove('timer-class-dark');
     timerStyle.classList.add('timer-class-light');
 
-    //helpButton.style.stroke = "#7058ad";
     settingsButton.style.stroke = "#499977";
 
     continueText.querySelector('span').style.color = "rgba(0,4,78,1)";
@@ -359,13 +305,11 @@ function toggleLightMode () {
 }
 
 
-
 function toggleDarkMode () {
     dark = true;
 
     playButton.classList.remove('play-class-light');
     playButton.classList.add('play-class-dark');
-
 
     answerButtons.forEach(x => {
         x.classList.remove('answer-class-light');
@@ -376,8 +320,6 @@ function toggleDarkMode () {
         }
     })
 
-
-
     questionStyle.classList.remove('question-class-light');
     questionStyle.classList.add('question-class-dark');
 
@@ -387,7 +329,6 @@ function toggleDarkMode () {
     timerStyle.classList.remove('timer-class-light');
     timerStyle.classList.add('timer-class-dark');
 
-    //helpButton.style.stroke = "#c370be";
     settingsButton.style.stroke = "#fc6a6a";
 
     continueText.querySelector('span').style.color = "white";
@@ -425,83 +366,217 @@ function toggleDarkMode () {
 }
 
 
+function startGame () {
+    copyQuestions = [...questions];
+    copyQuestionsSwedish = [...questionsSwedish];
+}
+
+function getRandomQuestion() {
+    let difficultyQuestions;
+
+    if (isEasy) {
+        difficultyQuestions = copyQuestions.filter(question => question.difficulty === "easy");
+    } 
+    else if (isMedium) {
+        difficultyQuestions = copyQuestions.filter(question => question.difficulty === "medium");
+    } 
+    else if (isHard) {
+        difficultyQuestions = copyQuestions.filter(question => question.difficulty === "hard");
+    }
+
+    if (difficultyQuestions && difficultyQuestions.length > 0) {
+        const randomQuestionIndex = Math.floor(Math.random() * difficultyQuestions.length);
+        randomQuestion = difficultyQuestions[randomQuestionIndex];
+        questionText.textContent = randomQuestion.question;
+
+        for (let i = 0; i < answerButtons.length; i++) {
+            answerButtons[i].classList.remove('correct-answer', 'wrong-answer', 'real-answer');
+            answerButtons[i].textContent = randomQuestion.answers[i];
+        }
+
+        const indexInCopyQuestions = copyQuestions.indexOf(randomQuestion);
+        copyQuestions.splice(indexInCopyQuestions, 1);
+
+        clearTimeout(autoProceedTimeout);
+        disableAnswerButtons(false);
+        starImg.classList.remove('star-button' + starIndex);
+    }
+}
+
+function getRandomQuestionSwedish() {
+    let difficultyQuestions;
+
+    if (isEasy) {
+        difficultyQuestions = copyQuestionsSwedish.filter(question => question.difficulty === "easy");
+    } 
+    else if (isMedium) {
+        difficultyQuestions = copyQuestionsSwedish.filter(question => question.difficulty === "medium");
+    } 
+    else if (isHard) {
+        difficultyQuestions = copyQuestionsSwedish.filter(question => question.difficulty === "hard");
+    }
+
+    if (difficultyQuestions && difficultyQuestions.length > 0) {
+        const randomQuestionIndex = Math.floor(Math.random() * difficultyQuestions.length);
+        randomQuestion = difficultyQuestions[randomQuestionIndex];
+        questionText.textContent = randomQuestion.question;
+
+        for (let i = 0; i < answerButtons.length; i++) {
+            answerButtons[i].classList.remove('correct-answer', 'wrong-answer', 'real-answer');
+            answerButtons[i].textContent = randomQuestion.answers[i];
+        }
+
+        const indexInCopyQuestionsSwedish = copyQuestionsSwedish.indexOf(randomQuestion);
+        copyQuestionsSwedish.splice(indexInCopyQuestionsSwedish, 1);
+
+        clearTimeout(autoProceedTimeout);
+        disableAnswerButtons(false);
+        starImg.classList.remove('star-button' + starIndex);
+    }
+}
 
 function handleEvent(event) {
 
     activateQuestionTimer();
 
-    if (event.type === 'load') {
-        //getRandomQuestion();
-    }
-    else if (event.type === 'click') {
+    if (event.type === 'click') {
         if (event.target.matches('.answer-button')) {
-
             stopQuestionTimer();
-
-            const chosenAnswer = event.target.textContent;
-            if (chosenAnswer === randomQuestion.correctAnswer) {
-                questionAnswered = true;
-                event.target.classList.add('correct-answer');
-                score++;
-                starImg.style.display = "block";
-                for (let i = 0; i < answerButtons.length; i++){
-                    if (event.target === answerButtons[i]) {
-                        starImg.classList.add('star-button' + ++i);
-                        index = i;
-                    }
-                }
-                setTimeout(function() {
-                    starImg.style.display = "none";
-                    starButton.style.scale = "0.7";
-                }, 800);
-                setTimeout(function() {
-                    starButton.style.scale = "1";
-                    addScore();
-                }, 950)
-
-
+            handleAnswer(event);
+        }
+        else if (playButton.contains(event.target)) {
+            if (swedish) {
+                getRandomQuestionSwedish();
             }
             else {
-                event.target.classList.add('wrong-answer');
-                for (let i = 0; i < answerButtons.length; i++) {
-                    if (answerButtons[i].textContent === randomQuestion.correctAnswer) {
-                        answerButtons[i].classList.add('real-answer');
-                        removeScore();
-                    }
-                }
-            }
-
-            disableAnswerButtons();
-
-            continueText.style.display = "flex";
-        }
-
-        else if (!event.target.matches('.answer-button') && event.target.id !== 'question-text') {
-            starImg.classList.remove('star-button' + index);
-            scoreText.textContent = score;
-            const randomQuestionIndex = Math.floor(Math.random() * questions.length);
-            randomQuestion = questions[randomQuestionIndex];
-            questionText.textContent = randomQuestion.question;
-
-
-            if (swedish === true) {
-                getRandomQuestionSwedish();
-                questionAnswered = false;
-            }
-            else if (swedish === false) {
                 getRandomQuestion();
-                questionAnswered = false;
             }
-
             starImg.style.display = "none";
-
-            disableAnswerButtons(false);
-
-            continueText.style.display = "none";
+            //continueText.style.display = "none";
+        }
+        else if (event.target.matches('.play-again-button')) {
+            resetGame();
+        } else if (event.target.matches('.goHome')) {
+            goToHome();
         }
     }
 }
 
+
+function handleAnswer(event) {
+    const chosenAnswer = event.target.textContent;
+
+    if (chosenAnswer === randomQuestion.correctAnswer) {
+        event.target.classList.add('correct-answer');
+        score++;
+        starImg.style.display = "block";
+        for (let i = 0; i < answerButtons.length; i++){
+            if (event.target === answerButtons[i]) {
+                starImg.classList.add('star-button' + ++i);
+                starIndex = i;
+                console.log(event.target === answerButtons[--i]);
+            }
+        }
+        console.log(starIndex);
+        setTimeout(function() {
+            starImg.style.display = "none";
+            starButton.style.scale = "0.7";
+        }, 800);
+        setTimeout(function() {
+            starButton.style.scale = "1";
+            addScore();
+        }, 950)
+        correctAnswers++;
+    }
+    else {
+        event.target.classList.add('wrong-answer');
+        for (let i = 0; i < answerButtons.length; i++) {
+            if (answerButtons[i].textContent === randomQuestion.correctAnswer) {
+                answerButtons[i].classList.add('real-answer');
+                removeScore();
+            }
+        }
+    }
+
+    disableAnswerButtons();
+    //continueText.style.display = "flex";
+
+    const resultContainer = document.querySelector('.result-container');
+    const scoreText = resultContainer.querySelector('.scoreText');
+    scoreText.textContent = 'Your score: ' + correctAnswers + ' out of ' + totalQuestions;
+
+    setTimeout(function () {
+        if (questionCount < totalQuestions) {
+            questionCount++;
+            if (swedish) {
+                getRandomQuestionSwedish();
+            }
+            else {
+                getRandomQuestion();
+            }
+            activateQuestionTimer();
+        } else {
+            showResults();
+        }
+    }, 1000);
+}
+
+
+function showResults() {
+    const resultContainer = document.querySelector('.result-container');
+
+    if (resultContainer) {
+        const scoreText = resultContainer.querySelector('.scoreText');
+       
+
+        if (scoreText) {
+            scoreText.textContent = 'Your score is: ' + correctAnswers + ' out of ' + totalQuestions;
+
+            const circularProgress = document.querySelector('.circular-progress');
+            const progressValue = document.querySelector('.progress-value');
+            let progressStartValue = -1;
+            let progressEndValue = (correctAnswers / totalQuestions) * 100;
+            let speed = 20;
+
+            let progress = setInterval(() => {
+                progressStartValue++;
+
+                progressValue.textContent = `${progressStartValue}%`;
+                circularProgress.style.background = `conic-gradient(#cb0163 ${progressStartValue * 3.6}deg, rgba(255, 255, 255, .1) 0deg)`;
+
+                
+                if (progressStartValue == progressEndValue) {
+                    clearInterval(progress);
+                }
+            },speed);
+           
+            resultContainer.style.display = 'flex';
+            questionCount = 1;
+            correctAnswers = 0;
+            questionAnswered = false;
+            document.querySelector('.game-screen').style.display = 'none';
+
+            
+            const playAgainButton = resultContainer.querySelector('.play-again-button');
+            const goHomeButton = resultContainer.querySelector('.goHome');
+
+            playAgainButton.addEventListener('click', resetGame);
+            goHomeButton.addEventListener('click', goToHome);
+        }
+    }
+}
+
+
+function resetGame() {
+    document.querySelector('.result-container').style.display = 'none';
+    document.querySelector('.game-screen').style.display = 'flex';
+    loadNewQuestion(); 
+}
+
+function goToHome() {
+    document.querySelector('.result-container').style.display = 'none';
+    document.querySelector('.start-container').style.display = 'flex';
+}
 
 function disableAnswerButtons(disable = true) {
     if (disable) {
@@ -556,7 +631,7 @@ function addScore() {
     scoreRight++;
     scorePercentage = Math.round((scoreRight/(scoreRight+scoreWrong)) * 100);
 
-    scoreText.textContent = score;
+    scoreHeader.textContent = score;
     popupScoreRight.textContent = scoreRight;
     popupScorePercentage.textContent = scorePercentage + "%";
 
@@ -569,7 +644,7 @@ function removeScore() {
     scoreWrong++;
     scorePercentage = Math.round((scoreRight/(scoreRight+scoreWrong)) * 100);
 
-    scoreText.textContent = --score;
+    scoreHeader.textContent = --score;
     popupScoreWrong.textContent = scoreWrong;
     popupScorePercentage.textContent = scorePercentage + "%";
 
