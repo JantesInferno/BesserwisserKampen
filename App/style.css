@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  cursor: default;
 }
 * button:hover, *::before button:hover, *::after button:hover {
   cursor: pointer;
@@ -32,19 +33,31 @@ header {
 header .name-logo {
   height: 50%;
 }
-header .settings, header .help {
+header .settings, header .help, header .star-icon {
   transition: all 0.3s;
   transform-origin: 50% 50%;
   margin-right: 0.6%;
   margin-left: 0.6%;
 }
-header .settings:hover, header .help:hover {
+header .settings path, header .help path, header .star-icon path {
+  pointer-events: none;
+}
+header .settings:hover, header .help:hover, header .star-icon {
   cursor: pointer;
+}
+header .star-container {
+  display: flex;
+}
+header .star-container .score {
+  color: #d4cc02;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transform-origin: 50% 50%;
 }
 
 /*
 ######################################
-            MAIN-CONTAINER      
+            START-CONTAINER      
 ######################################
 */
 .start-container, .game-screen {
@@ -78,10 +91,17 @@ header .settings:hover, header .help:hover {
   background-color: transparent;
   font-size: 1.7rem;
   color: white;
+  cursor: pointer;
 }
 .start-container .play:active, .game-screen .play:active {
   background-color: white;
   color: black;
+}
+.start-container .play svg, .game-screen .play svg {
+  cursor: pointer;
+}
+.start-container .play svg path, .game-screen .play svg path {
+  pointer-events: none;
 }
 .start-container h2, .game-screen h2 {
   margin-top: 3%;
@@ -288,22 +308,37 @@ header .settings:hover, header .help:hover {
   height: 33px;
   font-size: 1rem;
   margin-top: 10%;
+  cursor: pointer;
 }
 .game-icons .cancel-button:hover {
-  cursor: pointer;
   scale: 1.5;
-}
-.game-icons .cancel-button:active {
-  color: rgb(179, 3, 167);
-}
-.game-icons .cancel-button:active svg {
-  stroke: rgb(179, 3, 167);
 }
 .game-icons .cancel-button .cancel-icon {
   transition: scale 0.3s;
   transform-origin: 50% 50%;
+  cursor: inherit;
+}
+.game-icons .cancel-button .cancel-icon path {
+  pointer-events: none;
 }
 
+.star {
+  animation: move 800ms 1 alternate ease-in-out;
+  height: 30px;
+  width: 30px;
+  display: none;
+  position: absolute;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0;
+  }
+  100% {
+    transform: rotate(1700deg);
+    offset-distance: 100%;
+  }
+}
 /*
 ########################################################################################
                                     DARK/LIGHT MODE
@@ -424,6 +459,19 @@ header .settings:hover, header .help:hover {
   .name-logo {
     width: 60%;
   }
+  .star-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto;
+  }
+  .star-container span {
+    width: 100%;
+    text-align: center;
+  }
+  .star {
+    width: 22px;
+    height: 22px;
+  }
 }
 /*
 ######################################
@@ -444,6 +492,18 @@ header .settings:hover, header .help:hover {
   }
   .game-screen .continue-text span {
     font-size: 0.8rem;
+  }
+  .game-screen .star-button1 {
+    offset-path: path("M88,52 C20,0 -50, 0 35,-300");
+  }
+  .game-screen .star-button2 {
+    offset-path: path("M270,52 C20,0 -50, 0 35,-300");
+  }
+  .game-screen .star-button3 {
+    offset-path: path("M88,152 C20,0 -50, 0 35,-300");
+  }
+  .game-screen .star-button4 {
+    offset-path: path("M270,52 C20,0 -50, 0 35,-300");
   }
   .popup-left, .popup-right {
     width: 43vw;
@@ -467,6 +527,11 @@ header .settings:hover, header .help:hover {
   .start-container .difficulty-container {
     width: 85%;
   }
+  .star-icon {
+    align-self: center;
+    width: 33px;
+    height: 26px;
+  }
 }
 /*
 ######################################
@@ -480,6 +545,18 @@ header .settings:hover, header .help:hover {
   .game-screen .answer-button {
     font-size: 0.9rem;
   }
+  .game-screen .star-button1 {
+    offset-path: path("M65,54 C20,0 -50, 0 28,-290");
+  }
+  .game-screen .star-button2 {
+    offset-path: path("M200,54 C20,0 -50, 0 28,-290");
+  }
+  .game-screen .star-button3 {
+    offset-path: path("M65,160 C20,0 -50, 0 28,-290");
+  }
+  .game-screen .star-button4 {
+    offset-path: path("M200,160 C20,0 -50, 0 28,-290");
+  }
   .settings, .help {
     width: 33px;
     height: 33px;
@@ -487,18 +564,20 @@ header .settings:hover, header .help:hover {
   .popup-left, .popup-right {
     width: 41vw;
     height: 35vh;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
   .popup-left ul, .popup-right ul {
-    margin-left: 0;
+    width: 100%;
+    margin: 0;
   }
   .popup-left li, .popup-right li {
     margin: 0;
+    padding-right: 10px;
   }
   .popup-right .mode {
     width: 100%;
     margin: 6% auto;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
   .start-container {
     margin-top: 30%;
@@ -525,6 +604,15 @@ header .settings:hover, header .help:hover {
     transform: scale(1.3);
     font-weight: bold;
   }
+  .star-icon {
+    align-self: center;
+    width: 30px;
+    height: 22px;
+  }
+  .star {
+    width: 18px;
+    height: 18px;
+  }
 }
 /*
 ######################################
@@ -537,6 +625,18 @@ header .settings:hover, header .help:hover {
   }
   .game-screen .answer-button {
     font-size: 1rem;
+  }
+  .game-screen .star-button1 {
+    offset-path: path("M95,72 C20,0 -50, 0 40,-410");
+  }
+  .game-screen .star-button2 {
+    offset-path: path("M300,72 C20,0 -50, 0 40,-410");
+  }
+  .game-screen .star-button3 {
+    offset-path: path("M95,220 C20,0 -50, 0 40,-410");
+  }
+  .game-screen .star-button4 {
+    offset-path: path("M300,220 C20,0 -50, 0 40,-410");
   }
   .popup-left, .popup-right {
     width: 44vw;
@@ -559,6 +659,63 @@ header .settings:hover, header .help:hover {
   }
   .start-container .difficulty-container {
     width: 80%;
+  }
+}
+/*
+######################################
+               IHPONE XR       
+######################################
+*/
+@media only screen and (width: 414px) and (height: 896px) {
+  .game-screen .star-button1 {
+    offset-path: path("M95,72 C20,0 -50, 0 40,-400");
+  }
+  .game-screen .star-button2 {
+    offset-path: path("M300,72 C20,0 -50, 0 40,-400");
+  }
+  .game-screen .star-button3 {
+    offset-path: path("M95,220 C20,0 -50, 0 40,-400");
+  }
+  .game-screen .star-button4 {
+    offset-path: path("M300,220 C20,0 -50, 0 40,-400");
+  }
+}
+/*
+######################################
+             IPHONE 12 PRO      
+######################################
+*/
+@media only screen and (width: 390px) and (height: 844px) {
+  .game-screen .star-button1 {
+    offset-path: path("M92,68 C20,0 -50, 0 37,-380");
+  }
+  .game-screen .star-button2 {
+    offset-path: path("M278,68 C20,0 -50, 0 37,-380");
+  }
+  .game-screen .star-button3 {
+    offset-path: path("M92,205 C20,0 -50, 0 37,-380");
+  }
+  .game-screen .star-button4 {
+    offset-path: path("M278,205 C20,0 -50, 0 37,-380");
+  }
+}
+/*
+######################################
+          SAMSUNG GALAXY S8+      
+######################################
+*/
+@media only screen and (width: 360px) and (height: 740px) {
+  .game-screen .star-button1 {
+    offset-path: path("M83,60 C20,0 -50, 0 33,-332");
+  }
+  .game-screen .star-button2 {
+    offset-path: path("M255,60 C20,0 -50, 0 33,-332");
+  }
+  .game-screen .star-button3 {
+    offset-path: path("M83,180 C20,0 -50, 0 33,-332");
+  }
+  .game-screen .star-button4 {
+    offset-path: path("M255,180 C20,0 -50, 0 33,-332");
   }
 }
 /*
@@ -627,8 +784,12 @@ header .settings:hover, header .help:hover {
   header {
     justify-content: space-between;
   }
-  header .settings:hover, header .help:hover {
+  header .settings:hover, header .help:hover, header .star-icon:hover {
     transform: scale(1.6);
+  }
+  header .star-container .score {
+    align-self: center;
+    margin-left: 20%;
   }
   .game-screen {
     margin: 1% auto;
@@ -640,6 +801,18 @@ header .settings:hover, header .help:hover {
   }
   .game-screen .timer {
     height: 1%;
+  }
+  .game-screen .star-button1 {
+    offset-path: path("M165,60 C20,0 -500, -200 -500,-435");
+  }
+  .game-screen .star-button2 {
+    offset-path: path("M505,60 C20,0 -500, -200 -500,-435");
+  }
+  .game-screen .star-button3 {
+    offset-path: path("M165,170 C20,0 -500, -200 -500,-435");
+  }
+  .game-screen .star-button4 {
+    offset-path: path("M505,170 C20,0 -500, -200 -500,-435");
   }
   .start-container {
     width: 35vw;
@@ -856,4 +1029,26 @@ header .settings:hover, header .help:hover {
     width: 80%;
     height: 5%;
   }
+}
+.popup-left ul {
+  list-style: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+.popup-left ul li {
+  margin: 2%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  font-weight: bold;
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+.popup-left ul li .right {
+  color: lightgreen;
+}
+.popup-left ul li .wrong {
+  color: lightcoral;
+}
+.popup-left ul li .percentage, .popup-left ul li .score-average, .popup-left ul li .percentage-average {
+  color: lightgreen;
 }/*# sourceMappingURL=style.css.map */

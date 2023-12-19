@@ -8,6 +8,15 @@ let swedish = true;
 let dark = true;
 let timerWidth;
 let interval;
+let score = +localStorage.getItem('score');
+let scoreRight = +localStorage.getItem('scoreRight');
+let scoreWrong = +localStorage.getItem('scoreWrong');
+let scorePercentage = +localStorage.getItem('scorePercentage');
+let scoreAverage = +localStorage.getItem('scoreAverage');
+let totalQuizesTaken = +localStorage.getItem('totalQuizesTaken');
+let currentQuiz;
+
+let index;
 
 let questionAnswered = false;
 let randomQuestion;
@@ -28,6 +37,16 @@ const questionText = document.querySelector('.question-text');
 const continueText = document.querySelector('.continue-text');
 const answerButtons = document.querySelectorAll('.answer-button');
 
+const starImg = document.querySelector('.star');
+const starButton = document.querySelector('.star-icon');
+const scoreText = document.querySelector('.score');
+
+const popupScoreRight = document.querySelector('.right');
+const popupScoreWrong = document.querySelector('.wrong');
+const popupScorePercentage = document.querySelector('.percentage');
+const popupScoreAverage = document.querySelector('.score-average');
+
+
 
 // DARK/LIGHT-MODE VARIABLES
 
@@ -42,16 +61,16 @@ const buttonDifficulty = document.querySelectorAll('.button-difficulty');
 
 
 /**
- * LOAD EVENTLISTENERS
+ * LOAD EVENTLISTENERS & OUTPUT
  */
 
 window.onload = function() {
 
-    /**
-     * 
-     * EVENTLISTENERS
-     * 
-     */
+    popupScoreRight.textContent = scoreRight;
+    popupScoreWrong.textContent = scoreWrong;
+    popupScorePercentage.textContent = scorePercentage + "%";
+    popupScoreAverage.textContent = scoreAverage;
+    scoreText.textContent = score
 
     playButton.addEventListener('click', function() {
         document.querySelector('.start-container').style.display = 'none';
@@ -65,29 +84,29 @@ window.onload = function() {
     
 
     window.addEventListener('click', ({ target }) => {
-        if(!target.classList.contains('popup') && !(target.classList.contains('settings') || target.classList.contains('help') || target.classList.contains('mode'))) {
+        if(!target.classList.contains('popup') && !(target.classList.contains('settings') || target.classList.contains('help') || target.classList.contains('mode') || target.classList.contains('star-icon'))) {
             clearPopups()
             settingsButton.style.scale = '1';
-            helpButton.style.scale = '1';
+            //helpButton.style.scale = '1';
+            starButton.style.scale = '1';
       }
     })
 
 
 
     settingsButton.addEventListener('click', () => {
-        settingsButton.style.scale = '1.5';
         toggleSlidePopup(".popup-right");
         
     })
     
-    helpButton.addEventListener('click', () => {
-        helpButton.style.scale = '1.5';
+    starButton.addEventListener('click', () => {
         toggleSlidePopup('.popup-left');
     })
 
     cancelButton.addEventListener('click', () => {
         document.querySelector('.start-container').style.display = 'flex';
         document.querySelector('.game-screen').style.display = 'none';
+        addQuizStatistics()
     })
 
 
@@ -136,7 +155,7 @@ function toggleSlidePopup (popupClass) {
 function toggleEnglish () {
     swedish = false;
     
-    document.querySelector('span').textContent = "Start new game";
+    document.querySelector('.play-text').textContent = "Start new game";
     document.querySelector('h2').textContent = "Choose your difficulty level";
 
     buttonDifficulty[0].textContent = "Easy";
@@ -163,7 +182,7 @@ function toggleEnglish () {
 function toggleSwedish () {
     swedish = true;
     
-    document.querySelector('span').textContent = "Starta nytt spel";
+    document.querySelector('.play-text').textContent = "Starta nytt spel";
     document.querySelector('h2').textContent = "Välj svårighetsgrad";
 
     buttonDifficulty[0].textContent = "Lätt";
@@ -210,7 +229,7 @@ function toggleLightMode () {
     timerStyle.classList.remove('timer-class-dark');
     timerStyle.classList.add('timer-class-light');
 
-    helpButton.style.stroke = "#7058ad";
+    //helpButton.style.stroke = "#7058ad";
     settingsButton.style.stroke = "#499977";
 
     continueText.querySelector('span').style.color = "rgba(0,4,78,1)";
@@ -243,7 +262,7 @@ function toggleLightMode () {
 
     document.querySelector('.difficulty-header').style.color = "rgba(0,4,78,1)";
     document.querySelector('header').style.background = "rgba(255, 255, 255, 1)";
-    document.querySelector('span').style = "color: rgba(0,4,78,1); font-weight: bold;";
+    document.querySelector('.play-text').style = "color: rgba(0,4,78,1); font-weight: bold;";
     document.querySelector('.name-logo').src = "../light-logo.png";
 }
 
@@ -276,7 +295,7 @@ function toggleDarkMode () {
     timerStyle.classList.remove('timer-class-light');
     timerStyle.classList.add('timer-class-dark');
 
-    helpButton.style.stroke = "#c370be";
+    //helpButton.style.stroke = "#c370be";
     settingsButton.style.stroke = "#fc6a6a";
 
     continueText.querySelector('span').style.color = "white";
@@ -309,7 +328,7 @@ function toggleDarkMode () {
         
     document.querySelector('.difficulty-header').style.color = "white";
     document.querySelector('header').style.background = "rgba(0, 0, 0, 0.5)";
-    document.querySelector('span').style = "color: white;";
+    document.querySelector('.play-text').style = "color: white;";
     document.querySelector('.name-logo').src = "../dark-logo.png";
 }
 
@@ -337,12 +356,31 @@ function handleEvent(event) {
             if (chosenAnswer === randomQuestion.correctAnswer) {
                 questionAnswered = true;
                 event.target.classList.add('correct-answer');
+                score++;
+                starImg.style.display = "block";
+                for (let i = 0; i < answerButtons.length; i++){
+                    if (event.target === answerButtons[i]) {
+                        starImg.classList.add('star-button' + ++i);
+                        index = i;
+                    }
+                }
+                setTimeout(function() {
+                    starImg.style.display = "none";
+                    starButton.style.scale = "0.7";
+                }, 800);
+                setTimeout(function() {
+                    starButton.style.scale = "1";
+                    addScore();
+                }, 950)
+
+
             }
             else {
                 event.target.classList.add('wrong-answer');
                 for (let i = 0; i < answerButtons.length; i++) {
                     if (answerButtons[i].textContent === randomQuestion.correctAnswer) {
                         answerButtons[i].classList.add('real-answer');
+                        removeScore();
                     }
                 }
             }
@@ -351,7 +389,10 @@ function handleEvent(event) {
 
             continueText.style.display = "flex";
         }
-        else if (!event.target.matches('.answer-button') && event.target.id !== 'question-text') {
+        // else if (!event.target.matches('.answer-button') && event.target.id !== 'question-text') {
+        else {
+            starImg.classList.remove('star-button' + index);
+            scoreText.textContent = score;
             const randomQuestionIndex = Math.floor(Math.random() * questions.length);
             randomQuestion = questions[randomQuestionIndex];
             questionText.textContent = randomQuestion.question;
@@ -361,7 +402,7 @@ function handleEvent(event) {
                 answerButtons[i].textContent = randomQuestion.answers[i];
             }
             questionAnswered = false;
-            
+            starImg.style.display = "none";
             disableAnswerButtons(false);
 
             continueText.style.display = "none";
@@ -402,6 +443,7 @@ function activateQuestionTimer() {
         if(timerWidth <= 0) {
             clearInterval(interval)
             disableAnswerButtons();
+            continueText.style.display = "flex";
             for (let i = 0; i < answerButtons.length; i++) {
                 if (answerButtons[i].textContent === randomQuestion.correctAnswer) {
                     answerButtons[i].classList.add('real-answer');
@@ -416,4 +458,42 @@ function activateQuestionTimer() {
 
 function stopQuestionTimer() {
     clearInterval(interval);
+}
+
+function addScore() {
+    scoreRight++;
+    scorePercentage = Math.round((scoreRight/(scoreRight+scoreWrong)) * 100);
+    currentQuiz++;
+
+    scoreText.textContent = score;
+    popupScoreRight.textContent = scoreRight;
+    popupScorePercentage.textContent = scorePercentage + "%";
+
+    localStorage.setItem('score', score);
+    localStorage.setItem('scoreRight', scoreRight);
+    localStorage.setItem('scorePercentage', scorePercentage);
+}
+
+function removeScore() {
+    scoreWrong++;
+    scorePercentage = Math.round((scoreRight/(scoreRight+scoreWrong)) * 100);
+    currentQuiz--;
+
+    scoreText.textContent = --score;
+    popupScoreWrong.textContent = scoreWrong;
+    popupScorePercentage.textContent = scorePercentage + "%";
+
+    localStorage.setItem('score', score);
+    localStorage.setItem('scoreWrong', scoreWrong);
+    localStorage.setItem('scorePercentage', scorePercentage);
+}
+
+function addQuizStatistics() {
+    totalQuizesTaken++;
+    scoreAverage = Math.round(scoreRight/totalQuizesTaken * 100) / 100;
+
+    popupScoreAverage.textContent = scoreAverage;
+
+    localStorage.setItem('scoreAverage', scoreAverage);
+    localStorage.setItem('totalQuizesTaken', totalQuizesTaken);
 }
