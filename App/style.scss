@@ -57,6 +57,16 @@ header {
     .settings:hover, .help:hover, .star-icon {
         cursor: pointer;
     }
+    
+    .star-container {
+        display: flex;
+        .score {
+            color: #d4cc02;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transform-origin: 50% 50%;
+        }
+    }
 }
 
 
@@ -332,6 +342,24 @@ header {
     }
 }
 
+.star {
+    animation: move 800ms 1 alternate ease-in-out;
+    height: 30px;
+    width: 30px;
+    display: none;
+    position: absolute;
+}
+
+@keyframes move {
+    0% {
+        offset-distance: 0;
+    }
+    100% {
+        transform: rotate(1700deg);
+        offset-distance: 100%;
+    }
+}
+
 
 /*
 ########################################################################################
@@ -464,11 +492,24 @@ header {
             width: 95%;
             height: 80vh;
         }
-        .settings, .help {
+        .settings, .help{
             margin-bottom: 5%;
         }
         .name-logo {
             width: 60%;
+        }
+        .star-container {
+            flex-direction: column;
+            justify-content: flex-start;
+            height: auto;
+            span {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        .star {
+            width: 22px;
+            height: 22px;
         }
 }
 
@@ -494,6 +535,18 @@ header {
                 font-size: 0.8rem;
             }
         }
+        .star-button1 {
+            offset-path: path('M88,52 C20,0 -50, 0 35,-300');
+        }
+        .star-button2 {
+            offset-path: path('M270,52 C20,0 -50, 0 35,-300');
+        }
+        .star-button3 {
+            offset-path: path('M88,152 C20,0 -50, 0 35,-300');
+        }
+        .star-button4 {
+            offset-path: path('M270,52 C20,0 -50, 0 35,-300');
+        }
     }
     .popup-left, .popup-right  {
         width: 43vw;
@@ -517,6 +570,11 @@ header {
             width: 85%;
         }
     }
+    .star-icon {
+        align-self: center;
+        width: 33px;
+        height: 26px;
+    }
 }
 
 /*
@@ -533,6 +591,18 @@ header {
         .answer-button {
             font-size: 0.9rem;
         }
+        .star-button1 {
+            offset-path: path('M65,54 C20,0 -50, 0 28,-290');
+        }
+        .star-button2 {
+            offset-path: path('M200,54 C20,0 -50, 0 28,-290');
+        }
+        .star-button3 {
+            offset-path: path('M65,160 C20,0 -50, 0 28,-290');
+        }
+        .star-button4 {
+            offset-path: path('M200,160 C20,0 -50, 0 28,-290');
+        }
     }
     .settings, .help {
         width: 33px ;
@@ -541,19 +611,20 @@ header {
     .popup-left, .popup-right  {
         width: 41vw;
         height: 35vh;
-        font-size: 0.85rem;
-
+        font-size: 0.8rem;
         ul {
-         margin-left: 0;   
+            width: 100%;
+            margin: 0;   
         }
         li {
             margin: 0;
+            padding-right: 10px;
         }
     }
     .popup-right .mode {
         width: 100%;
         margin: 6% auto;
-        font-size: 1.1rem;
+        font-size: 0.9rem;
     }
     .start-container {
         margin-top: 30%;
@@ -581,6 +652,15 @@ header {
             }
         }
     }
+    .star-icon {
+        align-self: center;
+        width: 30px;
+        height: 22px;
+    }
+    .star {
+        width: 18px;
+        height: 18px;
+    }
 }
 
 /*
@@ -596,6 +676,18 @@ header {
         }
         .answer-button {
             font-size: 1rem;
+        }
+        .star-button1 {
+            offset-path: path('M95,72 C20,0 -50, 0 40,-410');
+        }
+        .star-button2 {
+            offset-path: path('M300,72 C20,0 -50, 0 40,-410');
+        }
+        .star-button3 {
+            offset-path: path('M95,220 C20,0 -50, 0 40,-410');
+        }
+        .star-button4 {
+            offset-path: path('M300,220 C20,0 -50, 0 40,-410');
         }
     }
     .popup-left, .popup-right  {
@@ -618,6 +710,75 @@ header {
         }
         .difficulty-container {
             width: 80%;
+        }
+    }
+}
+
+/*
+######################################
+               IHPONE XR       
+######################################
+*/
+
+@media only screen and (width: 414px) and (height: 896px){
+    .game-screen {
+        .star-button1 {
+            offset-path: path('M95,72 C20,0 -50, 0 40,-400');
+        }
+        .star-button2 {
+            offset-path: path('M300,72 C20,0 -50, 0 40,-400');
+        }
+        .star-button3 {
+            offset-path: path('M95,220 C20,0 -50, 0 40,-400');
+        }
+        .star-button4 {
+            offset-path: path('M300,220 C20,0 -50, 0 40,-400');
+        }
+    }
+}
+
+/*
+######################################
+             IPHONE 12 PRO      
+######################################
+*/
+
+@media only screen and (width: 390px) and (height: 844px){
+    .game-screen {
+        .star-button1 {
+            offset-path: path('M92,68 C20,0 -50, 0 37,-380');
+        }
+        .star-button2 {
+            offset-path: path('M278,68 C20,0 -50, 0 37,-380');
+        }
+        .star-button3 {
+            offset-path: path('M92,205 C20,0 -50, 0 37,-380');
+        }
+        .star-button4 {
+            offset-path: path('M278,205 C20,0 -50, 0 37,-380');
+        }
+    }
+}
+
+/*
+######################################
+          SAMSUNG GALAXY S8+      
+######################################
+*/
+
+@media only screen and (width: 360px) and (height: 740px){
+    .game-screen {
+        .star-button1 {
+            offset-path: path('M83,60 C20,0 -50, 0 33,-332');
+        }
+        .star-button2 {
+            offset-path: path('M255,60 C20,0 -50, 0 33,-332');
+        }
+        .star-button3 {
+            offset-path: path('M83,180 C20,0 -50, 0 33,-332');
+        }
+        .star-button4 {
+            offset-path: path('M255,180 C20,0 -50, 0 33,-332');
         }
     }
 }
@@ -694,6 +855,12 @@ header {
         .settings:hover, .help:hover, .star-icon:hover {
             transform: scale(1.6);
         }
+        .star-container {
+            .score {
+                align-self: center;
+                margin-left: 20%;
+            }
+        }
     }
     .game-screen {
         margin: 1% auto;
@@ -704,6 +871,18 @@ header {
         }
         .timer {
             height: 1%;
+        }
+        .star-button1 {
+            offset-path: path('M165,60 C20,0 -500, -200 -500,-435');
+        }
+        .star-button2 {
+            offset-path: path('M505,60 C20,0 -500, -200 -500,-435');
+        }
+        .star-button3 {
+            offset-path: path('M165,170 C20,0 -500, -200 -500,-435');
+        }
+        .star-button4 {
+            offset-path: path('M505,170 C20,0 -500, -200 -500,-435');
         }
     }
     .start-container {
@@ -933,35 +1112,28 @@ header {
     }
 }
 
-$starStartPath: 'M334,113';
-.star {
-    // DESKTOP PATH
-    offset-path: path($starStartPath + ' C20,0 -500, -200 -495,-435');
-    animation: move 800ms 1 alternate ease-in-out;
-    height: 30px;
-    width: 30px;
-    display: none;
-    position: absolute;
-}
-
-@keyframes move {
-    0% {
-        offset-distance: 0;
+.popup-left {
+    ul {
+        list-style: none;
+        background-color: rgba(0,0,0,0.5);
+        border-radius: 10px;
+        li{
+            margin: 2%;
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 5px;
+            font-weight: bold;
+            padding-left: 5px;
+            padding-bottom: 5px;
+            .right {
+                color: lightgreen;
+                
+            }
+            .wrong {
+                color: lightcoral;
+            }
+            .percentage, .score-average, .percentage-average {
+                color: lightgreen;
+            }
+        }
     }
-    100% {
-        offset-distance: 100%;
-    }
-}
-
-.star-container {
-    display: flex;
-    gap: 25%;
-    .score {
-        align-self: flex-end;
-        color: #d4cc02;
-        font-size: 1.2rem;
-        font-weight: 500;
-    }
-    margin-right: 0.6%;
-    margin-left: 0.6%;
 }

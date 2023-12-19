@@ -8,7 +8,15 @@ let swedish = true;
 let dark = true;
 let timerWidth;
 let interval;
-let score = localStorage.getItem('userScore');
+let score = +localStorage.getItem('score');
+let scoreRight = +localStorage.getItem('scoreRight');
+let scoreWrong = +localStorage.getItem('scoreWrong');
+let scorePercentage = +localStorage.getItem('scorePercentage');
+let scoreAverage = +localStorage.getItem('scoreAverage');
+let totalQuizesTaken = +localStorage.getItem('totalQuizesTaken');
+let currentQuiz;
+
+let index;
 
 let questionAnswered = false;
 let randomQuestion;
@@ -33,6 +41,12 @@ const starImg = document.querySelector('.star');
 const starButton = document.querySelector('.star-icon');
 const scoreText = document.querySelector('.score');
 
+const popupScoreRight = document.querySelector('.right');
+const popupScoreWrong = document.querySelector('.wrong');
+const popupScorePercentage = document.querySelector('.percentage');
+const popupScoreAverage = document.querySelector('.score-average');
+
+
 
 // DARK/LIGHT-MODE VARIABLES
 
@@ -47,16 +61,15 @@ const buttonDifficulty = document.querySelectorAll('.button-difficulty');
 
 
 /**
- * LOAD EVENTLISTENERS
+ * LOAD EVENTLISTENERS & OUTPUT
  */
 
 window.onload = function() {
 
-    /**
-     * 
-     * EVENTLISTENERS
-     * 
-     */
+    popupScoreRight.textContent = scoreRight;
+    popupScoreWrong.textContent = scoreWrong;
+    popupScorePercentage.textContent = scorePercentage + "%";
+    popupScoreAverage.textContent = scoreAverage;
     scoreText.textContent = score
 
     playButton.addEventListener('click', function() {
@@ -93,6 +106,7 @@ window.onload = function() {
     cancelButton.addEventListener('click', () => {
         document.querySelector('.start-container').style.display = 'flex';
         document.querySelector('.game-screen').style.display = 'none';
+        addQuizStatistics()
     })
 
 
@@ -344,21 +358,29 @@ function handleEvent(event) {
                 event.target.classList.add('correct-answer');
                 score++;
                 starImg.style.display = "block";
+                for (let i = 0; i < answerButtons.length; i++){
+                    if (event.target === answerButtons[i]) {
+                        starImg.classList.add('star-button' + ++i);
+                        index = i;
+                    }
+                }
                 setTimeout(function() {
                     starImg.style.display = "none";
                     starButton.style.scale = "0.7";
                 }, 800);
                 setTimeout(function() {
                     starButton.style.scale = "1";
-                    scoreText.textContent = score;
+                    addScore();
                 }, 950)
-                localStorage.setItem('userScore', score);
+
+
             }
             else {
                 event.target.classList.add('wrong-answer');
                 for (let i = 0; i < answerButtons.length; i++) {
                     if (answerButtons[i].textContent === randomQuestion.correctAnswer) {
                         answerButtons[i].classList.add('real-answer');
+                        removeScore();
                     }
                 }
             }
@@ -367,7 +389,10 @@ function handleEvent(event) {
 
             continueText.style.display = "flex";
         }
-        else if (!event.target.matches('.answer-button') && event.target.id !== 'question-text') {
+        // else if (!event.target.matches('.answer-button') && event.target.id !== 'question-text') {
+        else {
+            starImg.classList.remove('star-button' + index);
+            scoreText.textContent = score;
             const randomQuestionIndex = Math.floor(Math.random() * questions.length);
             randomQuestion = questions[randomQuestionIndex];
             questionText.textContent = randomQuestion.question;
@@ -433,4 +458,42 @@ function activateQuestionTimer() {
 
 function stopQuestionTimer() {
     clearInterval(interval);
+}
+
+function addScore() {
+    scoreRight++;
+    scorePercentage = Math.round((scoreRight/(scoreRight+scoreWrong)) * 100);
+    currentQuiz++;
+
+    scoreText.textContent = score;
+    popupScoreRight.textContent = scoreRight;
+    popupScorePercentage.textContent = scorePercentage + "%";
+
+    localStorage.setItem('score', score);
+    localStorage.setItem('scoreRight', scoreRight);
+    localStorage.setItem('scorePercentage', scorePercentage);
+}
+
+function removeScore() {
+    scoreWrong++;
+    scorePercentage = Math.round((scoreRight/(scoreRight+scoreWrong)) * 100);
+    currentQuiz--;
+
+    scoreText.textContent = --score;
+    popupScoreWrong.textContent = scoreWrong;
+    popupScorePercentage.textContent = scorePercentage + "%";
+
+    localStorage.setItem('score', score);
+    localStorage.setItem('scoreWrong', scoreWrong);
+    localStorage.setItem('scorePercentage', scorePercentage);
+}
+
+function addQuizStatistics() {
+    totalQuizesTaken++;
+    scoreAverage = Math.round(scoreRight/totalQuizesTaken * 100) / 100;
+
+    popupScoreAverage.textContent = scoreAverage;
+
+    localStorage.setItem('scoreAverage', scoreAverage);
+    localStorage.setItem('totalQuizesTaken', totalQuizesTaken);
 }
