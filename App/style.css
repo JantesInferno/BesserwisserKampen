@@ -125,13 +125,8 @@ header .star-container .score {
   color: white;
   padding: 5%;
   margin: 0 5px;
-  transition: all 0.3s;
+  transition: transform 0.3s;
   transform-origin: 50% 50%;
-}
-.start-container .difficulty-container .button-difficulty:hover, .game-screen .difficulty-container .button-difficulty:hover {
-  transform: scale(1.5);
-  font-size: 1.8rem;
-  font-weight: bold;
 }
 
 /*
@@ -541,6 +536,31 @@ header .star-container .score {
 
 .timer-class-light {
   background: linear-gradient(90deg, rgb(112, 88, 173) 0%, rgb(73, 153, 119) 100%);
+}
+
+.active-difficulty-dark {
+  border-bottom: 2px solid white !important;
+}
+
+.active-difficulty-light {
+  border-bottom: 2px solid rgb(0, 4, 78) !important;
+  border-radius: 2px;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.difficulty-no-hover {
+  transform: none;
+  pointer-events: none;
+}
+
+.difficulty-hover {
+  cursor: pointer;
+}
+.difficulty-hover:hover {
+  transform: scale(1.5);
+  font-size: 1.8rem;
+  font-weight: bold;
 }
 
 /*

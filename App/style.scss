@@ -138,14 +138,8 @@ header {
             color: white;
             padding: 5%;
             margin: 0 5px;
-            transition: all 0.3s;
+            transition: transform 0.3s;
             transform-origin: 50% 50%;
-
-            &:hover {
-                transform: scale(1.5);
-                font-size: 1.8rem;
-                font-weight: bold;
-            }
         }
     }
 }
@@ -593,7 +587,30 @@ header {
 }
 
 
+.active-difficulty-dark {
+    border-bottom: 2px solid white !important;
+}
 
+.active-difficulty-light {
+    border-bottom: 2px solid rgba(0,4,78,1) !important;
+    border-radius: 2px;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.difficulty-no-hover {
+    transform: none;
+    pointer-events: none;
+}
+
+.difficulty-hover {
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.5);
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+}
 
 /*
 ########################################################################################
