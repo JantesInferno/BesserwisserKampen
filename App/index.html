@@ -12,21 +12,23 @@
 <body>
 
     <header class="banner">
+        <!--
+            <svg xmlns="http://www.w3.org/2000/svg" class="help" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#c370be" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                <path d="M12 16v.01" />
+                <path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
+            </svg>-->
+            <div class="star-container">
+                <img class="star-icon" src="../bowtie.png" alt="" width="44" height="34"><span class="score"></span>
+            </div>
+            <img class="name-logo" src="../dark-logo.png" alt="">
 
-        <svg xmlns="http://www.w3.org/2000/svg" class="help" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
-            <path d="M12 16v.01" />
-            <path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
-        </svg>
-
-        <img class="name-logo" src="../dark-logo.png" alt="">
-
-        <svg xmlns="http://www.w3.org/2000/svg" class="settings" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
-            <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-        </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="settings" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fc6a6a" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
+                <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+            </svg>
 
     </header>
 
@@ -39,23 +41,24 @@
 
     <div class="popup-left">
         <ul>
-            <li>Gör si gör så</li>
-            <li>gör så gör si</li>
-            <li>om !si gör så</li>
-            <li>gör så som si</li>
-            <li>simsalabim</li>
+            <li>Rätt/fel</li>
+            <li><span class="right"></span> / <span class="wrong"></span></li>
+            <li>Procent</li>
+            <li><span class="percentage"></span></li>
+            <li>Snitt/Quiz</li>
+            <li><span class="score-average"></span></li>
         </ul>
     </div>
 
     <div class="start-container">
-        
-        <button class="play play-class-dark"><span>Starta nytt spel</span><svg xmlns="http://www.w3.org/2000/svg" class="icon-plus" width="33" height="33" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+        <button class="play play-class-dark"><span class="play-text">Starta nytt spel</span><svg xmlns="http://www.w3.org/2000/svg" class="icon-plus" width="33" height="33" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
             <path d="M9 12h6" />
             <path d="M12 9v6" />
             </svg></button>
-        
+
         <h2 class="difficulty-header">Välj svårighetsgrad</h2>
 
         <div class="difficulty-container">
@@ -66,7 +69,6 @@
 
     </div>
     
-
     <div class="game-screen">
 
         <div class="question">
@@ -74,25 +76,33 @@
             
         </div>
 
-
-        <div class="answers-container">
-            <button class="answer-button answer-class-dark">answer 1</button>
-            <button class="answer-button answer-class-dark">answer 2</button>
-            <button class="answer-button answer-class-dark">answer 3</button>
-            <button class="answer-button answer-class-dark">answer 4</button>
+        <div class="continue-text">
+            <span><b>-</b> Tap to continue <b>-</b></span>
         </div>
 
-        <div class="game-icons">
-            <button class="cancel-button cancel-class-dark">Avbryt
-                <svg xmlns="http://www.w3.org/2000/svg" class="cancel-icon" width="33" height="33" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+        <div class="answers-container">
+            <button class="answer-button answer-class-dark answer-hover-dark" value="1">answer 1</button>
+            <button class="answer-button answer-class-dark answer-hover-dark" value="2">answer 2</button>
+            <img class="star" src="../bowtie.png" alt="">
+            <button class="answer-button answer-class-dark answer-hover-dark" value="3">answer 3</button>
+            <button class="answer-button answer-class-dark answer-hover-dark" value="4">answer 4</button>
+        </div>
+
+        <div class="timer timer-class-dark"></div>
+        
+       <div class="game-icons">
+            <button class="cancel-button cancel-class-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" class="cancel-icon" width="33" height="33" viewBox="0 0 24 24" stroke-width="1.5" stroke="red" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
                     <path d="M10 8l4 8" />
                     <path d="M10 16l4 -8" />
                   </svg>
+                  Avbryt
             </button>
         </div>
-
+        
     </div>
 
 
