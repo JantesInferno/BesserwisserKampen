@@ -4,8 +4,7 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   cursor: default;
 }
-
-button:hover {
+* button:hover, *::before button:hover, *::after button:hover {
   cursor: pointer;
 }
 
@@ -213,7 +212,9 @@ header .star-container .score {
 .popup-left ul li {
   margin-top: 10%;
 }
-// pers branch
+.popup-left ul li:first-child {
+  margin-top: 0;
+}
 
 .result-container {
   display: flex;
@@ -307,7 +308,6 @@ header .star-container .score {
   margin-top: 20px;
   font-weight: 600;
 }
-
 
 /*
 ########################################################################################

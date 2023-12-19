@@ -21,6 +21,7 @@ let index;
 let questionAnswered = false;
 let randomQuestion;
 
+const body = document.querySelector('body');
 const playButton = document.querySelector('.play');
 const settingsButton = document.querySelector('.settings');
 const helpButton = document.querySelector('.help');
@@ -207,6 +208,7 @@ function getRandomQuestion() {
 
         const indexInCopyQuestions = copyQuestions.indexOf(randomQuestion);
         copyQuestions.splice(indexInCopyQuestions, 1);
+        clearTimeout(autoProceedTimeout);
     }
 
 }
@@ -236,6 +238,7 @@ function getRandomQuestionSwedish() {
 
         const indexInCopyQuestionsSwedish = copyQuestionsSwedish.indexOf(randomQuestion);
         copyQuestionsSwedish.splice(indexInCopyQuestionsSwedish, 1);
+        clearTimeout(autoProceedTimeout);
     }
 
 }
@@ -444,12 +447,14 @@ function toggleDarkMode () {
 
 
 function handleEvent(event) {
+    activateQuestionTimer();
     if (event.type === 'load') {
-        loadNewQuestion();
+        // loadNewQuestion();
     } else if (event.type === 'click') {
         if (event.target.matches('.answer-button') && !questionAnswered) {
+            stopQuestionTimer();
             handleAnswer(event);
-        } else if (!event.target.matches('.answer-button') && event.target.id !== 'question-text') {
+        } else if (event.target.matches('.play')) {
             loadNewQuestion();
         } else if (event.target.matches('.play-again-button')) {
             resetGame();
@@ -460,18 +465,26 @@ function handleEvent(event) {
 }
 
 function loadNewQuestion() {
-    const randomQuestionIndex = Math.floor(Math.random() * questions.length);
-    randomQuestion = questions[randomQuestionIndex];
-    questionText.textContent = randomQuestion.question;
+    starImg.classList.remove('star-button' + index);
+    scoreText.textContent = score;
+    // const randomQuestionIndex = Math.floor(Math.random() * difficultyQuestions.length);
+    //     randomQuestion = difficultyQuestions[randomQuestionIndex];
+    //     questionText.textContent = randomQuestion.question;
 
-    for (let i = 0; i < answerButtons.length; i++) {
-        answerButtons[i].classList.remove('correct-answer', 'wrong-answer', 'real-answer');
-        answerButtons[i].textContent = randomQuestion.answers[i];
+    if (swedish === true) {
+        getRandomQuestionSwedish();
+        questionAnswered = false;
+    }
+    else if (swedish === false) {
+        getRandomQuestion();
+        questionAnswered = false;
     }
 
-    clearTimeout(autoProceedTimeout);
+    starImg.style.display = "none";
 
-    questionAnswered = false;
+    disableAnswerButtons(false);
+
+    // continueText.style.display = "none";
 }
 
 function handleAnswer(event) {
@@ -493,15 +506,32 @@ function handleAnswer(event) {
         
         if (isCorrect) {
             event.target.classList.add('correct-answer');
+            score++;
+            starImg.style.display = "block";
+            for (let i = 0; i < answerButtons.length; i++){
+                if (event.target === answerButtons[i]) {
+                    starImg.classList.add('star-button' + ++i);
+                    index = i;
+                }
+            }
+            setTimeout(function() {
+                starImg.style.display = "none";
+                starButton.style.scale = "0.7";
+            }, 800);
+            setTimeout(function() {
+                starButton.style.scale = "1";
+                addScore();
+            }, 950)
         } else {
             event.target.classList.add('wrong-answer');
             for (let i = 0; i < answerButtons.length; i++) {
                 if (answerButtons[i].textContent === randomQuestion.correctAnswer) {
                     answerButtons[i].classList.add('real-answer');
+                    removeScore();
                 }
             }
         }
-
+        disableAnswerButtons();
        
         setTimeout(function () {
             if (questionCount < totalQuestions) {
@@ -554,87 +584,86 @@ function showResults() {
 
             playAgainButton.addEventListener('click', resetGame);
             goHomeButton.addEventListener('click', goToHome);
-        } else {
-            console.error("Fel: scoreText hittades inte i resultContainer");
-
-function handleEvent(event) {
-
-    activateQuestionTimer();
-
-    if (event.type === 'load') {
-        //getRandomQuestion();
-    }
-    else if (event.type === 'click') {
-        if (event.target.matches('.answer-button')) {
-
-            stopQuestionTimer();
-
-            const chosenAnswer = event.target.textContent;
-            if (chosenAnswer === randomQuestion.correctAnswer) {
-                questionAnswered = true;
-                event.target.classList.add('correct-answer');
-                score++;
-                starImg.style.display = "block";
-                for (let i = 0; i < answerButtons.length; i++){
-                    if (event.target === answerButtons[i]) {
-                        starImg.classList.add('star-button' + ++i);
-                        index = i;
-                    }
-                }
-                setTimeout(function() {
-                    starImg.style.display = "none";
-                    starButton.style.scale = "0.7";
-                }, 800);
-                setTimeout(function() {
-                    starButton.style.scale = "1";
-                    addScore();
-                }, 950)
-
-
-            }
-            else {
-                event.target.classList.add('wrong-answer');
-                for (let i = 0; i < answerButtons.length; i++) {
-                    if (answerButtons[i].textContent === randomQuestion.correctAnswer) {
-                        answerButtons[i].classList.add('real-answer');
-                        removeScore();
-                    }
-                }
-            }
-
-            disableAnswerButtons();
-
-            continueText.style.display = "flex";
-        }
-
-        else if (!event.target.matches('.answer-button') && event.target.id !== 'question-text') {
-            starImg.classList.remove('star-button' + index);
-            scoreText.textContent = score;
-            const randomQuestionIndex = Math.floor(Math.random() * questions.length);
-            randomQuestion = questions[randomQuestionIndex];
-            questionText.textContent = randomQuestion.question;
-
-
-            if (swedish === true) {
-                getRandomQuestionSwedish();
-                questionAnswered = false;
-            }
-            else if (swedish === false) {
-                getRandomQuestion();
-                questionAnswered = false;
-            }
-
-            starImg.style.display = "none";
-
-            disableAnswerButtons(false);
-
-            continueText.style.display = "none";
-
-        }
-    } else {
-        console.error("Fel: resultContainer hittades inte");
+        } 
     }
 }
+// function handleEvent(event) {
+
+    
+
+//     // if (event.type === 'load') {
+//     //     //getRandomQuestion();
+//     // }
+//     if (event.type === 'click') {
+//         if (event.target.matches('.answer-button')) {
+
+
+//             const chosenAnswer = event.target.textContent;
+//             if (chosenAnswer === randomQuestion.correctAnswer) {
+//                 questionAnswered = true;
+//                 event.target.classList.add('correct-answer');
+//                 // score++;
+//                 // starImg.style.display = "block";
+//                 // for (let i = 0; i < answerButtons.length; i++){
+//                 //     if (event.target === answerButtons[i]) {
+//                 //         starImg.classList.add('star-button' + ++i);
+//                 //         index = i;
+//                 //     }
+//                 // }
+//                 // setTimeout(function() {
+//                 //     starImg.style.display = "none";
+//                 //     starButton.style.scale = "0.7";
+//                 // }, 800);
+//                 // setTimeout(function() {
+//                 //     starButton.style.scale = "1";
+//                 //     addScore();
+//                 // }, 950)
+
+
+//             }
+//             else {
+//                 event.target.classList.add('wrong-answer');
+//                 for (let i = 0; i < answerButtons.length; i++) {
+//                     if (answerButtons[i].textContent === randomQuestion.correctAnswer) {
+//                         answerButtons[i].classList.add('real-answer');
+//                         // removeScore();
+//                     }
+//                 }
+//             }
+
+//             // disableAnswerButtons();
+
+//             // continueText.style.display = "flex";
+//         }
+
+//         // else if (!event.target.matches('.answer-button') && event.target.id !== 'question-text') {
+//         //     starImg.classList.remove('star-button' + index);
+//         //     scoreText.textContent = score;
+//         //     const randomQuestionIndex = Math.floor(Math.random() * questions.length);
+//         //     randomQuestion = questions[randomQuestionIndex];
+//         //     questionText.textContent = randomQuestion.question;
+
+
+//         //     if (swedish === true) {
+//         //         getRandomQuestionSwedish();
+//         //         questionAnswered = false;
+//         //     }
+//         //     else if (swedish === false) {
+//         //         getRandomQuestion();
+//         //         questionAnswered = false;
+//         //     }
+
+//         //     starImg.style.display = "none";
+
+//         //     disableAnswerButtons(false);
+
+//         //     continueText.style.display = "none";
+
+//         // }
+//     } else {
+//         console.error("Fel: resultContainer hittades inte");
+//     }
+// }
 
 
 function resetGame() {
@@ -646,7 +675,7 @@ function resetGame() {
 function goToHome() {
     document.querySelector('.result-container').style.display = 'none';
     document.querySelector('.start-container').style.display = 'flex';
-
+}
 function disableAnswerButtons(disable = true) {
     if (disable) {
         answerButtons.forEach(x => {
