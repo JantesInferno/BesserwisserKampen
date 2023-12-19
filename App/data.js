@@ -1,7 +1,7 @@
 
 
 let isEasy = false;
-let isMedium = false;
+let isMedium = true;
 let isHard = false;
 
 let copyQuestions = [];

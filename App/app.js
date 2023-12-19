@@ -555,7 +555,6 @@ function stopQuestionTimer() {
 function addScore() {
     scoreRight++;
     scorePercentage = Math.round((scoreRight/(scoreRight+scoreWrong)) * 100);
-    currentQuiz++;
 
     scoreText.textContent = score;
     popupScoreRight.textContent = scoreRight;
@@ -569,7 +568,6 @@ function addScore() {
 function removeScore() {
     scoreWrong++;
     scorePercentage = Math.round((scoreRight/(scoreRight+scoreWrong)) * 100);
-    currentQuiz--;
 
     scoreText.textContent = --score;
     popupScoreWrong.textContent = scoreWrong;
