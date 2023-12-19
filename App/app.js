@@ -22,9 +22,9 @@ const darkMode = document.querySelector('.dark');
 const englishMode = document.querySelector('.english');
 const swedishhMode = document.querySelector('.swedish');
 
-
-
-
+const easyButton = document.querySelector('.easy');
+const mediumButton = document.querySelector('.medium');
+const hardButton = document.querySelector('.hard');
 
 const gameScreen = document.querySelector('.game-screen');
 const questionText = document.querySelector('.question-text');
@@ -40,7 +40,7 @@ window.onload = function() {
     /**
      * Load EventListeners
      */
-
+    startGame();
     playButton.addEventListener('click', function() {
         document.querySelector('.start-container').style.display = 'none';
         document.querySelector('.game-screen').style.display = 'flex';
@@ -60,7 +60,23 @@ window.onload = function() {
       }
     })
 
-
+    easyButton.addEventListener('click', () => {
+        isEasy = true;
+        isMedium = false;
+        isHard = false;
+    });
+    
+    mediumButton.addEventListener('click', () => {
+        isEasy = false;
+        isMedium = true;
+        isHard = false;
+    });
+    
+    hardButton.addEventListener('click', () => {
+        isEasy = false;
+        isMedium = false;
+        isHard = true;
+    });
 
     settingsButton.addEventListener('click', () => {
         settingsButton.style.scale = '1.5';
@@ -151,6 +167,69 @@ window.onload = function() {
  *  FUNCTIONS
  * 
  */
+
+function getRandomQuestion() {
+    let difficultyQuestions;
+
+    if (isEasy) {
+        difficultyQuestions = copyQuestions.filter(question => question.difficulty === "easy");
+    } 
+    else if (isMedium) {
+        difficultyQuestions = copyQuestions.filter(question => question.difficulty === "medium");
+    } 
+    else if (isHard) {
+        difficultyQuestions = copyQuestions.filter(question => question.difficulty === "hard");
+    }
+
+    if (difficultyQuestions && difficultyQuestions.length > 0) {
+        const randomQuestionIndex = Math.floor(Math.random() * difficultyQuestions.length);
+        randomQuestion = difficultyQuestions[randomQuestionIndex];
+        questionText.textContent = randomQuestion.question;
+
+        for (let i = 0; i < answerButtons.length; i++) {
+            answerButtons[i].classList.remove('correct-answer', 'wrong-answer', 'real-answer');
+            answerButtons[i].textContent = randomQuestion.answers[i];
+        }
+
+        const indexInCopyQuestions = copyQuestions.indexOf(randomQuestion);
+        copyQuestions.splice(indexInCopyQuestions, 1);
+    }
+
+}
+
+function getRandomQuestionSwedish() {
+    let difficultyQuestions;
+
+    if (isEasy) {
+        difficultyQuestions = copyQuestionsSwedish.filter(question => question.difficulty === "easy");
+    } 
+    else if (isMedium) {
+        difficultyQuestions = copyQuestionsSwedish.filter(question => question.difficulty === "medium");
+    } 
+    else if (isHard) {
+        difficultyQuestions = copyQuestionsSwedish.filter(question => question.difficulty === "hard");
+    }
+
+    if (difficultyQuestions && difficultyQuestions.length > 0) {
+        const randomQuestionIndex = Math.floor(Math.random() * difficultyQuestions.length);
+        randomQuestion = difficultyQuestions[randomQuestionIndex];
+        questionText.textContent = randomQuestion.question;
+
+        for (let i = 0; i < answerButtons.length; i++) {
+            answerButtons[i].classList.remove('correct-answer', 'wrong-answer', 'real-answer');
+            answerButtons[i].textContent = randomQuestion.answers[i];
+        }
+
+        const indexInCopyQuestionsSwedish = copyQuestionsSwedish.indexOf(randomQuestion);
+        copyQuestionsSwedish.splice(indexInCopyQuestionsSwedish, 1);
+    }
+
+}
+
+function startGame () {
+    copyQuestions = [...questions];
+    copyQuestionsSwedish = [...questionsSwedish];
+}
 
 const clearPopups = () => {
     document.querySelectorAll("[class^=popup]").forEach(text => text.classList.remove('open'));
@@ -293,13 +372,7 @@ function handleEvent(event) {
     activateQuestionTimer();
 
     if (event.type === 'load') {
-        const randomQuestionIndex = Math.floor(Math.random() * questions.length);
-        randomQuestion = questions[randomQuestionIndex];
-        questionText.textContent = randomQuestion.question;
-
-        for (let i = 0; i < answerButtons.length; i++) {
-            answerButtons[i].textContent = randomQuestion.answers[i];
-        }
+        //getRandomQuestion();
     }
     else if (event.type === 'click') {
         if (event.target.matches('.answer-button')) {
@@ -325,15 +398,15 @@ function handleEvent(event) {
             //continueText.style.display = "flex";
         }
         else if (!event.target.matches('.answer-button') && event.target.id !== 'question-text') {
-            const randomQuestionIndex = Math.floor(Math.random() * questions.length);
-            randomQuestion = questions[randomQuestionIndex];
-            questionText.textContent = randomQuestion.question;
 
-            for (let i = 0; i < answerButtons.length; i++) {
-                answerButtons[i].classList.remove('correct-answer', 'wrong-answer', 'real-answer');
-                answerButtons[i].textContent = randomQuestion.answers[i];
+            if (swedish === true) {
+                getRandomQuestionSwedish();
+                questionAnswered = false;
             }
-            questionAnswered = false;
+            else if (swedish === false) {
+                getRandomQuestion();
+                questionAnswered = false;
+            }
             
             disableAnswerButtons(false);
 
