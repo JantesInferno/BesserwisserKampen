@@ -225,8 +225,8 @@ header .settings:hover, header .help:hover {
   pointer-events: auto;
 }
 .result-container .play-again-button:hover, .result-container .goHome:hover {
-  background-color: rgb(102, 0, 102);
-  color: rgb(191, 165, 189);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #cb0163;
   cursor: pointer;
   transform: scale(1.1);
 }
@@ -241,7 +241,7 @@ header .settings:hover, header .help:hover {
   position: relative;
   width: 150px;
   height: 150px;
-  background: conic-gradient(#c40094 3.6deg, rgba(255, 255, 255, 0.1) 0deg);
+  background: conic-gradient(#cb0163 3.6deg, rgba(255, 255, 255, 0.1) 0deg);
   border-radius: 50%;
   display: flex;
   justify-content: center;
