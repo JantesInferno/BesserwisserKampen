@@ -170,7 +170,7 @@ header .star-container .score {
   font-weight: 500;
   color: white;
 }
-.popup-right .mode:nth-of-type(1), .popup-right .mode:nth-of-type(4) {
+.popup-right .mode:nth-of-type(1), .popup-right .mode:nth-of-type(3) {
   background: linear-gradient(90deg, rgb(12, 2, 181) 0%, rgb(179, 3, 167) 100%);
   color: white;
 }

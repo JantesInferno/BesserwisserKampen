@@ -303,12 +303,12 @@ function toggleLightMode () {
     modeButtons[0].style ="background: white; color: rgba(0,4,78,1); border: 1px solid rgba(0,4,78,1);";
     modeButtons[1].style ="background: linear-gradient(90deg, rgba(0,255,179,1) 0%, rgba(10,0,103,1) 100%); color: white;";
     if (swedish){
-        modeButtons[3].style ="background: linear-gradient(90deg, rgba(0,255,179,1) 0%, rgba(10,0,103,1) 100%); color: white;";
-        modeButtons[2].style ="background: white; color: rgba(0,4,78,1); border: 1px solid rgba(0,4,78,1);";
+        modeButtons[2].style ="background: linear-gradient(90deg, rgba(0,255,179,1) 0%, rgba(10,0,103,1) 100%); color: white;";
+        modeButtons[3].style ="background: white; color: rgba(0,4,78,1); border: 1px solid rgba(0,4,78,1);";
     }
     else {
-        modeButtons[3].style ="background: white; color: rgba(0,4,78,1); border: 1px solid rgba(0,4,78,1);";
-        modeButtons[2].style ="background: linear-gradient(90deg, rgba(0,255,179,1) 0%, rgba(10,0,103,1) 100%); color: white;";
+        modeButtons[2].style ="background: white; color: rgba(0,4,78,1); border: 1px solid rgba(0,4,78,1);";
+        modeButtons[3].style ="background: linear-gradient(90deg, rgba(0,255,179,1) 0%, rgba(10,0,103,1) 100%); color: white;";
     }
 
     popupLeft.style.background = "rgba(255, 255, 255, 0.5)";
@@ -370,12 +370,12 @@ function toggleDarkMode () {
     modeButtons[0].style ="background: linear-gradient(90deg, rgba(12,2,181,1) 0%, rgba(179,3,167,1) 100%); color: white;";
     modeButtons[1].style ="background: black; color: white;";
     if (swedish){
-        modeButtons[3].style ="background: linear-gradient(90deg, rgba(12,2,181,1) 0%, rgba(179,3,167,1) 100%); color: white;";
-        modeButtons[2].style ="background: black; color: white;";
+        modeButtons[2].style ="background: linear-gradient(90deg, rgba(12,2,181,1) 0%, rgba(179,3,167,1) 100%); color: white;";
+        modeButtons[3].style ="background: black; color: white;";
     }
     else {
-        modeButtons[3].style ="background: black; color: white;";
-        modeButtons[2].style ="background: linear-gradient(90deg, rgba(12,2,181,1) 0%, rgba(179,3,167,1) 100%); color: white;";
+        modeButtons[2].style ="background: black; color: white;";
+        modeButtons[3].style ="background: linear-gradient(90deg, rgba(12,2,181,1) 0%, rgba(179,3,167,1) 100%); color: white;";
     }
     
     popupLeft.style.backgroundColor = "rgba(0,0,0, 0.5)";
