@@ -236,13 +236,13 @@ header {
             padding-left: 5px;
             padding-bottom: 5px;
             .right {
-                color: lightgreen;
+                color: rgb(64, 189, 64);
             }
             .wrong {
-                color: lightcoral;
+                color: rgb(235, 81, 81);
             }
             .percentage, .score-average, .percentage-average {
-                color: lightgreen;
+                color: rgb(64, 189, 64);
             }
         }
     }
@@ -563,7 +563,6 @@ header {
 
 .cancel-class-dark {
     color: white;
-
     svg {
         stroke: white;
     }
@@ -571,7 +570,6 @@ header {
 
 .cancel-class-light {
     color: rgba(0,4,78,1);
-
     svg {
         stroke: rgba(0,4,78,1);
     }
@@ -746,15 +744,7 @@ header {
     .popup-left, .popup-right  {
         width: 41vw;
         height: 35vh;
-        font-size: 0.8rem;
-        ul {
-            width: 100%;
-            margin: 0;   
-        }
-        li {
-            margin: 0;
-            padding-right: 10px;
-        }
+        font-size: 0.8rem; 
     }
     .popup-right .mode {
         width: 100%;
@@ -768,7 +758,8 @@ header {
         .play {
             width: 100%;
             span {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
+                padding-top: 3px;
             }
         }
         h2 {
@@ -1008,16 +999,16 @@ header {
             height: 1%;
         }
         .star-button1 {
-            offset-path: path('M165,60 C20,0 -500, -200 -500,-435');
+            offset-path: path('M165,60 C20,0 -500, -200 -505,-435');
         }
         .star-button2 {
-            offset-path: path('M505,60 C20,0 -500, -200 -500,-435');
+            offset-path: path('M505,60 C20,0 -500, -200 -505,-435');
         }
         .star-button3 {
-            offset-path: path('M165,170 C20,0 -500, -200 -500,-435');
+            offset-path: path('M165,170 C20,0 -500, -200 -505,-435');
         }
         .star-button4 {
-            offset-path: path('M505,170 C20,0 -500, -200 -500,-435');
+            offset-path: path('M505,170 C20,0 -500, -200 -505,-435');
         }
         .answer-hover-dark {
             &:hover {
@@ -1256,4 +1247,11 @@ header {
             height: 5%;
         }
     }
+}
+
+.confetti {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }

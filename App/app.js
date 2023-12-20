@@ -210,7 +210,7 @@ function toggleEnglish () {
 
     popupLis[0].textContent = "Questions";
     popupLis[2].textContent = "Ratio";
-    popupLis[4].textContent = "Average score";
+    popupLis[4].textContent = "Avg score";
 
     if (randomQuestion !== undefined) {
         randomQuestion = difficultyQuestionsEnglish[randomQuestionIndex];
@@ -229,6 +229,8 @@ function toggleEnglish () {
         englishMode.style = "background: linear-gradient(90deg, rgba(0,255,179,1) 0%, rgba(10,0,103,1) 100%); color: white;";
         swedishhMode.style = "background: white; color: black; border: 1px solid black;";
     }
+
+    cancelButton.querySelector('span').textContent = "Quit";
 }
 
 function toggleSwedish () {
@@ -241,7 +243,6 @@ function toggleSwedish () {
     buttonDifficulty[1].textContent = "Normal";
     buttonDifficulty[2].textContent = "Svår";
 
-    
     popupLis[0].textContent = "Frågor";
     popupLis[2].textContent = "Ratio";
     popupLis[4].textContent = "Snittpoäng";
@@ -255,7 +256,6 @@ function toggleSwedish () {
         }
     }
 
-
     if (dark) {
         swedishhMode.style = "background: linear-gradient(90deg, rgba(12,2,181,1) 0%, rgba(179,3,167,1) 100%); color: white;";
         englishMode.style = "background: black; color: white;";
@@ -264,6 +264,8 @@ function toggleSwedish () {
         swedishhMode.style = "background: linear-gradient(90deg, rgba(0,255,179,1) 0%, rgba(10,0,103,1) 100%); color: white;";
         englishMode.style = "background: white; color: black; border: 1px solid black;";
     }
+
+    cancelButton.querySelector('span').textContent = "Avsluta";
 }
 
 
@@ -309,11 +311,11 @@ function toggleLightMode () {
         modeButtons[2].style ="background: linear-gradient(90deg, rgba(0,255,179,1) 0%, rgba(10,0,103,1) 100%); color: white;";
     }
 
-    popupLeft.style.background = "rgba(255, 255, 255, 1)";
+    popupLeft.style.background = "rgba(255, 255, 255, 0.5)";
     popupLeft.style.color = "rgba(0,4,78,1)";
     popupLeft.style.fontWeight = "bold";
 
-    popupRight.style.background = "rgba(255, 255, 255, 1)";
+    popupRight.style.background = "rgba(255, 255, 255, 0.5)";
     popupRight.style.color = "rgba(0,4,78,1)";
 
     buttonDifficulty.forEach(x => {
@@ -321,8 +323,12 @@ function toggleLightMode () {
         x.style.fontWeight = "bold";
         })
 
+    document.querySelector('.popup-left ul').style.background = "rgba(0,4,78,0.5)";
+    document.querySelectorAll('.popup-left ul li').forEach(x => {
+        x.style.background = "rgba(255,255,255,1)";
+    });
     document.querySelector('.difficulty-header').style.color = "rgba(0,4,78,1)";
-    document.querySelector('header').style.background = "rgba(255, 255, 255, 1)";
+    document.querySelector('header').style.background = "#001636";
     document.querySelector('.play-text').style = "color: rgba(0,4,78,1); font-weight: bold;";
     document.querySelector('.name-logo').src = "../light-logo.png";
     document.querySelector('.difficulty-no-hover').classList.remove('active-difficulty-dark');
@@ -384,6 +390,10 @@ function toggleDarkMode () {
         x.style.color = "white";
         })
         
+    document.querySelector('.popup-left ul').style.background = "rgba(0, 0, 0, 0.5)";
+    document.querySelectorAll('.popup-left ul li').forEach(x => {
+        x.style.background = "rgba(0,0,0,0.5)";
+    });
     document.querySelector('.difficulty-header').style.color = "white";
     document.querySelector('header').style.background = "rgba(0, 0, 0, 0.5)";
     document.querySelector('.play-text').style = "color: white;";
@@ -442,10 +452,6 @@ function getRandomQuestion() {
         disableAnswerButtons(false);
         starImg.classList.remove('star-button' + starIndex);
         activateQuestionTimer();
-
-        console.log("Random function: " + randomQuestionIndex);
-        console.log("copyquestions: " + copyQuestions);
-        console.log("copyquestions: " + copyQuestionsSwedish);
     }
 }
 
@@ -616,9 +622,13 @@ function showResults() {
                 
                 if (progressStartValue == progressEndValue) {
                     clearInterval(progress);
+                    if (progressEndValue >= 80)
+                        document.querySelector('.confetti').style.display = "flex";
+                    else
+                        document.querySelector('.confetti').style.display = "none";
                 }
             },speed);
-           
+
             resultContainer.style.display = 'flex';
             questionCount = 1;
             correctAnswers = 0;
