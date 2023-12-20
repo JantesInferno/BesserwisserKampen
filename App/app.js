@@ -202,7 +202,7 @@ function toggleEnglish () {
     swedish = false;
     
     document.querySelector('.play-text').textContent = "Start new game";
-    document.querySelector('h2').textContent = "Choose your difficulty level";
+    document.querySelector('h2').textContent = "Select difficulty level";
 
     buttonDifficulty[0].textContent = "Easy";
     buttonDifficulty[1].textContent = "Normal";
@@ -328,7 +328,7 @@ function toggleLightMode () {
         x.style.background = "rgba(255,255,255,1)";
     });
     document.querySelector('.difficulty-header').style.color = "rgba(0,4,78,1)";
-    document.querySelector('header').style.background = "#001636";
+    document.querySelector('header').style.background = "rgba(0, 22, 54, 0.9)";
     document.querySelector('.play-text').style = "color: rgba(0,4,78,1); font-weight: bold;";
     document.querySelector('.name-logo').src = "../light-logo.png";
     document.querySelector('.difficulty-no-hover').classList.remove('active-difficulty-dark');
