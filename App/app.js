@@ -81,18 +81,13 @@ const buttonDifficulty = document.querySelectorAll('.button-difficulty');
 
 window.onload = function() {
 
-    /**
-     * Load EventListeners
-     */
-    
-
-
     popupScoreRight.textContent = scoreRight;
     popupScoreWrong.textContent = scoreWrong;
     popupScorePercentage.textContent = scorePercentage + "%";
     popupScoreAverage.textContent = scoreAverage;
     scoreHeader.textContent = score
   
+
     startGame();
 
 
@@ -411,6 +406,7 @@ function startGame () {
 
 function getRandomQuestion() {
     let tempString;
+    
     if (isEasy) 
         tempString = "easy";
     else if (isMedium) 
@@ -423,30 +419,28 @@ function getRandomQuestion() {
 
     if (difficultyQuestionsSwedish.length > 0) {
         randomQuestionIndex = Math.floor(Math.random() * difficultyQuestionsSwedish.length);
-        if (swedish) {
+
+        if (swedish)
             randomQuestion = difficultyQuestionsSwedish[randomQuestionIndex];
-            questionText.textContent = randomQuestion.question;
-        }
-        else {
+        else 
             randomQuestion = difficultyQuestionsEnglish[randomQuestionIndex];
-            questionText.textContent = randomQuestion.question;
-        }
+
+        questionText.textContent = randomQuestion.question;
 
         for (let i = 0; i < answerButtons.length; i++) {
             answerButtons[i].classList.remove('correct-answer', 'wrong-answer', 'real-answer');
             answerButtons[i].textContent = randomQuestion.answers[i];
         }
 
-        if (swedish) {
-            const indexInCopyQuestionsSwedish = copyQuestionsSwedish.indexOf(randomQuestion);
-            copyQuestionsSwedish.splice(indexInCopyQuestionsSwedish, 1);
-            copyQuestions.splice(indexInCopyQuestionsSwedish, 1);
-        }
-        else {
-            const indexInCopyQuestions = copyQuestions.indexOf(randomQuestion);
-            copyQuestions.splice(indexInCopyQuestions, 1);
-            copyQuestionsSwedish.splice(indexInCopyQuestions, 1);
-        }
+        let indexInCopyQuestions;
+
+        if (swedish)
+            indexInCopyQuestions = copyQuestionsSwedish.indexOf(randomQuestion);
+        else
+            indexInCopyQuestions = copyQuestions.indexOf(randomQuestion);
+
+        copyQuestions.splice(indexInCopyQuestions, 1);
+        copyQuestionsSwedish.splice(indexInCopyQuestions, 1);
 
         clearTimeout(autoProceedTimeout);
         disableAnswerButtons(false);
@@ -605,6 +599,7 @@ function showResults() {
        
 
         if (scoreText) {
+            addQuizStatistics();
             scoreText.textContent = 'Your score is: ' + correctAnswers + ' out of ' + totalQuestions;
 
             const circularProgress = document.querySelector('.circular-progress');
