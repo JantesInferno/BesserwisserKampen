@@ -520,6 +520,7 @@ function handleAnswer(event) {
 function showResults() {
     const resultContainer = document.querySelector('.result-container');
     const resultH2 = document.querySelector('.quizResult');
+    const goHome = document.querySelector('.goHome');
 
     if (resultContainer) {
         const scoreText = resultContainer.querySelector('.scoreText');
@@ -530,10 +531,12 @@ function showResults() {
             if(swedish){
                 scoreText.textContent = 'Ditt resultat är: ' + correctAnswers + ' av ' + totalQuestions;
                 resultH2.textContent = 'Quiz Resultat!';
+                goHome.textContent = 'Hem';
             }
             else{
                 scoreText.textContent = 'Your score is: ' + correctAnswers + ' out of ' + totalQuestions;
                 resultH2.textContent = 'Quiz Result!';
+                goHome.textContent = 'Home';
             }
             
 
