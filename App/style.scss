@@ -269,12 +269,12 @@ header {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-51%, -52%);
     width: 35vw;
     height: auto;
     margin: 5px;  
     background: rgb(0, 0, 0, 0.8);
-    border-radius: 5px;
+    border-radius: 1em;
     box-shadow: 0 0 10px -2px white;
     pointer-events: none;
 
@@ -289,7 +289,7 @@ header {
     }
 
     .result-buttons {
-        margin: 20px;
+        height: 30%;
         font-size: 30px;
         font-weight:600;
         display: flex;
@@ -301,8 +301,8 @@ header {
 
     }
     .goHome {
-        height: 50px;
-        width: 150px;
+        height: 60px;
+        width: 40%;
         font-weight: 600;
         font-size: 20px;
         background-color: rgba(0,0,0, 0.7);
@@ -625,7 +625,7 @@ header {
         box-shadow: 0 0 10px 2px rgba(0,4,78,1);
         color: rgba(0,4,78,1);
         &:hover {
-            background-color:rgba(3, 165, 89, 0.7);
+            background-color:#A3A6F4;
             color: #040b08;
         }
     } 
@@ -680,7 +680,7 @@ header {
         }
         .result-container{
             width: 90%;
-            
+            margin-top: 15%;
         }
 }
 
@@ -748,6 +748,7 @@ header {
     }
     .result-container{
         width: 90%;
+        margin-top: 15%;
     }
 }
 
@@ -830,7 +831,7 @@ header {
     }
     .result-container{
         width: 90%;
-        margin-top: 20%;
+        margin-top: 25%;
         .scoreText{
             font-size: 20px;
         }
@@ -1158,6 +1159,9 @@ header {
         .difficulty-container {
             width: 80%;
         }
+    }
+    .result-container{
+        margin-top: 10%;
     }
 }
 
