@@ -68,7 +68,7 @@ const popupLeft = document.querySelector('.popup-left');
 const popupRight = document.querySelector('.popup-right');
 const popupLis = document.querySelectorAll('.popup-left ul li');
 const buttonDifficulty = document.querySelectorAll('.button-difficulty');
-
+const resultContainerStyle = document.querySelector('.result-container');
 
 /**
  * LOAD EVENTLISTENERS & OUTPUT
@@ -323,6 +323,9 @@ function toggleLightMode () {
     document.querySelector('.name-logo').src = "../light-logo.png";
     document.querySelector('.difficulty-no-hover').classList.remove('active-difficulty-dark');
     document.querySelector('.difficulty-no-hover').classList.add('active-difficulty-light');
+
+    resultContainerStyle.classList.remove('result-class-dark');
+    resultContainerStyle.classList.add('result-class-light');
 }
 
 
@@ -390,6 +393,9 @@ function toggleDarkMode () {
     document.querySelector('.name-logo').src = "../dark-logo.png";
     document.querySelector('.difficulty-no-hover').classList.remove('active-difficulty-light');
     document.querySelector('.difficulty-no-hover').classList.add('active-difficulty-dark');
+
+    resultContainerStyle.classList.remove('result-class-light');
+    resultContainerStyle.classList.add('result-class-dark');
 }
 
 
@@ -454,9 +460,6 @@ function handleEvent(event) {
             getRandomQuestion();
             starImg.style.display = "none";
         }
-        else if (event.target.matches('.play-again-button')) {
-            resetGame();
-        } 
         else if (event.target.matches('.goHome')) {
             goToHome();
         }
@@ -516,6 +519,7 @@ function handleAnswer(event) {
 
 function showResults() {
     const resultContainer = document.querySelector('.result-container');
+    const resultH2 = document.querySelector('.quizResult');
 
     if (resultContainer) {
         const scoreText = resultContainer.querySelector('.scoreText');
@@ -523,7 +527,15 @@ function showResults() {
 
         if (scoreText) {
             addQuizStatistics();
-            scoreText.textContent = 'Your score is: ' + correctAnswers + ' out of ' + totalQuestions;
+            if(swedish){
+                scoreText.textContent = 'Ditt resultat är: ' + correctAnswers + ' av ' + totalQuestions;
+                resultH2.textContent = 'Quiz Resultat!';
+            }
+            else{
+                scoreText.textContent = 'Your score is: ' + correctAnswers + ' out of ' + totalQuestions;
+                resultH2.textContent = 'Quiz Result!';
+            }
+            
 
             const circularProgress = document.querySelector('.circular-progress');
             const progressValue = document.querySelector('.progress-value');
@@ -535,8 +547,12 @@ function showResults() {
                 progressStartValue++;
 
                 progressValue.textContent = `${progressStartValue}%`;
-                circularProgress.style.background = `conic-gradient(#cb0163 ${progressStartValue * 3.6}deg, rgba(255, 255, 255, .1) 0deg)`;
-
+                if (dark){
+                    circularProgress.style.background = `conic-gradient(#cb0163 ${progressStartValue * 3.6}deg, rgba(255, 255, 255, .1) 0deg)`;
+                    }
+                    else {
+                    circularProgress.style.background = `conic-gradient(#8362C3 ${progressStartValue * 3.6}deg, rgba(233, 233, 233, .1) 0deg)`;
+                    }
                 
                 if (progressStartValue == progressEndValue) {
                     clearInterval(progress);
@@ -557,7 +573,6 @@ function showResults() {
             const playAgainButton = resultContainer.querySelector('.play-again-button');
             const goHomeButton = resultContainer.querySelector('.goHome');
 
-            playAgainButton.addEventListener('click', resetGame);
             goHomeButton.addEventListener('click', goToHome);
         }
     }

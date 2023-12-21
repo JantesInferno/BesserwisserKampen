@@ -267,21 +267,24 @@ header .star-container .score {
   display: flex;
   width: 90%;
   align-self: center;
-  justify-content: space-between;
+  justify-content: center;
   transition: 0.3s;
 }
-.result-container .play-again-button, .result-container .goHome {
+.result-container .goHome {
   height: 50px;
   width: 150px;
+  font-weight: 600;
+  font-size: 20px;
   background-color: rgba(0, 0, 0, 0.7);
   box-shadow: 0 0 10px -2px white;
   color: aliceblue;
   border-radius: 15px;
+  margin-bottom: 5%;
   cursor: pointer;
   transition: 0.3s;
   pointer-events: auto;
 }
-.result-container .play-again-button:hover, .result-container .goHome:hover {
+.result-container .goHome:hover {
   background-color: rgba(0, 0, 0, 0.7);
   color: #cb0163;
   cursor: pointer;
@@ -560,6 +563,35 @@ header .star-container .score {
   font-weight: bold;
 }
 
+.result-class-light {
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px solid rgb(25, 143, 92);
+}
+.result-class-light h2 {
+  color: rgb(53, 209, 180);
+}
+.result-class-light span {
+  color: rgb(0, 0, 0);
+}
+.result-class-light .goHome {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 10px -2px rgb(0, 0, 0);
+  color: rgb(0, 4, 78);
+}
+.result-class-light .goHome:hover {
+  background-color: rgba(3, 165, 89, 0.7);
+  color: #040b08;
+}
+.result-class-light .circular-progress {
+  background: conic-gradient(#0170cb 3.6deg, rgba(233, 233, 233, 0.1) 0deg);
+}
+.result-class-light .circular-progress::before {
+  background: rgb(243, 243, 243);
+}
+.result-class-light .scoreText {
+  color: rgb(8, 11, 13);
+}
+
 /*
 ########################################################################################
                                      MEDIA QUERIES       
@@ -594,6 +626,9 @@ header .star-container .score {
   .star {
     width: 22px;
     height: 22px;
+  }
+  .result-container {
+    width: 90%;
   }
 }
 /*
@@ -654,6 +689,9 @@ header .star-container .score {
     align-self: center;
     width: 33px;
     height: 26px;
+  }
+  .result-container {
+    width: 90%;
   }
 }
 /*
@@ -729,6 +767,13 @@ header .star-container .score {
     width: 18px;
     height: 18px;
   }
+  .result-container {
+    width: 90%;
+    margin-top: 20%;
+  }
+  .result-container .scoreText {
+    font-size: 20px;
+  }
 }
 /*
 ######################################
@@ -776,6 +821,9 @@ header .star-container .score {
   .start-container .difficulty-container {
     width: 80%;
   }
+  .result-container {
+    width: 90%;
+  }
 }
 /*
 ######################################
@@ -794,6 +842,9 @@ header .star-container .score {
   }
   .game-screen .star-button4 {
     offset-path: path("M300,220 C20,0 -50, 0 40,-400");
+  }
+  .result-container {
+    width: 90%;
   }
 }
 /*
@@ -814,6 +865,9 @@ header .star-container .score {
   .game-screen .star-button4 {
     offset-path: path("M278,205 C20,0 -50, 0 37,-380");
   }
+  .result-container {
+    width: 90%;
+  }
 }
 /*
 ######################################
@@ -832,6 +886,9 @@ header .star-container .score {
   }
   .game-screen .star-button4 {
     offset-path: path("M255,180 C20,0 -50, 0 33,-332");
+  }
+  .result-container {
+    width: 90%;
   }
 }
 /*
@@ -889,6 +946,9 @@ header .star-container .score {
   }
   .start-container .difficulty-container {
     width: 80%;
+  }
+  .result-container {
+    width: 90%;
   }
 }
 /*
@@ -1078,6 +1138,9 @@ header .star-container .score {
   .start-container .difficulty-container {
     width: 80%;
     height: 5%;
+  }
+  .result-container {
+    margin-top: 5%;
   }
 }
 /*
