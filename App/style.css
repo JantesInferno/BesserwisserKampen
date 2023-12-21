@@ -242,9 +242,9 @@ header .star-container .score {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-51%, -52%);
+  transform: translate(-53.5%, -52%);
   width: 35vw;
-  height: auto;
+  height: 50%;
   margin: 5px;
   background: rgba(0, 0, 0, 0.8);
   border-radius: 1em;
@@ -280,6 +280,8 @@ header .star-container .score {
   color: aliceblue;
   border-radius: 15px;
   margin-bottom: 5%;
+  position: absolute;
+  z-index: 9;
   cursor: pointer;
   transition: 0.3s;
   pointer-events: auto;
@@ -629,6 +631,7 @@ header .star-container .score {
   }
   .result-container {
     width: 90%;
+    height: 50%;
     margin-top: 15%;
   }
 }
@@ -694,6 +697,7 @@ header .star-container .score {
   .result-container {
     width: 90%;
     margin-top: 15%;
+    height: 65%;
   }
 }
 /*
@@ -772,6 +776,8 @@ header .star-container .score {
   .result-container {
     width: 90%;
     margin-top: 25%;
+    height: 75%;
+    transform: translate(-52%, -52%);
   }
   .result-container .scoreText {
     font-size: 20px;
@@ -825,6 +831,7 @@ header .star-container .score {
   }
   .result-container {
     width: 90%;
+    height: 52%;
   }
 }
 /*
@@ -847,6 +854,7 @@ header .star-container .score {
   }
   .result-container {
     width: 90%;
+    height: 50%;
   }
 }
 /*
@@ -869,6 +877,7 @@ header .star-container .score {
   }
   .result-container {
     width: 90%;
+    height: 55%;
   }
 }
 /*
@@ -891,6 +900,7 @@ header .star-container .score {
   }
   .result-container {
     width: 90%;
+    height: 60%;
   }
 }
 /*
@@ -951,6 +961,8 @@ header .star-container .score {
   }
   .result-container {
     width: 90%;
+    height: 40%;
+    transform: translate(-50%, -52%);
   }
 }
 /*
@@ -1072,6 +1084,8 @@ header .star-container .score {
   }
   .result-container {
     margin-top: 10%;
+    height: 65%;
+    transform: translate(-51%, -52%);
   }
 }
 /*
@@ -1146,6 +1160,7 @@ header .star-container .score {
   }
   .result-container {
     margin-top: 5%;
+    height: 72%;
   }
 }
 /*
@@ -1218,6 +1233,9 @@ header .star-container .score {
   .start-container .difficulty-container {
     width: 80%;
     height: 5%;
+  }
+  .result-container {
+    height: 55%;
   }
 }
 .confetti {
