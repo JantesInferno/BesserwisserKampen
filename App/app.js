@@ -10,7 +10,13 @@ let timerWidth;
 let interval;
 let score = +localStorage.getItem('score');
 let scoreRight = +localStorage.getItem('scoreRight');
+let scoreRightEasy = 0;
+let scoreRightNormal = 0;
+let scoreRightHard = 0;
 let scoreWrong = +localStorage.getItem('scoreWrong');
+let scoreWrongEasy = 0;
+let scoreWrongNormal = 0;
+let scoreWrongHard = 0;
 let scorePercentage = +localStorage.getItem('scorePercentage');
 let scoreAverage = +localStorage.getItem('scoreAverage');
 let totalQuizesTaken = +localStorage.getItem('totalQuizesTaken');
@@ -81,15 +87,6 @@ window.onload = function() {
     popupScorePercentage.textContent = scorePercentage + "%";
     popupScoreAverage.textContent = scoreAverage;
     scoreHeader.textContent = score
-  
-
-    startGame();
-
-
-    playButton.addEventListener('click', function() {
-        document.querySelector('.start-container').style.display = 'none';
-        document.querySelector('.game-screen').style.display = 'flex';
-    });
 
     window.addEventListener('load', handleEvent);
     gameScreen.addEventListener('click', handleEvent);
@@ -142,6 +139,8 @@ window.onload = function() {
         document.querySelector('.start-container').style.display = 'flex';
         document.querySelector('.game-screen').style.display = 'none';
         stopQuestionTimer();
+        questionCount = 1;
+        correctAnswers = 0;
     })
 
 
@@ -396,6 +395,8 @@ function toggleDarkMode () {
 function startGame () {
     copyQuestions = [...questions];
     copyQuestionsSwedish = [...questionsSwedish];
+    scoreRightEasy, scoreRightNormal, scoreRightHard, 
+    scoreWrongEasy, scoreWrongNormal,scoreWrongHard = 0;
 }
 
 
@@ -451,12 +452,12 @@ function handleEvent(event) {
             handleAnswer(event);
         }
         else if (playButton.contains(event.target)) {
+            document.querySelector('.start-container').style.display = 'none';
+            document.querySelector('.game-screen').style.display = 'flex';
+            startGame();
             getRandomQuestion();
             starImg.style.display = "none";
         }
-        else if (event.target.matches('.play-again-button')) {
-            resetGame();
-        } 
         else if (event.target.matches('.goHome')) {
             goToHome();
         }
@@ -635,15 +636,21 @@ function stopQuestionTimer() {
 }
 
 function addScore() {
-    if (isEasy)
+    if (isEasy)  {
         score++;
-    else if (isMedium)
+        scoreRightEasy++;
+    }
+    else if (isMedium) {
         score += 2;
-    else if (isHard)
+        scoreRightNormal++;
+    }
+    else if (isHard) {
         score += 3;
+        scoreRightHard++;
+    }
 
     scoreRight++;
-    scorePercentage = Math.round((scoreRight/(scoreRight+scoreWrong)) * 100);
+    scorePercentage = Math.round(((scoreRight)/(scoreRight+scoreWrong)) * 100);
 
     scoreHeader.textContent = score;
     popupScoreRight.textContent = scoreRight;
@@ -655,12 +662,19 @@ function addScore() {
 }
 
 function removeScore() {
-    if (isEasy && score >= 1)
+    if (isEasy && score >= 1) {
         score--;
-    else if (isMedium && score >= 2)
+        scoreWrongEasy++;
+    }
+    else if (isMedium && score >= 2) {
         score -= 2;
-    else if (isHard && score >= 3)
+        scoreWrongNormal++;
+    }
+    else if (isHard && score >= 3) {
         score -= 3;
+        scoreWrongHard++;
+    }
+
     scoreWrong++;
     scorePercentage = Math.round((scoreRight/(scoreRight+scoreWrong)) * 100);
 
@@ -675,10 +689,19 @@ function removeScore() {
 
 function addQuizStatistics() {
     totalQuizesTaken++;
-    scoreAverage = Math.round(scoreRight/totalQuizesTaken * 100) / 100;
+    let scoreRightTotal = scoreRightEasy + (scoreRightNormal * 2) + (scoreRightHard * 3);
+    let scoreWrongTotal = scoreWrongEasy + (scoreWrongNormal * 2) + (scoreWrongHard * 3);
+
+    scoreRightTotal += +localStorage.getItem('scoreRightTotal');
+    scoreWrongTotal += +localStorage.getItem('scoreWrongTotal');
+
+    let scoreTotal = scoreRightTotal - scoreWrongTotal;
+    scoreAverage = Math.round(scoreTotal/totalQuizesTaken * 100) / 100;
 
     popupScoreAverage.textContent = scoreAverage;
 
     localStorage.setItem('scoreAverage', scoreAverage);
+    localStorage.setItem('scoreRightTotal', scoreRightTotal);
+    localStorage.setItem('scoreWrongTotal', scoreWrongTotal);
     localStorage.setItem('totalQuizesTaken', totalQuizesTaken);
 }

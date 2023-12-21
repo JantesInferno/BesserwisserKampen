@@ -407,6 +407,8 @@ header {
     border-radius: 1em;
     border: none;
     transition: background-color 0.3s ease;
+    word-break: normal;
+    overflow-wrap: break-word;
 }
 
 .correct-answer {
@@ -722,7 +724,7 @@ header {
             font-size: 1.2rem;
         }
         .answer-button {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
         .star-button1 {
             offset-path: path('M65,54 C20,0 -50, 0 28,-290');
@@ -929,24 +931,36 @@ header {
         .continue-text span{
             font-size: 1.3rem;
         }
+        .star-button1 {
+            offset-path: path('M180,65 C20,0 -50, 0 62,-485');
+        }
+        .star-button2 {
+            offset-path: path('M520,65 C20,0 -50, 0 62,-485');
+        }
+        .star-button3 {
+            offset-path: path('M180,210 C20,0 -50, 0 62,-485');
+        }
+        .star-button4 {
+            offset-path: path('M520,210 C20,0 -50, 0 62,-485');
+        }
     }
     .settings {
         margin-bottom: 3%;
-        width: 66px ;
-        height: 66px;
+        width: 55px ;
+        height: 55px;
     }
     .name-logo {
         width: 65%;
     }
     .popup-left, .popup-right  {
-        width: 46vw;
-        height: 30vh;
+        width: 28vw;
+        height: 26vh;
         font-size: 1.1rem;
     }
     .popup-right .mode {
         width: 90%;
-        width: 80%;
-        margin: 4% auto;
+        width: 70%;
+        margin: 6% auto;
         font-size: 1.1rem;
         &:first-child{
             margin-top: 3%;
@@ -954,6 +968,10 @@ header {
     }
     .popup-left {
         font-size: 1.3rem;
+        ul {
+            width: 100%;
+        }
+
     }
     .start-container {
         margin-top: 10%;
@@ -964,6 +982,15 @@ header {
         }
         .difficulty-container {
             width: 80%;
+        }
+    }
+    .star-container {
+        flex-direction: column;
+        justify-content: flex-start;
+        height: auto;
+        span {
+            width: 100%;
+            text-align: center;
         }
     }
 }
@@ -1036,6 +1063,52 @@ header {
     }
     .cancel-button {
         margin-top: 10%;
+    }
+}
+
+/*
+######################################
+               IPAD AIR     
+######################################
+*/
+
+@media only screen and (width: 820px) and (height: 1180px){
+    .game-screen {
+        .star-button1 {
+            offset-path: path('M200,85 C20,0 -50, 0 65,-550');
+        }
+        .star-button2 {
+            offset-path: path('M575,85 C20,0 -50, 0 65,-550');
+        }
+        .star-button3 {
+            offset-path: path('M200,250 C20,0 -50, 0 65,-550');
+        }
+        .star-button4 {
+            offset-path: path('M575,250 C20,0 -50, 0 65,-550');
+        }
+    }
+}
+
+/*
+######################################
+               IPAD PRO     
+######################################
+*/
+
+@media only screen and (width: 1024px) and (height: 1366px){
+    .game-screen {
+        .star-button1 {
+            offset-path: path('M240,90 C20,0 -50, 0 80,-635');
+        }
+        .star-button2 {
+            offset-path: path('M730,90 C20,0 -50, 0 80,-635');
+        }
+        .star-button3 {
+            offset-path: path('M240,280 C20,0 -50, 0 80,-635');
+        }
+        .star-button4 {
+            offset-path: path('M730,280 C20,0 -50, 0 80,-635');
+        }
     }
 }
 
