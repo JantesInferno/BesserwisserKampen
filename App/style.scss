@@ -275,7 +275,7 @@ header {
     margin: 5px;  
     background: rgb(0, 0, 0, 0.8);
     border-radius: 5px;
-    border: 2px solid rgb(143, 25, 92);
+    box-shadow: 0 0 10px -2px white;
     pointer-events: none;
 
     h2 {
@@ -611,7 +611,7 @@ header {
 }
 .result-class-light {
     background: rgba(255, 255, 255, 0.6);
-    border: 2px solid rgb(25, 143, 92);
+    box-shadow: 0 0 10px 2px rgba(0,4,78,1);
 
     h2 {
         color: rgb(53, 209, 180);
@@ -622,7 +622,7 @@ header {
 
     .goHome {
         background-color: rgba(255,255,255,1);
-        box-shadow: 0 0 10px -2px rgb(0, 0, 0);
+        box-shadow: 0 0 10px 2px rgba(0,4,78,1);
         color: rgba(0,4,78,1);
         &:hover {
             background-color:rgba(3, 165, 89, 0.7);
