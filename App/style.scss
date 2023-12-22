@@ -1066,7 +1066,7 @@ header {
         width: 90%;
         height: 45%;
         transform: translate(-50%, -52%);
-
+    }
     .star-container {
         flex-direction: column;
         justify-content: flex-start;
@@ -1413,16 +1413,7 @@ header {
             height: 5%;
         }
     }
-
     .result-container{
-        height: 55%;
+        height: 60%;
     }
-}
-
-.confetti {
-    display: none;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-
 }
