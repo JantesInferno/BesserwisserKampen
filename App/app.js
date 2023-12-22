@@ -518,7 +518,7 @@ function handleAnswer(event) {
         } else {
             showResults();
         }
-    }, 1000);
+    }, 2500);
 }
 
 
