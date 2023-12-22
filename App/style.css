@@ -370,6 +370,8 @@ header .star-container .score {
   border-radius: 1em;
   border: none;
   transition: background-color 0.3s ease;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .correct-answer {
@@ -434,6 +436,13 @@ header .star-container .score {
 }
 .game-icons .cancel-button .cancel-icon path {
   pointer-events: none;
+}
+
+.confetti {
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 .star {
@@ -710,7 +719,7 @@ header .star-container .score {
     font-size: 1.2rem;
   }
   .game-screen .answer-button {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   .game-screen .star-button1 {
     offset-path: path("M65,54 C20,0 -50, 0 28,-290");
@@ -923,23 +932,35 @@ header .star-container .score {
   .game-screen .continue-text span {
     font-size: 1.3rem;
   }
+  .game-screen .star-button1 {
+    offset-path: path("M180,65 C20,0 -50, 0 62,-485");
+  }
+  .game-screen .star-button2 {
+    offset-path: path("M520,65 C20,0 -50, 0 62,-485");
+  }
+  .game-screen .star-button3 {
+    offset-path: path("M180,210 C20,0 -50, 0 62,-485");
+  }
+  .game-screen .star-button4 {
+    offset-path: path("M520,210 C20,0 -50, 0 62,-485");
+  }
   .settings {
     margin-bottom: 3%;
-    width: 66px;
-    height: 66px;
+    width: 55px;
+    height: 55px;
   }
   .name-logo {
     width: 65%;
   }
   .popup-left, .popup-right {
-    width: 46vw;
-    height: 30vh;
+    width: 28vw;
+    height: 26vh;
     font-size: 1.1rem;
   }
   .popup-right .mode {
     width: 90%;
-    width: 80%;
-    margin: 4% auto;
+    width: 70%;
+    margin: 6% auto;
     font-size: 1.1rem;
   }
   .popup-right .mode:first-child {
@@ -947,6 +968,9 @@ header .star-container .score {
   }
   .popup-left {
     font-size: 1.3rem;
+  }
+  .popup-left ul {
+    width: 100%;
   }
   .start-container {
     margin-top: 10%;
@@ -959,10 +983,21 @@ header .star-container .score {
   .start-container .difficulty-container {
     width: 80%;
   }
+
   .result-container {
     width: 90%;
     height: 45%;
     transform: translate(-50%, -52%);
+
+  .star-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto;
+  }
+  .star-container span {
+    width: 100%;
+    text-align: center;
+
   }
 }
 /*
@@ -1024,6 +1059,44 @@ header .star-container .score {
   }
   .cancel-button {
     margin-top: 10%;
+  }
+}
+/*
+######################################
+               IPAD AIR     
+######################################
+*/
+@media only screen and (width: 820px) and (height: 1180px) {
+  .game-screen .star-button1 {
+    offset-path: path("M200,85 C20,0 -50, 0 65,-550");
+  }
+  .game-screen .star-button2 {
+    offset-path: path("M575,85 C20,0 -50, 0 65,-550");
+  }
+  .game-screen .star-button3 {
+    offset-path: path("M200,250 C20,0 -50, 0 65,-550");
+  }
+  .game-screen .star-button4 {
+    offset-path: path("M575,250 C20,0 -50, 0 65,-550");
+  }
+}
+/*
+######################################
+               IPAD PRO     
+######################################
+*/
+@media only screen and (width: 1024px) and (height: 1366px) {
+  .game-screen .star-button1 {
+    offset-path: path("M240,90 C20,0 -50, 0 80,-635");
+  }
+  .game-screen .star-button2 {
+    offset-path: path("M730,90 C20,0 -50, 0 80,-635");
+  }
+  .game-screen .star-button3 {
+    offset-path: path("M240,280 C20,0 -50, 0 80,-635");
+  }
+  .game-screen .star-button4 {
+    offset-path: path("M730,280 C20,0 -50, 0 80,-635");
   }
 }
 /*
@@ -1234,6 +1307,7 @@ header .star-container .score {
     width: 80%;
     height: 5%;
   }
+
   .result-container {
     height: 55%;
   }
@@ -1243,4 +1317,6 @@ header .star-container .score {
   position: absolute;
   height: 100%;
   width: 100%;
+
+
 }/*# sourceMappingURL=style.css.map */
