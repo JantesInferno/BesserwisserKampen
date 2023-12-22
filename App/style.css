@@ -242,13 +242,13 @@ header .star-container .score {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 450px;
-  height: auto;
+  transform: translate(-53.5%, -52%);
+  width: 35vw;
+  height: 45%;
   margin: 5px;
   background: rgba(0, 0, 0, 0.8);
-  border-radius: 5px;
-  border: 2px solid rgb(143, 25, 92);
+  border-radius: 1em;
+  box-shadow: 0 0 10px -2px white;
   pointer-events: none;
 }
 .result-container h2 {
@@ -261,27 +261,32 @@ header .star-container .score {
   color: rgb(255, 255, 255);
 }
 .result-container .result-buttons {
-  margin: 20px;
+  height: 30%;
   font-size: 30px;
   font-weight: 600;
   display: flex;
   width: 90%;
   align-self: center;
-  justify-content: space-between;
+  justify-content: center;
   transition: 0.3s;
 }
-.result-container .play-again-button, .result-container .goHome {
-  height: 50px;
-  width: 150px;
+.result-container .goHome {
+  height: 60px;
+  width: 40%;
+  font-weight: 600;
+  font-size: 20px;
   background-color: rgba(0, 0, 0, 0.7);
   box-shadow: 0 0 10px -2px white;
   color: aliceblue;
   border-radius: 15px;
+  margin-bottom: 5%;
+  position: absolute;
+  z-index: 9;
   cursor: pointer;
   transition: 0.3s;
   pointer-events: auto;
 }
-.result-container .play-again-button:hover, .result-container .goHome:hover {
+.result-container .goHome:hover {
   background-color: rgba(0, 0, 0, 0.7);
   color: #cb0163;
   cursor: pointer;
@@ -569,6 +574,35 @@ header .star-container .score {
   font-weight: bold;
 }
 
+.result-class-light {
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 10px 2px rgb(0, 4, 78);
+}
+.result-class-light h2 {
+  color: rgb(53, 209, 180);
+}
+.result-class-light span {
+  color: rgb(0, 0, 0);
+}
+.result-class-light .goHome {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 10px 2px rgb(0, 4, 78);
+  color: rgb(0, 4, 78);
+}
+.result-class-light .goHome:hover {
+  background-color: #A3A6F4;
+  color: #040b08;
+}
+.result-class-light .circular-progress {
+  background: conic-gradient(#0170cb 3.6deg, rgba(233, 233, 233, 0.1) 0deg);
+}
+.result-class-light .circular-progress::before {
+  background: rgb(243, 243, 243);
+}
+.result-class-light .scoreText {
+  color: rgb(8, 11, 13);
+}
+
 /*
 ########################################################################################
                                      MEDIA QUERIES       
@@ -603,6 +637,11 @@ header .star-container .score {
   .star {
     width: 22px;
     height: 22px;
+  }
+  .result-container {
+    width: 90%;
+    height: 50%;
+    margin-top: 15%;
   }
 }
 /*
@@ -663,6 +702,11 @@ header .star-container .score {
     align-self: center;
     width: 33px;
     height: 26px;
+  }
+  .result-container {
+    width: 90%;
+    margin-top: 15%;
+    height: 65%;
   }
 }
 /*
@@ -738,6 +782,15 @@ header .star-container .score {
     width: 18px;
     height: 18px;
   }
+  .result-container {
+    width: 90%;
+    margin-top: 25%;
+    height: 75%;
+    transform: translate(-52%, -52%);
+  }
+  .result-container .scoreText {
+    font-size: 20px;
+  }
 }
 /*
 ######################################
@@ -785,6 +838,10 @@ header .star-container .score {
   .start-container .difficulty-container {
     width: 80%;
   }
+  .result-container {
+    width: 90%;
+    height: 52%;
+  }
 }
 /*
 ######################################
@@ -803,6 +860,10 @@ header .star-container .score {
   }
   .game-screen .star-button4 {
     offset-path: path("M300,220 C20,0 -50, 0 40,-400");
+  }
+  .result-container {
+    width: 90%;
+    height: 50%;
   }
 }
 /*
@@ -823,6 +884,10 @@ header .star-container .score {
   .game-screen .star-button4 {
     offset-path: path("M278,205 C20,0 -50, 0 37,-380");
   }
+  .result-container {
+    width: 90%;
+    height: 55%;
+  }
 }
 /*
 ######################################
@@ -841,6 +906,10 @@ header .star-container .score {
   }
   .game-screen .star-button4 {
     offset-path: path("M255,180 C20,0 -50, 0 33,-332");
+  }
+  .result-container {
+    width: 90%;
+    height: 60%;
   }
 }
 /*
@@ -914,6 +983,12 @@ header .star-container .score {
   .start-container .difficulty-container {
     width: 80%;
   }
+
+  .result-container {
+    width: 90%;
+    height: 45%;
+    transform: translate(-50%, -52%);
+
   .star-container {
     flex-direction: column;
     justify-content: flex-start;
@@ -922,6 +997,7 @@ header .star-container .score {
   .star-container span {
     width: 100%;
     text-align: center;
+
   }
 }
 /*
@@ -1079,6 +1155,11 @@ header .star-container .score {
   .start-container .difficulty-container {
     width: 80%;
   }
+  .result-container {
+    margin-top: 10%;
+    height: 65%;
+    transform: translate(-51%, -52%);
+  }
 }
 /*
 ######################################
@@ -1149,6 +1230,10 @@ header .star-container .score {
   .start-container .difficulty-container {
     width: 80%;
     height: 5%;
+  }
+  .result-container {
+    margin-top: 5%;
+    height: 72%;
   }
 }
 /*
@@ -1222,4 +1307,16 @@ header .star-container .score {
     width: 80%;
     height: 5%;
   }
+
+  .result-container {
+    height: 55%;
+  }
+}
+.confetti {
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+
 }/*# sourceMappingURL=style.css.map */
