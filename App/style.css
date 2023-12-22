@@ -244,7 +244,7 @@ header .star-container .score {
   left: 50%;
   transform: translate(-53.5%, -52%);
   width: 35vw;
-  height: 50%;
+  height: 45%;
   margin: 5px;
   background: rgba(0, 0, 0, 0.8);
   border-radius: 1em;
@@ -961,7 +961,7 @@ header .star-container .score {
   }
   .result-container {
     width: 90%;
-    height: 40%;
+    height: 45%;
     transform: translate(-50%, -52%);
   }
 }
