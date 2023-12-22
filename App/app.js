@@ -96,7 +96,7 @@ window.onload = function() {
 
     window.addEventListener('click', ({ target }) => {
         if(!target.classList.contains('popup') && !(target.classList.contains('settings') || target.classList.contains('help') || target.classList.contains('mode') || target.classList.contains('star-icon'))) {
-            clearPopups()
+            clearPopups();
             settingsButton.style.scale = '1';
             starButton.style.scale = '1';
       }
@@ -171,7 +171,7 @@ window.onload = function() {
  */
 
 
-const clearPopups = () => {
+function clearPopups () {
     document.querySelectorAll("[class^=popup]").forEach(text => text.classList.remove('open'));
 }
 
@@ -395,8 +395,8 @@ function toggleDarkMode () {
 function startGame () {
     copyQuestions = [...questions];
     copyQuestionsSwedish = [...questionsSwedish];
-    scoreRightEasy, scoreRightNormal, scoreRightHard, 
-    scoreWrongEasy, scoreWrongNormal,scoreWrongHard = 0;
+    scoreRightEasy = scoreRightNormal = scoreRightHard = 
+    scoreWrongEasy = scoreWrongNormal = scoreWrongHard = 0;
 }
 
 
@@ -454,9 +454,10 @@ function handleEvent(event) {
         else if (playButton.contains(event.target)) {
             document.querySelector('.start-container').style.display = 'none';
             document.querySelector('.game-screen').style.display = 'flex';
+            document.querySelector('.confetti').style.display = "none";
+            starImg.style.display = "none";
             startGame();
             getRandomQuestion();
-            starImg.style.display = "none";
         }
         else if (event.target.matches('.goHome')) {
             goToHome();
@@ -543,8 +544,6 @@ function showResults() {
                     clearInterval(progress);
                     if (progressEndValue >= 80)
                         document.querySelector('.confetti').style.display = "flex";
-                    else
-                        document.querySelector('.confetti').style.display = "none";
                 }
             },speed);
 
@@ -695,8 +694,13 @@ function addQuizStatistics() {
     scoreRightTotal += +localStorage.getItem('scoreRightTotal');
     scoreWrongTotal += +localStorage.getItem('scoreWrongTotal');
 
+    console.log("ScoreRightTotal: " + scoreRightTotal);
+    console.log("ScoreWrongTotal: " + scoreWrongTotal);
+
     let scoreTotal = scoreRightTotal - scoreWrongTotal;
     scoreAverage = Math.round(scoreTotal/totalQuizesTaken * 100) / 100;
+
+    console.log("ScoreAverage: " + scoreAverage);
 
     popupScoreAverage.textContent = scoreAverage;
 

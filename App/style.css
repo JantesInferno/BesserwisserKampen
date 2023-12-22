@@ -433,6 +433,13 @@ header .star-container .score {
   pointer-events: none;
 }
 
+.confetti {
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
 .star {
   animation: move 800ms 1 alternate ease-in-out;
   height: 30px;
@@ -1215,10 +1222,4 @@ header .star-container .score {
     width: 80%;
     height: 5%;
   }
-}
-.confetti {
-  display: none;
-  position: absolute;
-  height: 100%;
-  width: 100%;
 }/*# sourceMappingURL=style.css.map */
