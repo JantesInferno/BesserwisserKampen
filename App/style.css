@@ -585,12 +585,12 @@ header .star-container .score {
   color: rgb(0, 0, 0);
 }
 .result-class-light .goHome {
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 10px 2px rgb(0, 4, 78);
   color: rgb(0, 4, 78);
 }
 .result-class-light .goHome:hover {
-  background-color: #A3A6F4;
+  background-color: rgba(134, 134, 244, 0.85);
   color: #040b08;
 }
 .result-class-light .circular-progress {
