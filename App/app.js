@@ -63,6 +63,12 @@ const popupScoreWrong = document.querySelector('.wrong');
 const popupScorePercentage = document.querySelector('.percentage');
 const popupScoreAverage = document.querySelector('.score-average');
 
+const resultContainer = document.querySelector('.result-container');
+const resultH2 = document.querySelector('.quizResult');
+const goHome = document.querySelector('.goHome');
+const circularProgress = document.querySelector('.circular-progress');
+const progressValue = document.querySelector('.progress-value');
+const scoreText = resultContainer.querySelector('.scoreText');
 
 // DARK/LIGHT-MODE VARIABLES
 
@@ -506,10 +512,6 @@ function handleAnswer(event) {
 
     disableAnswerButtons();
 
-    const resultContainer = document.querySelector('.result-container');
-    const scoreText = resultContainer.querySelector('.scoreText');
-    scoreText.textContent = 'Your score: ' + correctAnswers + ' out of ' + totalQuestions;
-
     setTimeout(function () {
         if (questionCount < totalQuestions) {
             questionCount++;
@@ -518,19 +520,12 @@ function handleAnswer(event) {
         } else {
             showResults();
         }
-    }, 1000);
+    }, 2500);
 }
 
 
 function showResults() {
-    const resultContainer = document.querySelector('.result-container');
-    const resultH2 = document.querySelector('.quizResult');
-    const goHome = document.querySelector('.goHome');
-
     if (resultContainer) {
-        const scoreText = resultContainer.querySelector('.scoreText');
-       
-
         if (scoreText) {
             addQuizStatistics();
             if(swedish){
@@ -543,14 +538,9 @@ function showResults() {
                 resultH2.textContent = 'Quiz Result!';
                 goHome.textContent = 'Home';
             }
-            
-
-            const circularProgress = document.querySelector('.circular-progress');
-            const progressValue = document.querySelector('.progress-value');
             let progressStartValue = -1;
             let progressEndValue = (correctAnswers / totalQuestions) * 100;
             let speed = 20;
-
             let progress = setInterval(() => {
                 progressStartValue++;
 
@@ -575,10 +565,7 @@ function showResults() {
             questionAnswered = false;
             document.querySelector('.game-screen').style.display = 'none';
 
-            
-            const playAgainButton = resultContainer.querySelector('.play-again-button');
             const goHomeButton = resultContainer.querySelector('.goHome');
-
             goHomeButton.addEventListener('click', goToHome);
         }
     }

@@ -585,12 +585,12 @@ header .star-container .score {
   color: rgb(0, 0, 0);
 }
 .result-class-light .goHome {
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 10px 2px rgb(0, 4, 78);
   color: rgb(0, 4, 78);
 }
 .result-class-light .goHome:hover {
-  background-color: #A3A6F4;
+  background-color: rgba(134, 134, 244, 0.85);
   color: #040b08;
 }
 .result-class-light .circular-progress {
@@ -786,7 +786,7 @@ header .star-container .score {
     width: 90%;
     margin-top: 25%;
     height: 75%;
-    transform: translate(-52%, -52%);
+    transform: translate(-51%, -52%);
   }
   .result-container .scoreText {
     font-size: 20px;
@@ -986,7 +986,7 @@ header .star-container .score {
   .result-container {
     width: 90%;
     height: 45%;
-    transform: translate(-50%, -52%);
+    transform: translate(-50.7%, -52%);
   }
   .star-container {
     flex-direction: column;
