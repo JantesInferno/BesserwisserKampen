@@ -23,7 +23,7 @@ $backgroundBlackTransparent: rgba(0,0,0, 0.5);
 body {
     height: 100vh;
     width: 100vw;
-    background-image: url('../nebula.jpg');
+    background-image: url('assets/nebula.jpg');
     overflow: hidden;
 }
 
@@ -269,7 +269,7 @@ header {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-53.5%, -52%);
+    transform: translate(-51.5%, -52%);
     width: 35vw;
     height: 45%;
     margin: 5px;  

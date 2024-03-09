@@ -287,7 +287,7 @@ function toggleLightMode () {
     continueText.querySelector('span').style.color = "rgba(0,4,78,1)";
     continueText.querySelector('span').style.fontWeight = "bold";
 
-    document.querySelector('body').style = "background: url('../light.jpg') no-repeat center center fixed; background-size: cover;";
+    document.querySelector('body').style = "background: url('assets/light.jpg') no-repeat center center fixed; background-size: cover;";
 
     modeButtons[0].style ="background: white; color: rgba(0,4,78,1); border: 1px solid rgba(0,4,78,1);";
     modeButtons[1].style ="background: linear-gradient(90deg, rgba(0,255,179,1) 0%, rgba(10,0,103,1) 100%); color: white;";
@@ -319,7 +319,7 @@ function toggleLightMode () {
     document.querySelector('.difficulty-header').style.color = "rgba(0,4,78,1)";
     document.querySelector('header').style.background = "rgba(0, 22, 54, 0.9)";
     document.querySelector('.play-text').style = "color: rgba(0,4,78,1); font-weight: bold;";
-    document.querySelector('.name-logo').src = "../light-logo.png";
+    document.querySelector('.name-logo').src = "assets/light-logo.png";
     document.querySelector('.difficulty-no-hover').classList.remove('active-difficulty-dark');
     document.querySelector('.difficulty-no-hover').classList.add('active-difficulty-light');
 
@@ -357,7 +357,7 @@ function toggleDarkMode () {
     continueText.querySelector('span').style.color = "white";
     continueText.querySelector('span').style.fontWeight = "500";
 
-    document.querySelector('body').style = "background-image: url('../nebula.jpg');";
+    document.querySelector('body').style = "background-image: url('assets/nebula.jpg');";
 
     modeButtons[0].style ="background: linear-gradient(90deg, rgba(12,2,181,1) 0%, rgba(179,3,167,1) 100%); color: white;";
     modeButtons[1].style ="background: black; color: white;";
@@ -389,7 +389,7 @@ function toggleDarkMode () {
     document.querySelector('.difficulty-header').style.color = "white";
     document.querySelector('header').style.background = "rgba(0, 0, 0, 0.5)";
     document.querySelector('.play-text').style = "color: white;";
-    document.querySelector('.name-logo').src = "../dark-logo.png";
+    document.querySelector('.name-logo').src = "assets/dark-logo.png";
     document.querySelector('.difficulty-no-hover').classList.remove('active-difficulty-light');
     document.querySelector('.difficulty-no-hover').classList.add('active-difficulty-dark');
 
