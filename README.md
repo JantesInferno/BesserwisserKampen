@@ -1,5 +1,7 @@
-
 # JavaScript Quiz App
+
+<img src='./Github_Images/quiz_1.png' width=80%>
+
 ## Project Overview
 This repository contains a quiz app implemented in vanilla JavaScript. The app offers three difficulty levels, supports text in both English and Swedish, features dark mode and light mode, and utilizes local storage for score and score statistics.
 
